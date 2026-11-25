@@ -1,0 +1,13 @@
+*.log
+*.pyc
+.venv/
+.vite/
+__pycache__/
+dist/
+node_modules/
+playwright-report/
+public/pyodide/
+scratch/
+test-results/
+validation/run.log
+validation/work/

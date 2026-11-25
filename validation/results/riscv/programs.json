@@ -1,0 +1,29 @@
+{
+ "stage": "programs",
+ "target": "riscv",
+ "totals": {
+  "runs": 2831,
+  "passed": 2831,
+  "exited": 2198,
+  "trap": 633,
+  "instructions_executed": 1617457
+ },
+ "failures": [],
+ "failure_count": 0,
+ "format": 4,
+ "source": "75133daa269a3cf16e153565cbf718ca3b63616f6ff23e450af33bd58c58942c",
+ "tools": {
+  "python": "3.12.10",
+  "ziglang": "0.15.2",
+  "zig": "0.15.2",
+  "clang": "clang version 20.1.2 (https://github.com/ziglang/zig-bootstrap 7ef74e656cf8ddbd6bf891a8475892aa1afa6891)",
+  "capstone": "5.0.9",
+  "capstone_module_string": "5.0.7",
+  "capstone_core": "5.0",
+  "unicorn": "2.1.4",
+  "unicorn_core": "2.1",
+  "pyelftools": "0.33"
+ },
+ "reference_configuration": "Clang integrated assembler, RV32I without extensions (-mcpu=generic_rv32), linker relaxation off",
+ "seconds": 10.6
+}

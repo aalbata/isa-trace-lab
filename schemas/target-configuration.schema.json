@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/aalbata/isa-trace-lab/schemas/target-configuration.schema.json",
+  "title": "ISA Trace Lab target configuration",
+  "description": "Target profile, memory layout, optimization policy, and run limits.",
+  "type": "object",
+  "required": [
+    "schema",
+    "schemaVersion",
+    "target",
+    "isa",
+    "codeBase",
+    "dataBase",
+    "stackTop",
+    "optimization",
+    "limits"
+  ],
+  "properties": {
+    "schema": {
+      "const": "isa-trace-lab/target-configuration"
+    },
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "target": {
+      "enum": [
+        "riscv",
+        "mips",
+        "aarch64",
+        "x86"
+      ]
+    },
+    "isa": {
+      "type": "string"
+    },
+    "codeBase": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "dataBase": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "stackTop": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "optimization": {
+      "enum": [
+        "none"
+      ]
+    },
+    "limits": {
+      "type": "object",
+      "required": [
+        "maxSteps",
+        "maxOutput"
+      ],
+      "properties": {
+        "maxSteps": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "maxOutput": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

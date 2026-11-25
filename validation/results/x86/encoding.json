@@ -1,0 +1,247 @@
+{
+ "stage": "encoding",
+ "target": "x86",
+ "summary": {
+  "sweep": {
+   "programs": 67,
+   "programs_passed": 67,
+   "instructions": 5706,
+   "instructions_in_passed_programs": 5706,
+   "bytes": 114834
+  },
+  "compiled": {
+   "programs": 1031,
+   "programs_passed": 1031,
+   "instructions": 154402,
+   "instructions_in_passed_programs": 154402,
+   "bytes": 561892
+  }
+ },
+ "by_mnemonic": {
+  "add": {
+   "sweep": 435,
+   "compiled": 6087
+  },
+  "or": {
+   "sweep": 435,
+   "compiled": 1926
+  },
+  "and": {
+   "sweep": 435,
+   "compiled": 4054
+  },
+  "sub": {
+   "sweep": 435,
+   "compiled": 5960
+  },
+  "xor": {
+   "sweep": 435,
+   "compiled": 2188
+  },
+  "cmp": {
+   "sweep": 435,
+   "compiled": 10884
+  },
+  "mov": {
+   "sweep": 435,
+   "compiled": 78747
+  },
+  "test": {
+   "sweep": 172
+  },
+  "movzx": {
+   "sweep": 139,
+   "compiled": 701
+  },
+  "movsxd": {
+   "sweep": 131
+  },
+  "lea": {
+   "sweep": 202
+  },
+  "imul": {
+   "sweep": 286,
+   "compiled": 3692
+  },
+  "neg": {
+   "sweep": 156,
+   "compiled": 10082
+  },
+  "not": {
+   "sweep": 156,
+   "compiled": 1694
+  },
+  "inc": {
+   "sweep": 156
+  },
+  "dec": {
+   "sweep": 156
+  },
+  "shl": {
+   "sweep": 233,
+   "compiled": 2049
+  },
+  "shr": {
+   "sweep": 233
+  },
+  "sar": {
+   "sweep": 233,
+   "compiled": 2173
+  },
+  "seto": {
+   "sweep": 9
+  },
+  "setno": {
+   "sweep": 9
+  },
+  "setb": {
+   "sweep": 9
+  },
+  "setae": {
+   "sweep": 9
+  },
+  "sete": {
+   "sweep": 9,
+   "compiled": 136
+  },
+  "setne": {
+   "sweep": 9,
+   "compiled": 136
+  },
+  "setbe": {
+   "sweep": 9
+  },
+  "seta": {
+   "sweep": 9
+  },
+  "sets": {
+   "sweep": 9
+  },
+  "setns": {
+   "sweep": 9
+  },
+  "setp": {
+   "sweep": 9
+  },
+  "setnp": {
+   "sweep": 9
+  },
+  "setl": {
+   "sweep": 9,
+   "compiled": 118
+  },
+  "setge": {
+   "sweep": 9,
+   "compiled": 103
+  },
+  "setle": {
+   "sweep": 9,
+   "compiled": 114
+  },
+  "setg": {
+   "sweep": 9,
+   "compiled": 94
+  },
+  "push": {
+   "sweep": 16
+  },
+  "pop": {
+   "sweep": 16
+  },
+  "ret": {
+   "sweep": 1,
+   "compiled": 1177
+  },
+  "nop": {
+   "sweep": 36
+  },
+  "syscall": {
+   "sweep": 1,
+   "compiled": 7187
+  },
+  "jmp": {
+   "sweep": 12,
+   "compiled": 3886
+  },
+  "call": {
+   "sweep": 6,
+   "compiled": 1031
+  },
+  "jo": {
+   "sweep": 11
+  },
+  "jno": {
+   "sweep": 11
+  },
+  "jb": {
+   "sweep": 11
+  },
+  "jae": {
+   "sweep": 11,
+   "compiled": 979
+  },
+  "je": {
+   "sweep": 11,
+   "compiled": 1199
+  },
+  "jne": {
+   "sweep": 11,
+   "compiled": 818
+  },
+  "jbe": {
+   "sweep": 11,
+   "compiled": 921
+  },
+  "ja": {
+   "sweep": 11,
+   "compiled": 1626
+  },
+  "js": {
+   "sweep": 11
+  },
+  "jns": {
+   "sweep": 11
+  },
+  "jp": {
+   "sweep": 11
+  },
+  "jnp": {
+   "sweep": 11
+  },
+  "jl": {
+   "sweep": 11,
+   "compiled": 948
+  },
+  "jge": {
+   "sweep": 11,
+   "compiled": 1552
+  },
+  "jle": {
+   "sweep": 11,
+   "compiled": 1360
+  },
+  "jg": {
+   "sweep": 11,
+   "compiled": 780
+  }
+ },
+ "by_pseudo": {},
+ "failures": [],
+ "failure_count": 0,
+ "format": 4,
+ "source": "75133daa269a3cf16e153565cbf718ca3b63616f6ff23e450af33bd58c58942c",
+ "tools": {
+  "python": "3.12.10",
+  "ziglang": "0.15.2",
+  "zig": "0.15.2",
+  "clang": "clang version 20.1.2 (https://github.com/ziglang/zig-bootstrap 7ef74e656cf8ddbd6bf891a8475892aa1afa6891)",
+  "capstone": "5.0.9",
+  "capstone_module_string": "5.0.7",
+  "capstone_core": "5.0",
+  "unicorn": "2.1.4",
+  "unicorn_core": "2.1",
+  "pyelftools": "0.33"
+ },
+ "reference_configuration": "Clang integrated assembler, x86-64 in 64-bit mode (-mcpu=x86_64), Intel syntax selected by .intel_syntax noprefix",
+ "seconds": 377.9
+}

@@ -1,0 +1,579 @@
+{
+ "stage": "execution",
+ "target": "mips",
+ "totals": {
+  "cases": 8344,
+  "passed": 8344,
+  "faults_agreed": 290,
+  "excluded": 0,
+  "partially_compared": 126
+ },
+ "by_instruction": {
+  "sll": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "srl": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "sra": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "sllv": {
+   "cases": 144,
+   "passed": 144,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "srlv": {
+   "cases": 144,
+   "passed": 144,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "srav": {
+   "cases": 144,
+   "passed": 144,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "jr": {
+   "cases": 320,
+   "passed": 320,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 58,
+   "fetch_fault_after_jump": 124
+  },
+  "jalr": {
+   "cases": 512,
+   "passed": 512,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 68,
+   "fetch_fault_after_jump": 128
+  },
+  "syscall": {
+   "cases": 12,
+   "passed": 12,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "add": {
+   "cases": 144,
+   "passed": 144,
+   "faults_agreed": 30,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "addu": {
+   "cases": 144,
+   "passed": 144,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "sub": {
+   "cases": 144,
+   "passed": 144,
+   "faults_agreed": 27,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "subu": {
+   "cases": 144,
+   "passed": 144,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "and": {
+   "cases": 144,
+   "passed": 144,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "or": {
+   "cases": 144,
+   "passed": 144,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "xor": {
+   "cases": 144,
+   "passed": 144,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "nor": {
+   "cases": 144,
+   "passed": 144,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "slt": {
+   "cases": 144,
+   "passed": 144,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "sltu": {
+   "cases": 144,
+   "passed": 144,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "mul": {
+   "cases": 144,
+   "passed": 144,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "bltz": {
+   "cases": 308,
+   "passed": 308,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0,
+   "fetch_fault_after_jump": 2
+  },
+  "bgez": {
+   "cases": 308,
+   "passed": 308,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0,
+   "fetch_fault_after_jump": 3
+  },
+  "j": {
+   "cases": 128,
+   "passed": 128,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0,
+   "fetch_fault_after_jump": 28
+  },
+  "jal": {
+   "cases": 128,
+   "passed": 128,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0,
+   "fetch_fault_after_jump": 28
+  },
+  "beq": {
+   "cases": 308,
+   "passed": 308,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "bne": {
+   "cases": 308,
+   "passed": 308,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0,
+   "fetch_fault_after_jump": 8
+  },
+  "blez": {
+   "cases": 308,
+   "passed": 308,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0,
+   "fetch_fault_after_jump": 1
+  },
+  "bgtz": {
+   "cases": 308,
+   "passed": 308,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0,
+   "fetch_fault_after_jump": 7
+  },
+  "addi": {
+   "cases": 172,
+   "passed": 172,
+   "faults_agreed": 5,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "addiu": {
+   "cases": 172,
+   "passed": 172,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "slti": {
+   "cases": 172,
+   "passed": 172,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "sltiu": {
+   "cases": 172,
+   "passed": 172,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "andi": {
+   "cases": 172,
+   "passed": 172,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "ori": {
+   "cases": 172,
+   "passed": 172,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "xori": {
+   "cases": 172,
+   "passed": 172,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "lui": {
+   "cases": 168,
+   "passed": 168,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "lb": {
+   "cases": 200,
+   "passed": 200,
+   "faults_agreed": 8,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "lh": {
+   "cases": 200,
+   "passed": 200,
+   "faults_agreed": 36,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "lw": {
+   "cases": 200,
+   "passed": 200,
+   "faults_agreed": 48,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "lbu": {
+   "cases": 200,
+   "passed": 200,
+   "faults_agreed": 8,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "lhu": {
+   "cases": 200,
+   "passed": 200,
+   "faults_agreed": 36,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "sb": {
+   "cases": 200,
+   "passed": 200,
+   "faults_agreed": 8,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "sh": {
+   "cases": 200,
+   "passed": 200,
+   "faults_agreed": 36,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "sw": {
+   "cases": 200,
+   "passed": 200,
+   "faults_agreed": 48,
+   "excluded": 0,
+   "partially_compared": 0
+  }
+ },
+ "by_mnemonic": {
+  "sll": {
+   "cases": 324,
+   "passed": 324,
+   "excluded": 0
+  },
+  "srl": {
+   "cases": 136,
+   "passed": 136,
+   "excluded": 0
+  },
+  "sra": {
+   "cases": 136,
+   "passed": 136,
+   "excluded": 0
+  },
+  "sllv": {
+   "cases": 144,
+   "passed": 144,
+   "excluded": 0
+  },
+  "srlv": {
+   "cases": 144,
+   "passed": 144,
+   "excluded": 0
+  },
+  "srav": {
+   "cases": 144,
+   "passed": 144,
+   "excluded": 0
+  },
+  "jr": {
+   "cases": 160,
+   "passed": 160,
+   "excluded": 0
+  },
+  "addiu": {
+   "cases": 1464,
+   "passed": 1464,
+   "excluded": 0
+  },
+  "jalr": {
+   "cases": 256,
+   "passed": 256,
+   "excluded": 0
+  },
+  "syscall": {
+   "cases": 12,
+   "passed": 12,
+   "excluded": 0
+  },
+  "add": {
+   "cases": 144,
+   "passed": 144,
+   "excluded": 0
+  },
+  "addu": {
+   "cases": 144,
+   "passed": 144,
+   "excluded": 0
+  },
+  "sub": {
+   "cases": 144,
+   "passed": 144,
+   "excluded": 0
+  },
+  "subu": {
+   "cases": 144,
+   "passed": 144,
+   "excluded": 0
+  },
+  "and": {
+   "cases": 144,
+   "passed": 144,
+   "excluded": 0
+  },
+  "or": {
+   "cases": 144,
+   "passed": 144,
+   "excluded": 0
+  },
+  "xor": {
+   "cases": 144,
+   "passed": 144,
+   "excluded": 0
+  },
+  "nor": {
+   "cases": 144,
+   "passed": 144,
+   "excluded": 0
+  },
+  "slt": {
+   "cases": 144,
+   "passed": 144,
+   "excluded": 0
+  },
+  "sltu": {
+   "cases": 144,
+   "passed": 144,
+   "excluded": 0
+  },
+  "mul": {
+   "cases": 144,
+   "passed": 144,
+   "excluded": 0
+  },
+  "bltz": {
+   "cases": 152,
+   "passed": 152,
+   "excluded": 0
+  },
+  "bgez": {
+   "cases": 152,
+   "passed": 152,
+   "excluded": 0
+  },
+  "j": {
+   "cases": 64,
+   "passed": 64,
+   "excluded": 0
+  },
+  "jal": {
+   "cases": 64,
+   "passed": 64,
+   "excluded": 0
+  },
+  "beq": {
+   "cases": 152,
+   "passed": 152,
+   "excluded": 0
+  },
+  "bne": {
+   "cases": 152,
+   "passed": 152,
+   "excluded": 0
+  },
+  "blez": {
+   "cases": 152,
+   "passed": 152,
+   "excluded": 0
+  },
+  "bgtz": {
+   "cases": 152,
+   "passed": 152,
+   "excluded": 0
+  },
+  "addi": {
+   "cases": 172,
+   "passed": 172,
+   "excluded": 0
+  },
+  "slti": {
+   "cases": 172,
+   "passed": 172,
+   "excluded": 0
+  },
+  "sltiu": {
+   "cases": 172,
+   "passed": 172,
+   "excluded": 0
+  },
+  "andi": {
+   "cases": 172,
+   "passed": 172,
+   "excluded": 0
+  },
+  "ori": {
+   "cases": 172,
+   "passed": 172,
+   "excluded": 0
+  },
+  "xori": {
+   "cases": 172,
+   "passed": 172,
+   "excluded": 0
+  },
+  "lui": {
+   "cases": 168,
+   "passed": 168,
+   "excluded": 0
+  },
+  "lb": {
+   "cases": 200,
+   "passed": 200,
+   "excluded": 0
+  },
+  "lh": {
+   "cases": 200,
+   "passed": 200,
+   "excluded": 0
+  },
+  "lw": {
+   "cases": 200,
+   "passed": 200,
+   "excluded": 0
+  },
+  "lbu": {
+   "cases": 200,
+   "passed": 200,
+   "excluded": 0
+  },
+  "lhu": {
+   "cases": 200,
+   "passed": 200,
+   "excluded": 0
+  },
+  "sb": {
+   "cases": 200,
+   "passed": 200,
+   "excluded": 0
+  },
+  "sh": {
+   "cases": 200,
+   "passed": 200,
+   "excluded": 0
+  },
+  "sw": {
+   "cases": 200,
+   "passed": 200,
+   "excluded": 0
+  }
+ },
+ "exclusions": {
+  "jr or jalr to an address with bit 0 set: the profile has neither MIPS16e nor microMIPS, so the address is kept and the Address Error exception belongs to the fetch of the target; Unicorn 2.1.4 treats bit 0 as the instruction-set mode bit and clears it": 86,
+  "jr or jalr to an address in 0xC0000000 to 0xFFFFFFFF: Unicorn 2.1.4 translates these kernel segments through its TLB model and reports the failed fetch of the target as UC_ERR_READ_UNMAPPED, which the harness cannot tell apart from a fault of the jump itself": 40
+ },
+ "partially_compared": {
+  "jr or jalr to an address with bit 0 set: the profile has neither MIPS16e nor microMIPS, so the address is kept and the Address Error exception belongs to the fetch of the target; Unicorn 2.1.4 treats bit 0 as the instruction-set mode bit and clears it": 86,
+  "jr or jalr to an address in 0xC0000000 to 0xFFFFFFFF: Unicorn 2.1.4 translates these kernel segments through its TLB model and reports the failed fetch of the target as UC_ERR_READ_UNMAPPED, which the harness cannot tell apart from a fault of the jump itself": 40
+ },
+ "excluded_examples": [],
+ "failures": [],
+ "failure_count": 0,
+ "format": 4,
+ "source": "75133daa269a3cf16e153565cbf718ca3b63616f6ff23e450af33bd58c58942c",
+ "tools": {
+  "python": "3.12.10",
+  "ziglang": "0.15.2",
+  "zig": "0.15.2",
+  "clang": "clang version 20.1.2 (https://github.com/ziglang/zig-bootstrap 7ef74e656cf8ddbd6bf891a8475892aa1afa6891)",
+  "capstone": "5.0.9",
+  "capstone_module_string": "5.0.7",
+  "capstone_core": "5.0",
+  "unicorn": "2.1.4",
+  "unicorn_core": "2.1",
+  "pyelftools": "0.33"
+ },
+ "reference_configuration": "Clang integrated assembler, MIPS32 Release 2 little-endian (-target mipsel-freestanding -mcpu=mips32r2), with .set noreorder and .set noat",
+ "seconds": 37.3
+}

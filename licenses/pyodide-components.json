@@ -1,0 +1,698 @@
+{
+  "pyodide": "314.0.8",
+  "files": ["pyodide.mjs", "pyodide.asm.mjs", "pyodide.asm.wasm", "python_stdlib.zip", "pyodide-lock.json"],
+  "components": [
+    {
+      "name": "Pyodide runtime (its own C, JavaScript and Python code)",
+      "version": "314.0.8",
+      "licence": "MPL-2.0",
+      "files": ["pyodide.mjs", "pyodide.asm.mjs", "pyodide.asm.wasm", "python_stdlib.zip", "pyodide-lock.json"],
+      "source": "https://github.com/pyodide/pyodide/tree/314.0.8",
+      "copyright": [],
+      "note": "The licence text carries no copyright line. The source code is available at the location above.",
+      "texts": ["Pyodide-LICENSE.txt"]
+    },
+    {
+      "name": "hiwire (externref table library of the Pyodide project)",
+      "version": "git commit 6a1e67280a15d929ebeceee54a6358c9c8d5f697 (2025-05-05)",
+      "licence": "MPL-2.0",
+      "files": ["pyodide.asm.wasm"],
+      "source": "https://github.com/pyodide/hiwire/tree/6a1e67280a15d929ebeceee54a6358c9c8d5f697",
+      "copyright": [],
+      "note": "The source code is available at the location above. Its LICENSE file is identical to the Pyodide licence text.",
+      "texts": ["Pyodide-LICENSE.txt"]
+    },
+    {
+      "name": "error-stack-parser (stacktracejs), vendored as an ES6 port in Pyodide src/js/vendor/stackframe",
+      "version": "as vendored in Pyodide 314.0.8 (upstream version not recorded)",
+      "licence": "MIT",
+      "files": ["pyodide.mjs", "pyodide.asm.mjs"],
+      "source": "https://github.com/stacktracejs/error-stack-parser",
+      "copyright": ["Copyright (c) 2017 Eric Wendelin and other contributors"],
+      "texts": ["Pyodide-314.0.8-stackframe-LICENSE.txt"]
+    },
+    {
+      "name": "stackframe (stacktracejs), vendored as an ES6 port in Pyodide src/js/vendor/stackframe",
+      "version": "as vendored in Pyodide 314.0.8 (upstream version not recorded)",
+      "licence": "MIT",
+      "files": ["pyodide.mjs", "pyodide.asm.mjs"],
+      "source": "https://github.com/stacktracejs/stackframe",
+      "copyright": ["Copyright (c) 2017 Eric Wendelin and other contributors"],
+      "texts": ["Pyodide-314.0.8-stackframe-LICENSE.txt"]
+    },
+    {
+      "name": "@arrowood.dev/socket, adapted as Pyodide src/js/fs/wintercg-sockets.ts",
+      "version": "adapted copy (upstream version not recorded)",
+      "licence": "MIT",
+      "files": ["pyodide.asm.mjs"],
+      "source": "https://github.com/Ethan-Arrowood/socket",
+      "copyright": ["Copyright (c) 2023 Ethan Arrowood"],
+      "texts": ["arrowood-socket-LICENSE.txt"]
+    },
+    {
+      "name": "serialize-error list of error constructors, adapted in Pyodide src/core/error_handling.ts",
+      "version": "snippet (upstream version not recorded)",
+      "licence": "MIT",
+      "files": ["pyodide.asm.mjs"],
+      "source": "https://github.com/sindresorhus/serialize-error/blob/main/error-constructors.js",
+      "copyright": ["Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (https://sindresorhus.com)"],
+      "texts": ["serialize-error-LICENSE.txt"]
+    },
+    {
+      "name": "literal-map, adapted as Pyodide src/js/common/literal-map.js",
+      "version": "0.2.x (npm releases 0.2.0 to 0.2.2)",
+      "licence": "MIT",
+      "files": ["pyodide.asm.mjs"],
+      "source": "https://github.com/WebReflection/literal-map",
+      "copyright": ["Copyright © 2024-present, Andrea Giammarchi, @WebReflection"],
+      "texts": ["literal-map-0.2.0-LICENSE.txt"]
+    },
+    {
+      "name": "esbuild runtime helpers (__toBinary, __name, __require, __export, __copyProps, __toCommonJS)",
+      "version": "esbuild 0.25 (exact version not recorded)",
+      "licence": "MIT",
+      "files": ["pyodide.mjs", "pyodide.asm.mjs"],
+      "source": "https://github.com/evanw/esbuild/blob/v0.25.0/internal/runtime/runtime.go",
+      "copyright": ["Copyright (c) 2020 Evan Wallace"],
+      "texts": ["esbuild-0.25.0-LICENSE.txt"]
+    },
+    {
+      "name": "pip wheel metadata helper, vendored into pyodide/_package_loader.py",
+      "version": "snippet (upstream version not recorded)",
+      "licence": "MIT",
+      "files": ["python_stdlib.zip"],
+      "source": "https://github.com/pypa/pip/blob/main/src/pip/_internal/utils/wheel.py",
+      "copyright": ["Copyright (c) 2008-present The pip developers (see AUTHORS.txt file)"],
+      "texts": ["pip-LICENSE.txt"]
+    },
+    {
+      "name": "packaging canonicalize_name (PEP 503 name normalisation), vendored into pyodide/_package_loader.py and ported to JavaScript",
+      "version": "snippet (upstream version not recorded)",
+      "licence": "Apache-2.0 OR BSD-2-Clause, used here under BSD-2-Clause",
+      "files": ["python_stdlib.zip", "pyodide.asm.mjs"],
+      "source": "https://github.com/pypa/packaging",
+      "copyright": ["Copyright (c) Donald Stufft and individual contributors."],
+      "texts": ["packaging-LICENSE.txt", "packaging-LICENSE.BSD.txt"]
+    },
+    {
+      "name": "CPython interpreter, built-in extension modules and standard library",
+      "version": "3.14.2",
+      "licence": "PSF-2.0 (with the BeOpen, CNRI and CWI licences of earlier versions, and 0BSD for code in the documentation)",
+      "files": ["pyodide.asm.wasm", "python_stdlib.zip"],
+      "source": "https://github.com/python/cpython/tree/v3.14.2",
+      "copyright": [
+        "Copyright (c) 2001 Python Software Foundation; All Rights Reserved",
+        "Copyright (c) 1995-2001 Corporation for National Research Initiatives; All Rights Reserved",
+        "Copyright (c) 1991 - 1995, Stichting Mathematisch Centrum Amsterdam, The Netherlands.  All rights reserved."
+      ],
+      "texts": ["CPython-3.14.2-LICENSE.txt"]
+    },
+    {
+      "name": "Mersenne Twister MT19937 (Makoto Matsumoto and Takuji Nishimura), in CPython Modules/_randommodule.c",
+      "version": "mt19937ar with the initialisation of 2002/1/26, as in CPython 3.14.2",
+      "licence": "BSD-3-Clause",
+      "files": ["pyodide.asm.wasm"],
+      "source": "https://github.com/python/cpython/blob/v3.14.2/Modules/_randommodule.c",
+      "copyright": ["Copyright (C) 1997 - 2002, Makoto Matsumoto and Takuji Nishimura, All rights reserved."],
+      "texts": ["CPython-3.14.2-Mersenne-Twister.txt"]
+    },
+    {
+      "name": "csiphash SipHash implementation (Marek Majkowski), in CPython Python/pyhash.c",
+      "version": "as in CPython 3.14.2",
+      "licence": "MIT",
+      "files": ["pyodide.asm.wasm"],
+      "source": "https://github.com/python/cpython/blob/v3.14.2/Python/pyhash.c",
+      "copyright": ["Copyright (c) 2013  Marek Majkowski <marek@popcount.org>"],
+      "texts": ["CPython-3.14.2-SipHash24.txt"]
+    },
+    {
+      "name": "dtoa and strtod (David M. Gay), in CPython Python/dtoa.c",
+      "version": "as in CPython 3.14.2",
+      "licence": "Permission notice of David M. Gay and Lucent Technologies",
+      "files": ["pyodide.asm.wasm"],
+      "source": "https://github.com/python/cpython/blob/v3.14.2/Python/dtoa.c",
+      "copyright": ["Copyright (c) 1991, 2000, 2001 by Lucent Technologies."],
+      "texts": ["CPython-3.14.2-dtoa.txt"]
+    },
+    {
+      "name": "cfuhash hash table (Don Owens), in CPython Python/hashtable.c",
+      "version": "as in CPython 3.14.2",
+      "licence": "BSD-3-Clause",
+      "files": ["pyodide.asm.wasm"],
+      "source": "https://github.com/python/cpython/blob/v3.14.2/Python/hashtable.c",
+      "copyright": ["Copyright (c) 2005 Don Owens"],
+      "texts": ["CPython-3.14.2-cfuhash.txt"]
+    },
+    {
+      "name": "libmpdec (mpdecimal, Stefan Krah), bundled in CPython Modules/_decimal/libmpdec, with the _decimal module by the same author",
+      "version": "2.5.1",
+      "licence": "BSD-2-Clause",
+      "files": ["pyodide.asm.wasm"],
+      "source": "https://github.com/python/cpython/tree/v3.14.2/Modules/_decimal",
+      "copyright": [
+        "Copyright (c) 2008-2020 Stefan Krah. All rights reserved.",
+        "Copyright (c) 2008-2012 Stefan Krah. All rights reserved."
+      ],
+      "note": "The second copyright line is that of Modules/_decimal/_decimal.c, which carries the same licence text.",
+      "texts": ["CPython-3.14.2-libmpdec.txt"]
+    },
+    {
+      "name": "Expat XML parser, bundled in CPython Modules/expat",
+      "version": "2.7.3",
+      "licence": "MIT",
+      "files": ["pyodide.asm.wasm"],
+      "source": "https://github.com/python/cpython/tree/v3.14.2/Modules/expat",
+      "copyright": [
+        "Copyright (c) 1998-2000 Thai Open Source Software Center Ltd and Clark Cooper",
+        "Copyright (c) 2001-2022 Expat maintainers"
+      ],
+      "note": "The internal file siphash.h of Expat is licensed under the CC0 Public Domain Dedication, which requires no notice.",
+      "texts": ["CPython-3.14.2-expat-COPYING.txt"]
+    },
+    {
+      "name": "HACL* verified hash and HMAC code, with the KaRaMeL support headers, in CPython Modules/_hacl",
+      "version": "hacl-star commit 8ba599b2f6c9701b3dc961db895b0856a2210f76",
+      "licence": "MIT (generated C code); the KaRaMeL headers state the Apache 2.0 and MIT licences",
+      "files": ["pyodide.asm.wasm"],
+      "source": "https://github.com/python/cpython/tree/v3.14.2/Modules/_hacl",
+      "copyright": [
+        "Copyright (c) 2016-2022 INRIA, CMU and Microsoft Corporation",
+        "Copyright (c) 2022-2023 HACL* Contributors",
+        "Copyright (c) INRIA and Microsoft Corporation. All rights reserved."
+      ],
+      "texts": ["CPython-3.14.2-HACL-MIT.txt", "CPython-3.14.2-KaRaMeL-notice.txt", "hacl-star-8ba599b2-LICENSE.txt"]
+    },
+    {
+      "name": "BLAKE2 module code from pyblake2 (Dmitry Chestnykh; modified by Christian Heimes and Jonathan Protzenko), in CPython Modules/blake2module.c",
+      "version": "as in CPython 3.14.2",
+      "licence": "CC0-1.0",
+      "files": ["pyodide.asm.wasm"],
+      "source": "https://github.com/python/cpython/blob/v3.14.2/Modules/blake2module.c",
+      "copyright": [],
+      "note": "Dedicated to the public domain under CC0 1.0, which requires no notice.",
+      "texts": ["CPython-3.14.2-blake2module-notice.txt"]
+    },
+    {
+      "name": "mimalloc (Microsoft, Daan Leijen), bundled in CPython Objects/mimalloc",
+      "version": "2.1.2",
+      "licence": "MIT",
+      "files": ["pyodide.asm.wasm"],
+      "source": "https://github.com/python/cpython/tree/v3.14.2/Objects/mimalloc",
+      "copyright": [
+        "Copyright (c) 2018-2021 Microsoft Corporation, Daan Leijen",
+        "Copyright (c) 2018-2023, Microsoft Research, Daan Leijen"
+      ],
+      "note": "The second copyright line is that of the mimalloc source files, which refer to the same MIT licence.",
+      "texts": ["CPython-3.14.2-mimalloc.txt"]
+    },
+    {
+      "name": "Global Unbounded Sequences memory reclamation (from FreeBSD subr_smr.c, Jeffrey Roberson), in CPython Python/qsbr.c",
+      "version": "as in CPython 3.14.2",
+      "licence": "BSD-2-Clause",
+      "files": ["pyodide.asm.wasm"],
+      "source": "https://github.com/python/cpython/blob/v3.14.2/Python/qsbr.c",
+      "copyright": ["Copyright (c) 2019,2020 Jeffrey Roberson <jeff@FreeBSD.org>"],
+      "texts": ["CPython-3.14.2-GUS.txt"]
+    },
+    {
+      "name": "Zstandard bindings derived from pyzstd (Ma Lin and contributors), in CPython Modules/_zstd and Lib/compression/zstd",
+      "version": "as in CPython 3.14.2",
+      "licence": "BSD-3-Clause",
+      "files": ["pyodide.asm.wasm", "python_stdlib.zip"],
+      "source": "https://github.com/python/cpython/tree/v3.14.2/Modules/_zstd",
+      "copyright": ["Copyright (c) 2020-present, Ma Lin and contributors."],
+      "texts": ["CPython-3.14.2-Zstandard-bindings.txt"]
+    },
+    {
+      "name": "Original string type implementation (Secret Labs AB, Fredrik Lundh), in CPython Objects/unicodeobject.c",
+      "version": "as in CPython 3.14.2",
+      "licence": "Permission notice of Secret Labs AB",
+      "files": ["pyodide.asm.wasm"],
+      "source": "https://github.com/python/cpython/blob/v3.14.2/Objects/unicodeobject.c",
+      "copyright": ["Copyright (c) 1999 by Secret Labs AB", "Copyright (c) 1999 by Fredrik Lundh"],
+      "texts": ["CPython-3.14.2-unicodeobject-notice.txt"]
+    },
+    {
+      "name": "_locale module (Martin von Loewis), CPython Modules/_localemodule.c",
+      "version": "as in CPython 3.14.2",
+      "licence": "Permission notice of Martin von Loewis",
+      "files": ["pyodide.asm.wasm"],
+      "source": "https://github.com/python/cpython/blob/v3.14.2/Modules/_localemodule.c",
+      "copyright": ["Copyright (C) 1997, 2002, 2003, 2007, 2008 Martin von Loewis"],
+      "texts": ["CPython-3.14.2-localemodule-notice.txt"]
+    },
+    {
+      "name": "getopt (David Gottner), CPython Python/getopt.c",
+      "version": "as in CPython 3.14.2",
+      "licence": "Permission notice of David Gottner",
+      "files": ["pyodide.asm.wasm"],
+      "source": "https://github.com/python/cpython/blob/v3.14.2/Python/getopt.c",
+      "copyright": ["Copyright 1992-1994, David Gottner"],
+      "texts": ["CPython-3.14.2-getopt-notice.txt"]
+    },
+    {
+      "name": "pysqlite (Gerhard Häring), as CPython Modules/_sqlite and Lib/sqlite3",
+      "version": "as in CPython 3.14.2",
+      "licence": "Zlib",
+      "files": ["pyodide.asm.wasm", "python_stdlib.zip"],
+      "source": "https://github.com/python/cpython/tree/v3.14.2/Modules/_sqlite",
+      "copyright": [
+        "Copyright (C) 2004-2010 Gerhard Häring <gh@ghaering.de>",
+        "Copyright (C) 2005 Gerhard Häring <gh@ghaering.de>",
+        "Copyright (C) 2004-2005 Gerhard Häring <gh@ghaering.de>"
+      ],
+      "note": "The last two copyright lines are those of Lib/sqlite3/__init__.py and Lib/sqlite3/dbapi2.py, which carry the same licence text.",
+      "texts": ["CPython-3.14.2-pysqlite-notice.txt"]
+    },
+    {
+      "name": "Unicode Character Database tables, compiled into the unicodedata module and the normalisation code",
+      "version": "16.0.0 (and 3.2.0 for IDNA)",
+      "licence": "Unicode-3.0",
+      "files": ["pyodide.asm.wasm"],
+      "source": "https://www.unicode.org/Public/16.0.0/ucd/",
+      "copyright": ["Copyright © 1991-2026 Unicode, Inc."],
+      "note": "The licence text is the one currently published by Unicode, Inc.",
+      "texts": ["Unicode-License-V3.txt"]
+    },
+    {
+      "name": "Parts of asyncio incorporated from uvloop (MagicStack Inc.)",
+      "version": "uvloop 0.16 portions, as in CPython 3.14.2",
+      "licence": "MIT",
+      "files": ["python_stdlib.zip"],
+      "source": "https://github.com/MagicStack/uvloop/tree/v0.16.0",
+      "copyright": ["Copyright (c) 2015-2021 MagicStack Inc.  http://magic.io"],
+      "texts": ["CPython-3.14.2-asyncio.txt"]
+    },
+    {
+      "name": "http.cookies module (Timothy O'Malley)",
+      "version": "as in CPython 3.14.2",
+      "licence": "Permission notice of Timothy O'Malley",
+      "files": ["python_stdlib.zip"],
+      "source": "https://github.com/python/cpython/blob/v3.14.2/Lib/http/cookies.py",
+      "copyright": ["Copyright 2000 by Timothy O'Malley <timo@alum.mit.edu>"],
+      "texts": ["CPython-3.14.2-http-cookies.txt"]
+    },
+    {
+      "name": "trace module (Zooko O'Whielacronx, Mojam Media, Bioreason, Automatrix, Stichting Mathematisch Centrum)",
+      "version": "as in CPython 3.14.2",
+      "licence": "Permission notice of Automatrix, Bioreason and Mojam Media",
+      "files": ["python_stdlib.zip"],
+      "source": "https://github.com/python/cpython/blob/v3.14.2/Lib/trace.py",
+      "copyright": [
+        "portions copyright 2001, Autonomous Zones Industries, Inc., all rights... err... reserved and offered to the public under the terms of the Python 2.2 license.",
+        "Copyright 2000, Mojam Media, Inc., all rights reserved.",
+        "Copyright 1999, Bioreason, Inc., all rights reserved.",
+        "Copyright 1995-1997, Automatrix, Inc., all rights reserved.",
+        "Copyright 1991-1995, Stichting Mathematisch Centrum, all rights reserved."
+      ],
+      "texts": ["CPython-3.14.2-trace.txt"]
+    },
+    {
+      "name": "uu codec (Lance Ellinghouse, modified by Jack Jansen), CPython Lib/encodings/uu_codec.py",
+      "version": "as in CPython 3.14.2",
+      "licence": "Permission notice of Lance Ellinghouse",
+      "files": ["python_stdlib.zip"],
+      "source": "https://github.com/python/cpython/blob/v3.14.2/Lib/encodings/uu_codec.py",
+      "copyright": ["Copyright 1994 by Lance Ellinghouse"],
+      "texts": ["CPython-3.14.2-uu-codec.txt"]
+    },
+    {
+      "name": "xmlrpc.client module (Secret Labs AB, Fredrik Lundh)",
+      "version": "as in CPython 3.14.2",
+      "licence": "Permission notice of Secret Labs AB",
+      "files": ["python_stdlib.zip"],
+      "source": "https://github.com/python/cpython/blob/v3.14.2/Lib/xmlrpc/client.py",
+      "copyright": ["Copyright (c) 1999-2002 by Secret Labs AB", "Copyright (c) 1999-2002 by Fredrik Lundh"],
+      "texts": ["CPython-3.14.2-xmlrpc.txt"]
+    },
+    {
+      "name": "platform module (Marc-Andre Lemburg; eGenix.com Software GmbH), CPython Lib/platform.py",
+      "version": "platform 1.0.9, as in CPython 3.14.2",
+      "licence": "Permission notice of eGenix.com Software GmbH",
+      "files": ["python_stdlib.zip"],
+      "source": "https://github.com/python/cpython/blob/v3.14.2/Lib/platform.py",
+      "copyright": [
+        "Copyright (c) 1999-2000, Marc-Andre Lemburg; mailto:mal@lemburg.com",
+        "Copyright (c) 2000-2010, eGenix.com Software GmbH; mailto:info@egenix.com"
+      ],
+      "texts": ["CPython-3.14.2-platform-notice.txt"]
+    },
+    {
+      "name": "macholib (Bob Ippolito, from py2app), in CPython Lib/ctypes/macholib",
+      "version": "1.0",
+      "licence": "MIT OR PSF-2.0, used here under PSF-2.0",
+      "files": ["python_stdlib.zip"],
+      "source": "https://github.com/python/cpython/tree/v3.14.2/Lib/ctypes/macholib",
+      "copyright": [],
+      "note": "The README carries no copyright line. The PSF licence text is reproduced with CPython above.",
+      "texts": ["CPython-3.14.2-macholib-README.txt", "CPython-3.14.2-LICENSE.txt"]
+    },
+    {
+      "name": "tomli (Taneli Hukkinen), as CPython Lib/tomllib",
+      "version": "as incorporated in CPython 3.14.2",
+      "licence": "MIT",
+      "files": ["python_stdlib.zip"],
+      "source": "https://github.com/hukkin/tomli",
+      "copyright": ["Copyright (c) 2021 Taneli Hukkinen"],
+      "texts": ["tomli-LICENSE.txt"]
+    },
+    {
+      "name": "pyrepl (Michael Hudson-Doyle and others, via PyPy), as CPython Lib/_pyrepl",
+      "version": "as incorporated in CPython 3.14.2",
+      "licence": "Permission notice of Michael Hudson-Doyle",
+      "files": ["python_stdlib.zip"],
+      "source": "https://github.com/python/cpython/tree/v3.14.2/Lib/_pyrepl",
+      "copyright": [
+        "Copyright 2000-2010 Michael Hudson-Doyle <micahel@gmail.com>, Antonio Cuni, Armin Rigo",
+        "Copyright 2000-2010 Michael Hudson-Doyle <micahel@gmail.com>, Alex Gaynor, Antonio Cuni, Armin Rigo, Holger Krekel",
+        "Copyright 2000-2010 Michael Hudson-Doyle <micahel@gmail.com>, Antonio Cuni",
+        "Copyright 2000-2010 Michael Hudson-Doyle <micahel@gmail.com>, Armin Rigo",
+        "Copyright 2000-2008 Michael Hudson-Doyle <micahel@gmail.com>, Armin Rigo",
+        "Copyright 2000-2004 Michael Hudson-Doyle <micahel@gmail.com>"
+      ],
+      "note": "Each file of Lib/_pyrepl carries one of these copyright lines, with each name after the first on a line of its own, and the same permission notice, reproduced below from Lib/_pyrepl/reader.py.",
+      "texts": ["CPython-3.14.2-pyrepl-notice.txt"]
+    },
+    {
+      "name": "more-itertools functions always_iterable and only (Erik Rose and contributors), copied into CPython importlib.metadata and importlib.resources",
+      "version": "always_iterable from more-itertools 8.8 and only from more-itertools 9.0, as the files state",
+      "licence": "MIT",
+      "files": ["python_stdlib.zip"],
+      "source": "https://github.com/more-itertools/more-itertools/tree/v9.0.0",
+      "copyright": ["Copyright (c) 2012 Erik Rose"],
+      "texts": ["more-itertools-9.0.0-LICENSE.txt"]
+    },
+    {
+      "name": "libffi, with its wasm32 and Emscripten port",
+      "version": "git commit f08493d249d2067c8b3207ba46693dd858f95db3 (2023-02-17; configure.ac declares 3.4.4)",
+      "licence": "MIT",
+      "files": ["pyodide.asm.wasm"],
+      "source": "https://github.com/libffi/libffi/tree/f08493d249d2067c8b3207ba46693dd858f95db3",
+      "copyright": [
+        "libffi - Copyright (c) 1996-2022  Anthony Green, Red Hat, Inc and others.",
+        "Copyright (c) 2018-2023  Hood Chatham, Brion Vibber, Kleis Auke Wolthuizen, and others."
+      ],
+      "note": "The second copyright line is that of src/wasm32/ffi.c and src/wasm32/ffitarget.h, which carry the same licence text.",
+      "texts": ["libffi-f08493d-LICENSE.txt"]
+    },
+    {
+      "name": "liblzma (XZ Utils)",
+      "version": "5.2.2",
+      "licence": "Public domain",
+      "files": ["pyodide.asm.wasm"],
+      "source": "https://github.com/tukaani-project/xz/tree/v5.2.2",
+      "copyright": [],
+      "note": "liblzma is in the public domain, which requires no notice. The licensing summary of XZ Utils follows.",
+      "texts": ["xz-5.2.2-COPYING.txt"]
+    },
+    {
+      "name": "Zstandard library (libzstd)",
+      "version": "1.5.7",
+      "licence": "BSD-3-Clause OR GPL-2.0-only, used here under BSD-3-Clause",
+      "files": ["pyodide.asm.wasm"],
+      "source": "https://github.com/facebook/zstd/tree/v1.5.7",
+      "copyright": ["Copyright (c) Meta Platforms, Inc. and affiliates. All rights reserved."],
+      "texts": ["zstd-1.5.7-LICENSE.txt"]
+    },
+    {
+      "name": "libdivsufsort-lite (Yuta Mori), in zstd lib/dictBuilder/divsufsort.c",
+      "version": "as in zstd 1.5.7",
+      "licence": "MIT",
+      "files": ["pyodide.asm.wasm"],
+      "source": "https://github.com/facebook/zstd/blob/v1.5.7/lib/dictBuilder/divsufsort.c",
+      "copyright": ["Copyright (c) 2003-2008 Yuta Mori All Rights Reserved."],
+      "texts": ["zstd-1.5.7-divsufsort-notice.txt"]
+    },
+    {
+      "name": "SQLite",
+      "version": "3.39.0 (source id 2022-06-25 14:57:57 14e166f40dbfa6e055543f8301525f2ca2e96a02a57269818b9e69e162e98918)",
+      "licence": "Public domain",
+      "files": ["pyodide.asm.wasm"],
+      "source": "https://www.sqlite.org/2022/sqlite-autoconf-3390000.tar.gz",
+      "copyright": [],
+      "note": "The authors of SQLite have dedicated all of its code and documentation to the public domain (https://www.sqlite.org/copyright.html), which requires no notice.",
+      "texts": []
+    },
+    {
+      "name": "zlib (Emscripten port)",
+      "version": "1.3.1",
+      "licence": "Zlib",
+      "files": ["pyodide.asm.wasm"],
+      "source": "https://github.com/madler/zlib/tree/v1.3.1",
+      "copyright": [
+        "(C) 1995-2022 Jean-loup Gailly and Mark Adler",
+        "Copyright (C) 1995-2024 Jean-loup Gailly and Mark Adler"
+      ],
+      "note": "The second copyright line is that of zlib.h, which carries the same licence text.",
+      "texts": ["zlib-1.3.1-LICENSE.txt"]
+    },
+    {
+      "name": "bzip2 and libbzip2 (Emscripten port)",
+      "version": "1.0.6",
+      "licence": "bzip2-1.0.6",
+      "files": ["pyodide.asm.wasm"],
+      "source": "https://github.com/emscripten-ports/bzip2/tree/1.0.6",
+      "copyright": ["copyright (C) 1996-2010 Julian R Seward.  All rights reserved."],
+      "texts": ["bzip2-1.0.6-LICENSE.txt"]
+    },
+    {
+      "name": "Emscripten runtime (system libraries and JavaScript runtime code)",
+      "version": "5.0.3",
+      "licence": "MIT OR NCSA",
+      "files": ["pyodide.asm.wasm", "pyodide.asm.mjs"],
+      "source": "https://github.com/emscripten-core/emscripten/tree/5.0.3",
+      "copyright": ["Copyright (c) 2010-2014 Emscripten authors, see AUTHORS file."],
+      "texts": ["Emscripten-5.0.3-LICENSE.txt"]
+    },
+    {
+      "name": "Node.js path module code (Joyent and Node contributors), in the path library of Emscripten (src/lib/libpath.js)",
+      "version": "as in Emscripten 5.0.3",
+      "licence": "MIT",
+      "files": ["pyodide.asm.mjs"],
+      "source": "https://github.com/emscripten-core/emscripten/blob/5.0.3/src/lib/libpath.js",
+      "copyright": ["Copyright Joyent, Inc. and other Node contributors. All rights reserved."],
+      "note": "The licence of Node.js is reproduced in the Emscripten LICENSE file, which still names the earlier file src/library_path.js.",
+      "texts": ["Emscripten-5.0.3-LICENSE.txt"]
+    },
+    {
+      "name": "MiniLZ4 (Emscripten third_party/mini-lz4.js, based on node-lz4 by Pierre Curto)",
+      "version": "as in Emscripten 5.0.3",
+      "licence": "MIT",
+      "files": ["pyodide.asm.mjs"],
+      "source": "https://github.com/emscripten-core/emscripten/blob/5.0.3/third_party/mini-lz4.js",
+      "copyright": ["Copyright (c) 2012 Pierre Curto"],
+      "texts": ["Emscripten-5.0.3-mini-lz4-notice.txt"]
+    },
+    {
+      "name": "musl libc, as bundled with Emscripten",
+      "version": "1.2.5",
+      "licence": "MIT",
+      "files": ["pyodide.asm.wasm"],
+      "source": "https://github.com/emscripten-core/emscripten/tree/5.0.3/system/lib/libc/musl",
+      "copyright": ["Copyright © 2005-2020 Rich Felker, et al."],
+      "texts": ["musl-1.2.5-COPYRIGHT.txt"]
+    },
+    {
+      "name": "TRE regular-expression code (Ville Laurikari), in musl src/regex",
+      "version": "as modified in musl 1.2.5",
+      "licence": "BSD-2-Clause",
+      "files": ["pyodide.asm.wasm"],
+      "source": "https://github.com/emscripten-core/emscripten/tree/5.0.3/system/lib/libc/musl/src/regex",
+      "copyright": ["Copyright (c) 2001-2009 Ville Laurikari <vl@iki.fi>"],
+      "texts": ["musl-1.2.5-TRE-notice.txt"]
+    },
+    {
+      "name": "FreeSec DES crypt (David Burren; Solar Designer), musl src/crypt/crypt_des.c",
+      "version": "as in musl 1.2.5",
+      "licence": "BSD-3-Clause",
+      "files": ["pyodide.asm.wasm"],
+      "source": "https://github.com/emscripten-core/emscripten/blob/5.0.3/system/lib/libc/musl/src/crypt/crypt_des.c",
+      "copyright": ["Copyright (c) 1994 David Burren", "Copyright (c) 2000,2002,2010,2012 Solar Designer"],
+      "texts": ["musl-1.2.5-crypt_des-notice.txt"]
+    },
+    {
+      "name": "FreeBSD MD5-based crypt (Poul-Henning Kamp), musl src/crypt/crypt_md5.c",
+      "version": "as in musl 1.2.5",
+      "licence": "BSD-2-Clause",
+      "files": ["pyodide.asm.wasm"],
+      "source": "https://github.com/emscripten-core/emscripten/blob/5.0.3/system/lib/libc/musl/src/crypt/crypt_md5.c",
+      "copyright": ["Copyright (c) 2003 Poul-Henning Kamp"],
+      "texts": ["musl-1.2.5-crypt_md5-notice.txt"]
+    },
+    {
+      "name": "crypt_blowfish (Solar Designer), musl src/crypt/crypt_blowfish.c",
+      "version": "as in musl 1.2.5",
+      "licence": "Public domain, with a fallback permissive licence",
+      "files": ["pyodide.asm.wasm"],
+      "source": "https://github.com/emscripten-core/emscripten/blob/5.0.3/system/lib/libc/musl/src/crypt/crypt_blowfish.c",
+      "copyright": ["Copyright (c) 1998-2014 Solar Designer"],
+      "texts": ["musl-1.2.5-crypt_blowfish-notice.txt"]
+    },
+    {
+      "name": "smoothsort qsort (Valentin Ochs), musl src/stdlib/qsort.c",
+      "version": "as in musl 1.2.5",
+      "licence": "MIT",
+      "files": ["pyodide.asm.wasm"],
+      "source": "https://github.com/emscripten-core/emscripten/blob/5.0.3/system/lib/libc/musl/src/stdlib/qsort.c",
+      "copyright": ["Copyright (C) 2011 by Valentin Ochs"],
+      "texts": ["musl-1.2.5-qsort-notice.txt"]
+    },
+    {
+      "name": "musl maths code (src/math and src/complex) from FreeBSD msun (Sun Microsystems; Bruce D. Evans, Steven G. Kargl, David Schultz), Stephen L. Moshier and Arm Limited",
+      "version": "as in musl 1.2.5",
+      "licence": "Sun Microsystems notice AND BSD-2-Clause AND ISC-style notice of Stephen L. Moshier AND MIT (Arm Limited)",
+      "files": ["pyodide.asm.wasm"],
+      "source": "https://github.com/emscripten-core/emscripten/tree/5.0.3/system/lib/libc/musl/src/math",
+      "copyright": [
+        "Copyright (C) 1993 by Sun Microsystems, Inc. All rights reserved.",
+        "Copyright 2004 Sun Microsystems, Inc.  All Rights Reserved.",
+        "Copyright (C) 2004 by Sun Microsystems, Inc. All rights reserved.",
+        "Copyright (c) 2008 Steven G. Kargl, David Schultz, Bruce D. Evans.",
+        "Copyright (c) 2009-2011, Bruce D. Evans, Steven G. Kargl, David Schultz.",
+        "Copyright (c) 2005-2008 David Schultz <das@FreeBSD.ORG>",
+        "Copyright (c) 2005-2011 David Schultz <das@FreeBSD.ORG>",
+        "Copyright (c) 2011 David Schultz <das@FreeBSD.ORG>",
+        "Copyright (c) 2007 David Schultz <das@FreeBSD.ORG>",
+        "Copyright (c) 2005 Bruce D. Evans and Steven G. Kargl",
+        "Copyright (c) 2011 David Schultz",
+        "Copyright (c) 2008 Stephen L. Moshier <steve@moshier.net>",
+        "Copyright (c) 2018, Arm Limited.",
+        "Copyright (c) 2017-2018, Arm Limited."
+      ],
+      "note": "The notices of the maths sources follow, each with the copyright lines that accompany it. The files of Arm Limited state SPDX-License-Identifier: MIT; the MIT licence text is the one in the musl COPYRIGHT file.",
+      "texts": ["musl-1.2.5-math-notices.txt", "musl-1.2.5-COPYRIGHT.txt"]
+    },
+    {
+      "name": "dlmalloc (Doug Lea), Emscripten system/lib/dlmalloc.c",
+      "version": "2.8.6",
+      "licence": "CC0-1.0 (public domain)",
+      "files": ["pyodide.asm.wasm"],
+      "source": "https://github.com/emscripten-core/emscripten/blob/5.0.3/system/lib/dlmalloc.c",
+      "copyright": [],
+      "note": "Released to the public domain, which requires no notice.",
+      "texts": ["Emscripten-5.0.3-dlmalloc-notice.txt"]
+    },
+    {
+      "name": "libc++ (LLVM C++ standard library, Emscripten fork), including the LLVM-libc headers used by from_chars",
+      "version": "LLVM 21.1.8, as bundled with Emscripten 5.0.3",
+      "licence": "Apache-2.0 WITH LLVM-exception (legacy portions NCSA OR MIT)",
+      "files": ["pyodide.asm.wasm"],
+      "source": "https://github.com/emscripten-core/emscripten/tree/5.0.3/system/lib/libcxx",
+      "copyright": [
+        "Copyright (c) 2009-2019 by the contributors listed in CREDITS.TXT",
+        "Copyright (c) 2009-2014 by the contributors listed in CREDITS.TXT"
+      ],
+      "texts": ["LLVM-21.1.8-libcxx-LICENSE.txt"]
+    },
+    {
+      "name": "libc++abi (LLVM)",
+      "version": "LLVM 21.1.8, as bundled with Emscripten 5.0.3",
+      "licence": "Apache-2.0 WITH LLVM-exception (legacy portions NCSA OR MIT)",
+      "files": ["pyodide.asm.wasm"],
+      "source": "https://github.com/emscripten-core/emscripten/tree/5.0.3/system/lib/libcxxabi",
+      "copyright": [
+        "Copyright (c) 2009-2019 by the contributors listed in CREDITS.TXT",
+        "Copyright (c) 2009-2014 by the contributors listed in CREDITS.TXT"
+      ],
+      "texts": ["LLVM-21.1.8-libcxxabi-LICENSE.txt"]
+    },
+    {
+      "name": "libunwind (LLVM)",
+      "version": "LLVM 21.1.8, as bundled with Emscripten 5.0.3",
+      "licence": "Apache-2.0 WITH LLVM-exception (legacy portions NCSA OR MIT)",
+      "files": ["pyodide.asm.wasm"],
+      "source": "https://github.com/emscripten-core/emscripten/tree/5.0.3/system/lib/libunwind",
+      "copyright": [
+        "Copyright (c) 2009-2019 by the contributors listed in CREDITS.TXT",
+        "Copyright (c) 2009-2014 by the contributors listed in CREDITS.TXT"
+      ],
+      "texts": ["LLVM-21.1.8-libunwind-LICENSE.txt"]
+    },
+    {
+      "name": "compiler-rt builtins (LLVM)",
+      "version": "LLVM 21.1.8, as bundled with Emscripten 5.0.3",
+      "licence": "Apache-2.0 WITH LLVM-exception (legacy portions NCSA OR MIT)",
+      "files": ["pyodide.asm.wasm"],
+      "source": "https://github.com/emscripten-core/emscripten/tree/5.0.3/system/lib/compiler-rt",
+      "copyright": [
+        "Copyright (c) 2009-2019 by the contributors listed in CREDITS.TXT",
+        "Copyright (c) 2009-2015 by the contributors listed in CREDITS.TXT"
+      ],
+      "texts": ["LLVM-21.1.8-compiler-rt-LICENSE.txt"]
+    },
+    {
+      "name": "Ryu floating-point formatting (Ulf Adams), through Microsoft STL code in libc++ src/ryu",
+      "version": "as in libc++ of LLVM 21.1.8",
+      "licence": "Apache-2.0 WITH LLVM-exception; the files also carry the Boost Software License 1.0",
+      "files": ["pyodide.asm.wasm"],
+      "source": "https://github.com/emscripten-core/emscripten/tree/5.0.3/system/lib/libcxx/src/ryu",
+      "copyright": [
+        "Copyright (c) Microsoft Corporation.",
+        "Copyright 2018 Ulf Adams",
+        "Copyright (c) Microsoft Corporation. All rights reserved."
+      ],
+      "texts": ["LLVM-21.1.8-ryu-notice.txt", "LLVM-21.1.8-libcxx-LICENSE.txt"]
+    }
+  ],
+  "texts": {
+    "Pyodide-LICENSE.txt": "https://github.com/pyodide/pyodide/blob/314.0.8/LICENSE",
+    "CPython-3.14.2-LICENSE.txt": "https://github.com/python/cpython/blob/v3.14.2/LICENSE",
+    "Pyodide-314.0.8-stackframe-LICENSE.txt": "https://github.com/pyodide/pyodide/blob/314.0.8/src/js/vendor/stackframe/LICENSE",
+    "arrowood-socket-LICENSE.txt": "https://github.com/Ethan-Arrowood/socket/blob/main/LICENSE",
+    "serialize-error-LICENSE.txt": "https://github.com/sindresorhus/serialize-error/blob/main/license",
+    "literal-map-0.2.0-LICENSE.txt": "https://registry.npmjs.org/literal-map/-/literal-map-0.2.0.tgz (package/LICENSE)",
+    "esbuild-0.25.0-LICENSE.txt": "https://github.com/evanw/esbuild/blob/v0.25.0/LICENSE.md",
+    "pip-LICENSE.txt": "https://github.com/pypa/pip/blob/main/LICENSE.txt",
+    "packaging-LICENSE.txt": "https://github.com/pypa/packaging/blob/main/LICENSE",
+    "packaging-LICENSE.BSD.txt": "https://github.com/pypa/packaging/blob/main/LICENSE.BSD",
+    "CPython-3.14.2-Mersenne-Twister.txt": "https://github.com/python/cpython/blob/v3.14.2/Doc/license.rst (section Mersenne Twister)",
+    "CPython-3.14.2-SipHash24.txt": "https://github.com/python/cpython/blob/v3.14.2/Doc/license.rst (section SipHash24)",
+    "CPython-3.14.2-dtoa.txt": "https://github.com/python/cpython/blob/v3.14.2/Doc/license.rst (section strtod and dtoa)",
+    "CPython-3.14.2-cfuhash.txt": "https://github.com/python/cpython/blob/v3.14.2/Doc/license.rst (section cfuhash)",
+    "CPython-3.14.2-libmpdec.txt": "https://github.com/python/cpython/blob/v3.14.2/Doc/license.rst (section libmpdec)",
+    "CPython-3.14.2-expat-COPYING.txt": "https://github.com/python/cpython/blob/v3.14.2/Modules/expat/COPYING",
+    "CPython-3.14.2-HACL-MIT.txt": "https://github.com/python/cpython/blob/v3.14.2/Modules/_hacl/Hacl_Hash_SHA2.c (file header)",
+    "CPython-3.14.2-KaRaMeL-notice.txt": "https://github.com/python/cpython/blob/v3.14.2/Modules/_hacl/include/krml/internal/target.h (file header)",
+    "hacl-star-8ba599b2-LICENSE.txt": "https://github.com/hacl-star/hacl-star/blob/8ba599b2f6c9701b3dc961db895b0856a2210f76/LICENSE",
+    "CPython-3.14.2-blake2module-notice.txt": "https://github.com/python/cpython/blob/v3.14.2/Modules/blake2module.c (file header)",
+    "CPython-3.14.2-mimalloc.txt": "https://github.com/python/cpython/blob/v3.14.2/Doc/license.rst (section mimalloc)",
+    "CPython-3.14.2-GUS.txt": "https://github.com/python/cpython/blob/v3.14.2/Doc/license.rst (section Global Unbounded Sequences (GUS))",
+    "CPython-3.14.2-Zstandard-bindings.txt": "https://github.com/python/cpython/blob/v3.14.2/Doc/license.rst (section Zstandard bindings)",
+    "CPython-3.14.2-unicodeobject-notice.txt": "https://github.com/python/cpython/blob/v3.14.2/Objects/unicodeobject.c (file header)",
+    "CPython-3.14.2-localemodule-notice.txt": "https://github.com/python/cpython/blob/v3.14.2/Modules/_localemodule.c (file header)",
+    "CPython-3.14.2-getopt-notice.txt": "https://github.com/python/cpython/blob/v3.14.2/Python/getopt.c (file header)",
+    "CPython-3.14.2-pysqlite-notice.txt": "https://github.com/python/cpython/blob/v3.14.2/Modules/_sqlite/module.c (file header)",
+    "Unicode-License-V3.txt": "https://www.unicode.org/license.txt",
+    "CPython-3.14.2-asyncio.txt": "https://github.com/python/cpython/blob/v3.14.2/Doc/license.rst (section asyncio)",
+    "CPython-3.14.2-http-cookies.txt": "https://github.com/python/cpython/blob/v3.14.2/Doc/license.rst (section Cookie management)",
+    "CPython-3.14.2-trace.txt": "https://github.com/python/cpython/blob/v3.14.2/Doc/license.rst (section Execution tracing)",
+    "CPython-3.14.2-uu-codec.txt": "https://github.com/python/cpython/blob/v3.14.2/Doc/license.rst (section UUencode and UUdecode functions)",
+    "CPython-3.14.2-xmlrpc.txt": "https://github.com/python/cpython/blob/v3.14.2/Doc/license.rst (section XML Remote Procedure Calls)",
+    "CPython-3.14.2-platform-notice.txt": "https://github.com/python/cpython/blob/v3.14.2/Lib/platform.py (__copyright__)",
+    "CPython-3.14.2-macholib-README.txt": "https://github.com/python/cpython/blob/v3.14.2/Lib/ctypes/macholib/README.ctypes",
+    "tomli-LICENSE.txt": "https://github.com/hukkin/tomli/blob/master/LICENSE",
+    "CPython-3.14.2-pyrepl-notice.txt": "https://github.com/python/cpython/blob/v3.14.2/Lib/_pyrepl/reader.py (file header)",
+    "more-itertools-9.0.0-LICENSE.txt": "https://github.com/more-itertools/more-itertools/blob/v9.0.0/LICENSE",
+    "libffi-f08493d-LICENSE.txt": "https://github.com/libffi/libffi/blob/f08493d249d2067c8b3207ba46693dd858f95db3/LICENSE",
+    "xz-5.2.2-COPYING.txt": "https://github.com/tukaani-project/xz/blob/v5.2.2/COPYING",
+    "zstd-1.5.7-LICENSE.txt": "https://github.com/facebook/zstd/blob/v1.5.7/LICENSE",
+    "zstd-1.5.7-divsufsort-notice.txt": "https://github.com/facebook/zstd/blob/v1.5.7/lib/dictBuilder/divsufsort.c (file header)",
+    "zlib-1.3.1-LICENSE.txt": "https://github.com/madler/zlib/blob/v1.3.1/LICENSE",
+    "bzip2-1.0.6-LICENSE.txt": "https://sourceware.org/git/?p=bzip2.git;a=blob_plain;f=LICENSE;hb=bzip2-1.0.6",
+    "Emscripten-5.0.3-LICENSE.txt": "https://github.com/emscripten-core/emscripten/blob/5.0.3/LICENSE",
+    "Emscripten-5.0.3-mini-lz4-notice.txt": "https://github.com/emscripten-core/emscripten/blob/5.0.3/third_party/mini-lz4.js (file header)",
+    "musl-1.2.5-COPYRIGHT.txt": "https://github.com/emscripten-core/emscripten/blob/5.0.3/system/lib/libc/musl/COPYRIGHT",
+    "musl-1.2.5-TRE-notice.txt": "https://github.com/emscripten-core/emscripten/blob/5.0.3/system/lib/libc/musl/src/regex/regcomp.c (file header)",
+    "musl-1.2.5-crypt_des-notice.txt": "https://github.com/emscripten-core/emscripten/blob/5.0.3/system/lib/libc/musl/src/crypt/crypt_des.c (file header)",
+    "musl-1.2.5-crypt_md5-notice.txt": "https://github.com/emscripten-core/emscripten/blob/5.0.3/system/lib/libc/musl/src/crypt/crypt_md5.c (licence comment)",
+    "musl-1.2.5-crypt_blowfish-notice.txt": "https://github.com/emscripten-core/emscripten/blob/5.0.3/system/lib/libc/musl/src/crypt/crypt_blowfish.c (file header)",
+    "musl-1.2.5-qsort-notice.txt": "https://github.com/emscripten-core/emscripten/blob/5.0.3/system/lib/libc/musl/src/stdlib/qsort.c (file header)",
+    "musl-1.2.5-math-notices.txt": "the file headers of https://github.com/emscripten-core/emscripten/tree/5.0.3/system/lib/libc/musl/src/math and src/complex, one entry per licence text with the copyright lines that accompany it",
+    "Emscripten-5.0.3-dlmalloc-notice.txt": "https://github.com/emscripten-core/emscripten/blob/5.0.3/system/lib/dlmalloc.c (file header)",
+    "LLVM-21.1.8-libcxx-LICENSE.txt": "https://github.com/emscripten-core/emscripten/blob/5.0.3/system/lib/libcxx/LICENSE.TXT",
+    "LLVM-21.1.8-libcxxabi-LICENSE.txt": "https://github.com/emscripten-core/emscripten/blob/5.0.3/system/lib/libcxxabi/LICENSE.TXT",
+    "LLVM-21.1.8-libunwind-LICENSE.txt": "https://github.com/emscripten-core/emscripten/blob/5.0.3/system/lib/libunwind/LICENSE.TXT",
+    "LLVM-21.1.8-compiler-rt-LICENSE.txt": "https://github.com/emscripten-core/emscripten/blob/5.0.3/system/lib/compiler-rt/LICENSE.TXT",
+    "LLVM-21.1.8-ryu-notice.txt": "https://github.com/emscripten-core/emscripten/blob/5.0.3/system/lib/libcxx/src/ryu/d2s.cpp (file header)"
+  }
+}

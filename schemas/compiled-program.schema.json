@@ -1,0 +1,521 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/aalbata/isa-trace-lab/schemas/compiled-program.schema.json",
+  "title": "ISA Trace Lab compiled program",
+  "description": "Encoded program with its listing, IR, boundaries, variable homes, and source mappings.",
+  "type": "object",
+  "required": [
+    "schema",
+    "schemaVersion",
+    "software",
+    "configuration",
+    "source",
+    "code",
+    "data",
+    "entry",
+    "symbols",
+    "instructions",
+    "ir",
+    "statements",
+    "boundaries",
+    "variables",
+    "arrays"
+  ],
+  "properties": {
+    "schema": {
+      "const": "isa-trace-lab/compiled-program"
+    },
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "software": {
+      "type": "object",
+      "required": [
+        "name",
+        "version"
+      ],
+      "properties": {
+        "name": {
+          "const": "isa-trace-lab"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "configuration": {
+      "type": "object",
+      "required": [
+        "schema",
+        "schemaVersion",
+        "target",
+        "isa",
+        "codeBase",
+        "dataBase",
+        "stackTop",
+        "optimization",
+        "limits"
+      ],
+      "properties": {
+        "schema": {
+          "const": "isa-trace-lab/target-configuration"
+        },
+        "schemaVersion": {
+          "const": "1.0"
+        },
+        "target": {
+          "enum": [
+            "riscv",
+            "mips",
+            "aarch64",
+            "x86"
+          ]
+        },
+        "isa": {
+          "type": "string"
+        },
+        "codeBase": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        },
+        "dataBase": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        },
+        "stackTop": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        },
+        "optimization": {
+          "enum": [
+            "none"
+          ]
+        },
+        "limits": {
+          "type": "object",
+          "required": [
+            "maxSteps",
+            "maxOutput"
+          ],
+          "properties": {
+            "maxSteps": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "maxOutput": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "text",
+        "sha256"
+      ],
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "code": {
+      "type": "object",
+      "required": [
+        "base",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "base": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        },
+        "bytes": {
+          "type": "string",
+          "pattern": "^([0-9a-f]{2})*$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "data": {
+      "type": "object",
+      "required": [
+        "base",
+        "bytes"
+      ],
+      "properties": {
+        "base": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        },
+        "bytes": {
+          "type": "string",
+          "pattern": "^([0-9a-f]{2})*$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "entry": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "symbols": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4294967295
+      }
+    },
+    "instructions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "address",
+          "bytes",
+          "text",
+          "region",
+          "ir",
+          "lines",
+          "labels"
+        ],
+        "properties": {
+          "address": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          },
+          "bytes": {
+            "type": "string",
+            "pattern": "^([0-9a-f]{2})*$"
+          },
+          "text": {
+            "type": "string"
+          },
+          "pseudo": {
+            "type": "object",
+            "required": [
+              "text",
+              "index",
+              "count"
+            ],
+            "properties": {
+              "text": {
+                "type": "string"
+              },
+              "index": {
+                "type": "integer"
+              },
+              "count": {
+                "type": "integer"
+              }
+            },
+            "additionalProperties": false
+          },
+          "region": {
+            "enum": [
+              "startup",
+              "main",
+              "helper",
+              "trap"
+            ]
+          },
+          "ir": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "lines": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "note": {
+            "type": "string"
+          },
+          "labels": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "ir": {
+      "type": "object",
+      "required": [
+        "blocks",
+        "ops"
+      ],
+      "properties": {
+        "blocks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "label",
+              "ops"
+            ],
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "label": {
+                "type": "string"
+              },
+              "ops": {
+                "type": "array",
+                "items": {
+                  "type": "integer"
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "ops": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "block",
+              "text",
+              "statement",
+              "node",
+              "span"
+            ],
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "block": {
+                "type": "integer"
+              },
+              "text": {
+                "type": "string"
+              },
+              "statement": {
+                "type": "integer"
+              },
+              "node": {
+                "type": "integer"
+              },
+              "span": {
+                "type": "object",
+                "required": [
+                  "startLine",
+                  "startColumn",
+                  "endLine",
+                  "endColumn"
+                ],
+                "properties": {
+                  "startLine": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "startColumn": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "endLine": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "endColumn": {
+                    "type": "integer",
+                    "minimum": 1
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "statements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "kind",
+          "span"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "span": {
+            "type": "object",
+            "required": [
+              "startLine",
+              "startColumn",
+              "endLine",
+              "endColumn"
+            ],
+            "properties": {
+              "startLine": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "startColumn": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "endLine": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "endColumn": {
+                "type": "integer",
+                "minimum": 1
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "boundaries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "address",
+          "statements"
+        ],
+        "properties": {
+          "address": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          },
+          "statements": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "variables": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "type",
+          "hidden",
+          "home"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "i32",
+              "bool"
+            ]
+          },
+          "hidden": {
+            "type": "boolean"
+          },
+          "home": {
+            "oneOf": [
+              {
+                "type": "object",
+                "required": [
+                  "register"
+                ],
+                "properties": {
+                  "register": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "required": [
+                  "stackOffset"
+                ],
+                "properties": {
+                  "stackOffset": {
+                    "type": "integer"
+                  }
+                },
+                "additionalProperties": false
+              }
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "arrays": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "length",
+          "address"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "length": {
+            "type": "integer"
+          },
+          "address": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

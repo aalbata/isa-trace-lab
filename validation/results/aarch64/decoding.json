@@ -1,0 +1,145 @@
+{
+ "stage": "decoding",
+ "target": "aarch64",
+ "failures": [],
+ "failure_count": 0,
+ "totals": {
+  "cases": 100000,
+  "accepted": 12192,
+  "rejected": 87808,
+  "reassembled_equal": 11724,
+  "reassembled_equal_at_original_address": 0,
+  "reassembled_equivalent": 468,
+  "equivalent_alternate": 0,
+  "capstone_same_mnemonic": 12192,
+  "capstone_no_decode_of_accepted": 0,
+  "rejected_as_invalid": 36205,
+  "rejected_as_unsupported": 51603,
+  "rejected_as_unsupported_not_decoded_by_capstone": 28415,
+  "rejected_but_capstone_decodes": 23215,
+  "rejected_checked_by_reencoding": 23215,
+  "rejected_not_encodable_by_this_tool": 23215
+ },
+ "exclusions": {},
+ "unsupported_not_decoded_by_capstone": {
+  "checked_against_the_target_entry": false,
+  "defined": {}
+ },
+ "equivalent_examples": [
+  {
+   "bytes": "02c92c92",
+   "reference": "02c90492",
+   "text": "and x2, x8, #0x7070707070707070",
+   "capstone": "and x2, x8, #0x7070707070707070"
+  },
+  {
+   "bytes": "04673c92",
+   "reference": "04671c92",
+   "text": "and x4, x24, #0x3ffffff03ffffff0",
+   "capstone": "and x4, x24, #0x3ffffff03ffffff0"
+  },
+  {
+   "bytes": "c3a237d2",
+   "reference": "c3a207d2",
+   "text": "eor x3, x22, #0xfe03fe03fe03fe03",
+   "capstone": "eor x3, x22, #0xfe03fe03fe03fe03"
+  },
+  {
+   "bytes": "46842d52",
+   "reference": "46840d52",
+   "text": "eor w6, w2, #0x180018",
+   "capstone": "eor w6, w2, #0x180018"
+  },
+  {
+   "bytes": "7baa1232",
+   "reference": "7baa0232",
+   "text": "orr w27, w19, #0xc1ffc1ff",
+   "capstone": "orr w27, w19, #0xc1ffc1ff"
+  },
+  {
+   "bytes": "a0c51492",
+   "reference": "a0c50492",
+   "text": "and x0, x13, #0x3030303030303030",
+   "capstone": "and x0, x13, #0x3030303030303030"
+  },
+  {
+   "bytes": "b22c24b2",
+   "reference": "b22c04b2",
+   "text": "orr x18, x5, #0xf00000fff00000ff",
+   "capstone": "orr x18, x5, #0xf00000fff00000ff"
+  },
+  {
+   "bytes": "603027d2",
+   "reference": "603007d2",
+   "text": "eor x0, x3, #0xfe00003ffe00003f",
+   "capstone": "eor x0, x3, #0xfe00003ffe00003f"
+  },
+  {
+   "bytes": "1ab53f32",
+   "reference": "1ab50f32",
+   "text": "orr w26, w8, #0x7ffe7ffe",
+   "capstone": "orr w26, w8, #0x7ffe7ffe"
+  },
+  {
+   "bytes": "3db11252",
+   "reference": "3db10252",
+   "text": "eor w29, w9, #0xc7ffc7ff",
+   "capstone": "eor w29, w9, #0xc7ffc7ff"
+  },
+  {
+   "bytes": "1f8f1932",
+   "reference": "1f8f0932",
+   "text": "orr wsp, w24, #0x7800780",
+   "capstone": "orr wsp, w24, #0x7800780"
+  },
+  {
+   "bytes": "6f5d2f12",
+   "reference": "6f5d0f12",
+   "text": "and w15, w11, #0xfffe01ff",
+   "capstone": "and w15, w11, #0xfffe01ff"
+  }
+ ],
+ "unsupported_by_capstone_mnemonic": {
+  "ldr": 2659,
+  "adrp": 1594,
+  "adr": 1545,
+  "stp": 1449,
+  "ldp": 1420,
+  "tbz": 782,
+  "tbnz": 778,
+  "str": 690,
+  "ldrsw": 522,
+  "stnp": 490,
+  "ldnp": 468,
+  "prfm": 467,
+  "bics": 303,
+  "eon": 277,
+  "ldpsw": 268,
+  "ldrsb": 247,
+  "ldrsh": 244,
+  "ld1h": 132,
+  "fcmla": 129,
+  "st1h": 117,
+  "st1w": 115,
+  "st1b": 101,
+  "ld1w": 97,
+  "ld1b": 96,
+  "ld1sh": 94
+ },
+ "format": 4,
+ "source": "75133daa269a3cf16e153565cbf718ca3b63616f6ff23e450af33bd58c58942c",
+ "tools": {
+  "python": "3.12.10",
+  "ziglang": "0.15.2",
+  "zig": "0.15.2",
+  "clang": "clang version 20.1.2 (https://github.com/ziglang/zig-bootstrap 7ef74e656cf8ddbd6bf891a8475892aa1afa6891)",
+  "capstone": "5.0.9",
+  "capstone_module_string": "5.0.7",
+  "capstone_core": "5.0",
+  "unicorn": "2.1.4",
+  "unicorn_core": "2.1",
+  "pyelftools": "0.33"
+ },
+ "reference_configuration": "Clang integrated assembler, Armv8-A A64 (-target aarch64-freestanding -mcpu=generic), LLD",
+ "seconds": 12.2
+}

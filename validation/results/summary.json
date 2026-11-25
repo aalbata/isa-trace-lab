@@ -1,0 +1,291 @@
+{
+ "source": "75133daa269a3cf16e153565cbf718ca3b63616f6ff23e450af33bd58c58942c",
+ "crosscheck": {
+  "runs": 2831,
+  "failed": 0,
+  "programs": 1031
+ },
+ "semantics": {
+  "runs": 2831,
+  "python_reference_agrees": 2831,
+  "ir_agrees": 2831,
+  "cpython_direct_runs": 668,
+  "cpython_direct_agrees": 668,
+  "not_compared_with_cpython": 2163,
+  "exited": 2198,
+  "trap": 633,
+  "failed": 0
+ },
+ "targets": {
+  "riscv": {
+   "encoding": {
+    "failures": 0,
+    "totals": {
+     "sweep": {
+      "programs": 38,
+      "programs_passed": 38,
+      "instructions": 1626,
+      "instructions_in_passed_programs": 1626,
+      "bytes": 54456
+     },
+     "pseudo": {
+      "programs": 1,
+      "programs_passed": 1,
+      "instructions": 44,
+      "instructions_in_passed_programs": 44,
+      "bytes": 176,
+      "expansions_equivalent": 2,
+      "equivalent_but_not_identical": 1
+     },
+     "compiled": {
+      "programs": 1031,
+      "programs_passed": 1031,
+      "instructions": 143288,
+      "instructions_in_passed_programs": 143288,
+      "bytes": 573152
+     }
+    }
+   },
+   "decoding": {
+    "failures": 0,
+    "totals": {
+     "cases": 100000,
+     "accepted": 4378,
+     "rejected": 95622,
+     "reassembled_equal": 4378,
+     "reassembled_equal_at_original_address": 0,
+     "reassembled_equivalent": 0,
+     "equivalent_alternate": 0,
+     "capstone_same_mnemonic": 4378,
+     "capstone_no_decode_of_accepted": 0,
+     "rejected_as_invalid": 11511,
+     "rejected_as_unsupported": 84111,
+     "rejected_as_unsupported_not_decoded_by_capstone": 81836,
+     "rejected_but_capstone_decodes": 2276,
+     "rejected_checked_by_reencoding": 2276,
+     "rejected_not_encodable_by_this_tool": 2276,
+     "capstone_accepts_reserved_encoding": 1
+    }
+   },
+   "execution": {
+    "failures": 0,
+    "totals": {
+     "cases": 6504,
+     "passed": 6504,
+     "faults_agreed": 344,
+     "excluded": 0,
+     "partially_compared": 0
+    }
+   },
+   "programs": {
+    "failures": 0,
+    "totals": {
+     "runs": 2831,
+     "passed": 2831,
+     "exited": 2198,
+     "trap": 633,
+     "instructions_executed": 1617457
+    }
+   }
+  },
+  "mips": {
+   "encoding": {
+    "failures": 0,
+    "totals": {
+     "sweep": {
+      "programs": 44,
+      "programs_passed": 44,
+      "instructions": 2086,
+      "instructions_in_passed_programs": 2086,
+      "bytes": 57496
+     },
+     "pseudo": {
+      "programs": 1,
+      "programs_passed": 1,
+      "instructions": 45,
+      "instructions_in_passed_programs": 45,
+      "bytes": 180,
+      "expansions_equivalent": 0
+     },
+     "compiled": {
+      "programs": 1031,
+      "programs_passed": 1031,
+      "instructions": 149887,
+      "instructions_in_passed_programs": 149887,
+      "bytes": 599548
+     }
+    }
+   },
+   "decoding": {
+    "failures": 0,
+    "totals": {
+     "cases": 100000,
+     "accepted": 30138,
+     "rejected": 69862,
+     "reassembled_equal": 30138,
+     "reassembled_equal_at_original_address": 0,
+     "reassembled_equivalent": 0,
+     "equivalent_alternate": 0,
+     "capstone_same_mnemonic": 30138,
+     "capstone_no_decode_of_accepted": 0,
+     "rejected_as_invalid": 6399,
+     "rejected_as_unsupported": 63463,
+     "rejected_as_unsupported_not_decoded_by_capstone": 32006,
+     "rejected_but_capstone_decodes": 32042,
+     "rejected_checked_by_reencoding": 32042,
+     "rejected_not_encodable_by_this_tool": 32042
+    }
+   },
+   "execution": {
+    "failures": 0,
+    "totals": {
+     "cases": 8344,
+     "passed": 8344,
+     "faults_agreed": 290,
+     "excluded": 0,
+     "partially_compared": 126
+    }
+   },
+   "programs": {
+    "failures": 0,
+    "totals": {
+     "runs": 2831,
+     "passed": 2831,
+     "exited": 2198,
+     "trap": 633,
+     "instructions_executed": 1132071
+    }
+   }
+  },
+  "aarch64": {
+   "encoding": {
+    "failures": 0,
+    "totals": {
+     "sweep": {
+      "programs": 88,
+      "programs_passed": 88,
+      "instructions": 2943,
+      "instructions_in_passed_programs": 2943,
+      "bytes": 11772
+     },
+     "pseudo": {
+      "programs": 1,
+      "programs_passed": 1,
+      "instructions": 148,
+      "instructions_in_passed_programs": 148,
+      "bytes": 592,
+      "expansions_equivalent": 0
+     },
+     "compiled": {
+      "programs": 1031,
+      "programs_passed": 1031,
+      "instructions": 126801,
+      "instructions_in_passed_programs": 126801,
+      "bytes": 507204
+     }
+    }
+   },
+   "decoding": {
+    "failures": 0,
+    "totals": {
+     "cases": 100000,
+     "accepted": 12192,
+     "rejected": 87808,
+     "reassembled_equal": 11724,
+     "reassembled_equal_at_original_address": 0,
+     "reassembled_equivalent": 468,
+     "equivalent_alternate": 0,
+     "capstone_same_mnemonic": 12192,
+     "capstone_no_decode_of_accepted": 0,
+     "rejected_as_invalid": 36205,
+     "rejected_as_unsupported": 51603,
+     "rejected_as_unsupported_not_decoded_by_capstone": 28415,
+     "rejected_but_capstone_decodes": 23215,
+     "rejected_checked_by_reencoding": 23215,
+     "rejected_not_encodable_by_this_tool": 23215
+    }
+   },
+   "execution": {
+    "failures": 0,
+    "totals": {
+     "cases": 11772,
+     "passed": 11772,
+     "faults_agreed": 0,
+     "excluded": 0,
+     "partially_compared": 0
+    }
+   },
+   "programs": {
+    "failures": 0,
+    "totals": {
+     "runs": 2831,
+     "passed": 2831,
+     "exited": 2198,
+     "trap": 633,
+     "instructions_executed": 848060
+    }
+   }
+  },
+  "x86": {
+   "encoding": {
+    "failures": 0,
+    "totals": {
+     "sweep": {
+      "programs": 67,
+      "programs_passed": 67,
+      "instructions": 5706,
+      "instructions_in_passed_programs": 5706,
+      "bytes": 114834
+     },
+     "compiled": {
+      "programs": 1031,
+      "programs_passed": 1031,
+      "instructions": 154402,
+      "instructions_in_passed_programs": 154402,
+      "bytes": 561892
+     }
+    }
+   },
+   "decoding": {
+    "failures": 0,
+    "totals": {
+     "cases": 100090,
+     "accepted": 29675,
+     "rejected": 70415,
+     "reassembled_equal": 27346,
+     "reassembled_equal_at_original_address": 7167,
+     "reassembled_equivalent": 2239,
+     "equivalent_alternate": 90,
+     "capstone_same_mnemonic": 29675,
+     "capstone_no_decode_of_accepted": 0,
+     "rejected_as_invalid": 11140,
+     "rejected_as_unsupported": 59275,
+     "rejected_as_unsupported_not_decoded_by_capstone": 1712,
+     "rejected_but_capstone_decodes": 57566,
+     "rejected_checked_by_reencoding": 57566,
+     "rejected_not_encodable_by_this_tool": 57566
+    }
+   },
+   "execution": {
+    "failures": 0,
+    "totals": {
+     "cases": 22824,
+     "passed": 22824,
+     "faults_agreed": 158,
+     "excluded": 0,
+     "partially_compared": 0
+    }
+   },
+   "programs": {
+    "failures": 0,
+    "totals": {
+     "runs": 2831,
+     "passed": 2831,
+     "exited": 2198,
+     "trap": 633,
+     "instructions_executed": 997085
+    }
+   }
+  }
+ }
+}

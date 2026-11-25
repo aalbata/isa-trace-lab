@@ -1,0 +1,594 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/aalbata/isa-trace-lab/schemas/execution-trace.schema.json",
+  "title": "ISA Trace Lab execution trace",
+  "description": "Instruction records, boundaries, outcome, and metrics of one simulated run. Register and memory values are hexadecimal strings.",
+  "type": "object",
+  "required": [
+    "schema",
+    "schemaVersion",
+    "software",
+    "configuration",
+    "program",
+    "args",
+    "outcome",
+    "metrics",
+    "truncated",
+    "steps",
+    "boundaries",
+    "finalArrays"
+  ],
+  "properties": {
+    "schema": {
+      "const": "isa-trace-lab/execution-trace"
+    },
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "software": {
+      "type": "object",
+      "required": [
+        "name",
+        "version"
+      ],
+      "properties": {
+        "name": {
+          "const": "isa-trace-lab"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "configuration": {
+      "type": "object",
+      "required": [
+        "schema",
+        "schemaVersion",
+        "target",
+        "isa",
+        "codeBase",
+        "dataBase",
+        "stackTop",
+        "optimization",
+        "limits"
+      ],
+      "properties": {
+        "schema": {
+          "const": "isa-trace-lab/target-configuration"
+        },
+        "schemaVersion": {
+          "const": "1.0"
+        },
+        "target": {
+          "enum": [
+            "riscv",
+            "mips",
+            "aarch64",
+            "x86"
+          ]
+        },
+        "isa": {
+          "type": "string"
+        },
+        "codeBase": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        },
+        "dataBase": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        },
+        "stackTop": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        },
+        "optimization": {
+          "enum": [
+            "none"
+          ]
+        },
+        "limits": {
+          "type": "object",
+          "required": [
+            "maxSteps",
+            "maxOutput"
+          ],
+          "properties": {
+            "maxSteps": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "maxOutput": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "program": {
+      "type": "object",
+      "required": [
+        "sourceSha256",
+        "codeSha256"
+      ],
+      "properties": {
+        "sourceSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "codeSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "args": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": -2147483648,
+        "maximum": 2147483647
+      }
+    },
+    "outcome": {
+      "type": "object",
+      "required": [
+        "status",
+        "output",
+        "steps"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "exited",
+            "trap",
+            "limit",
+            "fault"
+          ]
+        },
+        "returnValue": {
+          "type": "integer",
+          "minimum": -2147483648,
+          "maximum": 2147483647
+        },
+        "output": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": -2147483648,
+            "maximum": 2147483647
+          }
+        },
+        "trap": {
+          "type": "object",
+          "required": [
+            "code",
+            "message",
+            "line"
+          ],
+          "properties": {
+            "code": {
+              "type": "integer"
+            },
+            "message": {
+              "type": "string"
+            },
+            "line": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "limit": {
+          "enum": [
+            "steps",
+            "output"
+          ]
+        },
+        "fault": {
+          "type": "string"
+        },
+        "steps": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "staticInstructions",
+        "staticInstructionsByRegion",
+        "codeBytes",
+        "codeBytesByRegion",
+        "executedInstructions",
+        "executedByRegion",
+        "dataLoads",
+        "dataStores",
+        "registersWritten",
+        "boundaries"
+      ],
+      "properties": {
+        "staticInstructions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "staticInstructionsByRegion": {
+          "type": "object",
+          "required": [
+            "startup",
+            "main",
+            "helper",
+            "trap"
+          ],
+          "properties": {
+            "startup": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "main": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "helper": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "trap": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "additionalProperties": false
+        },
+        "codeBytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "codeBytesByRegion": {
+          "type": "object",
+          "required": [
+            "startup",
+            "main",
+            "helper",
+            "trap"
+          ],
+          "properties": {
+            "startup": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "main": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "helper": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "trap": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "additionalProperties": false
+        },
+        "executedInstructions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "executedByRegion": {
+          "type": "object",
+          "required": [
+            "startup",
+            "main",
+            "helper",
+            "trap",
+            "unknown"
+          ],
+          "properties": {
+            "startup": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "main": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "helper": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "trap": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "unknown": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "additionalProperties": false
+        },
+        "dataLoads": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "dataStores": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "registersWritten": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "boundaries": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "truncated": {
+      "description": "True when the run executed more instructions, or fired more boundaries, than the trace keeps records of.",
+      "type": "boolean"
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "index",
+          "pc",
+          "bytes",
+          "text",
+          "class",
+          "regWrites",
+          "memReads",
+          "memWrites"
+        ],
+        "properties": {
+          "index": {
+            "type": "integer"
+          },
+          "pc": {
+            "type": "integer",
+            "minimum": -2147483648,
+            "maximum": 4294967295
+          },
+          "bytes": {
+            "type": "string",
+            "pattern": "^([0-9a-f]{2})*$"
+          },
+          "text": {
+            "type": "string"
+          },
+          "fault": {
+            "type": "string"
+          },
+          "class": {
+            "enum": [
+              "alu",
+              "load",
+              "store",
+              "branch",
+              "jump",
+              "service",
+              "other"
+            ]
+          },
+          "regWrites": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "reg",
+                "value"
+              ],
+              "properties": {
+                "reg": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "string",
+                  "pattern": "^0x[0-9a-f]+$"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "memReads": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "address",
+                "size",
+                "value"
+              ],
+              "properties": {
+                "address": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 4294967295
+                },
+                "size": {
+                  "type": "integer"
+                },
+                "value": {
+                  "type": "string",
+                  "pattern": "^0x[0-9a-f]+$"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "memWrites": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "address",
+                "size",
+                "value"
+              ],
+              "properties": {
+                "address": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 4294967295
+                },
+                "size": {
+                  "type": "integer"
+                },
+                "value": {
+                  "type": "string",
+                  "pattern": "^0x[0-9a-f]+$"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "flags": {
+            "type": "object",
+            "additionalProperties": {
+              "enum": [
+                0,
+                1
+              ]
+            }
+          },
+          "branch": {
+            "type": "object",
+            "required": [
+              "conditional",
+              "taken",
+              "target"
+            ],
+            "properties": {
+              "conditional": {
+                "type": "boolean"
+              },
+              "taken": {
+                "type": "boolean"
+              },
+              "target": {
+                "type": "integer",
+                "minimum": -2147483648,
+                "maximum": 4294967295
+              },
+              "target64": {
+                "description": "Full target address as sixteen hexadecimal digits, present only when its upper 32 bits are not zero; target then holds the low 32 bits.",
+                "type": "string",
+                "pattern": "^0x[0-9a-f]{16}$"
+              }
+            },
+            "additionalProperties": false
+          },
+          "delaySlot": {
+            "type": "boolean"
+          },
+          "service": {
+            "type": "object",
+            "required": [
+              "number",
+              "name",
+              "argument"
+            ],
+            "properties": {
+              "number": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              },
+              "argument": {
+                "type": "integer",
+                "minimum": -2147483648,
+                "maximum": 2147483647
+              }
+            },
+            "additionalProperties": false
+          },
+          "boundaries": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "boundaries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "ordinal",
+          "statement",
+          "occurrence",
+          "line",
+          "step",
+          "variables",
+          "outputLength"
+        ],
+        "properties": {
+          "ordinal": {
+            "type": "integer"
+          },
+          "statement": {
+            "type": "integer"
+          },
+          "occurrence": {
+            "type": "integer"
+          },
+          "line": {
+            "type": "integer"
+          },
+          "step": {
+            "type": "integer"
+          },
+          "variables": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "integer",
+              "minimum": -2147483648,
+              "maximum": 2147483647
+            }
+          },
+          "outputLength": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "finalArrays": {
+      "description": "Contents at the end of the run of the arrays whose definition has executed.",
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": -2147483648,
+          "maximum": 2147483647
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata in this file."
+type: software
+title: "ISA Trace Lab"
+abstract: >-
+  ISA Trace Lab compiles a small language with Python syntax and 32-bit
+  integers through an intermediate representation into machine code for
+  documented subsets of RISC-V RV32I, MIPS32 Release 2, AArch64 (A64), and
+  x86-64, executes the encoded bytes on instruction-set simulators, and records
+  source-to-instruction mappings and execution traces. It runs as a static web
+  application and as a headless TypeScript library and command-line tool.
+version: "1.0.0"
+license: MIT
+repository-code: "https://github.com/aalbata/isa-trace-lab"
+authors:
+  - family-names: "Al Bataineh"
+    given-names: "Ali"
+    affiliation: "Computer Information Science, Higher Colleges of Technology, Abu Dhabi, United Arab Emirates"
+    orcid: "https://orcid.org/0000-0001-9530-7950"
+keywords:
+  - instruction set architecture
+  - RISC-V
+  - MIPS
+  - AArch64
+  - x86-64
+  - compiler
+  - machine code
+  - simulation
+  - execution trace

@@ -1,0 +1,145 @@
+{
+ "stage": "decoding",
+ "target": "x86",
+ "failures": [],
+ "failure_count": 0,
+ "totals": {
+  "cases": 100090,
+  "accepted": 29675,
+  "rejected": 70415,
+  "reassembled_equal": 27346,
+  "reassembled_equal_at_original_address": 7167,
+  "reassembled_equivalent": 2239,
+  "equivalent_alternate": 90,
+  "capstone_same_mnemonic": 29675,
+  "capstone_no_decode_of_accepted": 0,
+  "rejected_as_invalid": 11140,
+  "rejected_as_unsupported": 59275,
+  "rejected_as_unsupported_not_decoded_by_capstone": 1712,
+  "rejected_but_capstone_decodes": 57566,
+  "rejected_checked_by_reencoding": 57566,
+  "rejected_not_encodable_by_this_tool": 57566
+ },
+ "exclusions": {},
+ "unsupported_not_decoded_by_capstone": {
+  "checked_against_the_target_entry": false,
+  "defined": {}
+ },
+ "equivalent_examples": [
+  {
+   "bytes": "8bca",
+   "reference": "89d1",
+   "text": "mov ecx, edx",
+   "capstone": "mov ecx, edx"
+  },
+  {
+   "bytes": "011420",
+   "reference": "0110",
+   "text": "add dword ptr [rax], edx",
+   "capstone": "add dword ptr [rax], edx"
+  },
+  {
+   "bytes": "8be8",
+   "reference": "89c5",
+   "text": "mov ebp, eax",
+   "capstone": "mov ebp, eax"
+  },
+  {
+   "bytes": "445d",
+   "reference": "5d",
+   "text": "pop rbp",
+   "capstone": "pop rbp"
+  },
+  {
+   "bytes": "4f216d8c",
+   "reference": "4d216d8c",
+   "text": "and qword ptr [r13 - 116], r13",
+   "capstone": "and qword ptr [r13 - 0x74], r13"
+  },
+  {
+   "bytes": "8fc3",
+   "reference": "5b",
+   "text": "pop rbx",
+   "capstone": "pop rbx"
+  },
+  {
+   "bytes": "33cf",
+   "reference": "31f9",
+   "text": "xor ecx, edi",
+   "capstone": "xor ecx, edi"
+  },
+  {
+   "bytes": "0be6",
+   "reference": "09f4",
+   "text": "or esp, esi",
+   "capstone": "or esp, esi"
+  },
+  {
+   "bytes": "4652",
+   "reference": "52",
+   "text": "push rdx",
+   "capstone": "push rdx"
+  },
+  {
+   "bytes": "46399ea57d2f80",
+   "reference": "44399ea57d2f80",
+   "text": "cmp dword ptr [rsi - 0x7fd0825b], r11d",
+   "capstone": "cmp dword ptr [rsi - 0x7fd0825b], r11d"
+  },
+  {
+   "bytes": "4459",
+   "reference": "59",
+   "text": "pop rcx",
+   "capstone": "pop rcx"
+  },
+  {
+   "bytes": "2bd0",
+   "reference": "29c2",
+   "text": "sub edx, eax",
+   "capstone": "sub edx, eax"
+  }
+ ],
+ "unsupported_by_capstone_mnemonic": {
+  "mov": 5112,
+  "xchg": 3928,
+  "adc": 2761,
+  "sbb": 2718,
+  "movabs": 1859,
+  "out": 1792,
+  "in": 1765,
+  "test": 1519,
+  "xor": 1494,
+  "add": 1478,
+  "or": 1475,
+  "and": 1423,
+  "cmp": 1387,
+  "sub": 1380,
+  "push": 1076,
+  "retf": 860,
+  "popfq": 490,
+  "wait": 472,
+  "ret": 459,
+  "loopne": 459,
+  "xlatb": 455,
+  "insb": 449,
+  "leave": 449,
+  "insd": 448,
+  "stosd": 446
+ },
+ "format": 4,
+ "source": "75133daa269a3cf16e153565cbf718ca3b63616f6ff23e450af33bd58c58942c",
+ "tools": {
+  "python": "3.12.10",
+  "ziglang": "0.15.2",
+  "zig": "0.15.2",
+  "clang": "clang version 20.1.2 (https://github.com/ziglang/zig-bootstrap 7ef74e656cf8ddbd6bf891a8475892aa1afa6891)",
+  "capstone": "5.0.9",
+  "capstone_module_string": "5.0.7",
+  "capstone_core": "5.0",
+  "unicorn": "2.1.4",
+  "unicorn_core": "2.1",
+  "pyelftools": "0.33"
+ },
+ "reference_configuration": "Clang integrated assembler, x86-64 in 64-bit mode (-mcpu=x86_64), Intel syntax selected by .intel_syntax noprefix",
+ "seconds": 55.5
+}

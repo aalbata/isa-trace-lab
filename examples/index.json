@@ -1,0 +1,21 @@
+{
+  "schema": "isa-trace-lab/examples",
+  "schemaVersion": "1.0",
+  "examples": [
+    { "id": "arithmetic", "file": "arithmetic.py", "title": "Arithmetic and constants", "topic": "arithmetic", "args": [[21, 4], [-5, 3], [0, 0], [2147483647, 1], [-2147483648, -1], [46341, 46341]] },
+    { "id": "signed_boundaries", "file": "signed_boundaries.py", "title": "Signed boundaries and wraparound", "topic": "signed boundaries", "args": [[]] },
+    { "id": "bitwise", "file": "bitwise.py", "title": "Bitwise operators and shifts", "topic": "arithmetic", "args": [[4660], [-1], [0], [2147483647], [-2147483648], [255]] },
+    { "id": "comparisons", "file": "comparisons.py", "title": "Comparisons and Boolean conditions", "topic": "comparisons", "args": [[3, 7], [7, 3], [5, 5], [-1, 200], [0, 0], [101, -4]] },
+    { "id": "branches", "file": "branches.py", "title": "Branches with if, elif, else", "topic": "branches", "args": [[-4], [0], [7], [10], [2147483647], [-2147483648]] },
+    { "id": "summation", "file": "summation.py", "title": "Summation with a for loop", "topic": "loops", "args": [[10], [0], [1], [100], [-3], [65535]] },
+    { "id": "while_loop", "file": "while_loop.py", "title": "While loop with a data-dependent exit", "topic": "loops", "args": [[27], [1], [6], [97], [0], [-5]] },
+    { "id": "fibonacci", "file": "fibonacci.py", "title": "Fibonacci numbers", "topic": "loops", "args": [[10], [0], [1], [46], [47], [90]] },
+    { "id": "array_traversal", "file": "array_traversal.py", "title": "Fixed-array traversal", "topic": "arrays", "args": [[]] },
+    { "id": "linear_search", "file": "linear_search.py", "title": "Linear search", "topic": "arrays", "args": [[15], [4], [42], [7], [0], [-1]] },
+    { "id": "array_reverse", "file": "array_reverse.py", "title": "In-place array reversal", "topic": "arrays", "args": [[]] },
+    { "id": "prefix_sums", "file": "prefix_sums.py", "title": "Prefix sums of squares", "topic": "arrays", "args": [[0], [1], [100], [-5], [30000], [65536]] },
+    { "id": "countdown", "file": "countdown.py", "title": "Range with a negative step", "topic": "loops", "args": [[9], [0], [1], [10], [-4], [6]] },
+    { "id": "index_error", "file": "index_error.py", "title": "Runtime error: index out of range", "topic": "errors", "args": [[2], [3], [4], [0], [-1]] },
+    { "id": "unsupported", "file": "unsupported.py", "title": "Unsupported syntax", "topic": "errors", "args": [], "expectDiagnostics": true }
+  ]
+}

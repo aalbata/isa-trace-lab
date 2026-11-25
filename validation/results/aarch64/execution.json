@@ -1,0 +1,927 @@
+{
+ "stage": "execution",
+ "target": "aarch64",
+ "totals": {
+  "cases": 11772,
+  "passed": 11772,
+  "faults_agreed": 0,
+  "excluded": 0,
+  "partially_compared": 0
+ },
+ "by_instruction": {
+  "add-imm-w": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "add-reg-w": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "add-imm-x": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "add-reg-x": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "adds-imm-w": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "adds-reg-w": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "adds-imm-x": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "adds-reg-x": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "sub-imm-w": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "sub-reg-w": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "sub-imm-x": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "sub-reg-x": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "subs-imm-w": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "subs-reg-w": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "subs-imm-x": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "subs-reg-x": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "and-imm-w": {
+   "cases": 160,
+   "passed": 160,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "orr-imm-w": {
+   "cases": 160,
+   "passed": 160,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "eor-imm-w": {
+   "cases": 160,
+   "passed": 160,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "ands-imm-w": {
+   "cases": 160,
+   "passed": 160,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "and-reg-w": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "orr-reg-w": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "eor-reg-w": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "ands-reg-w": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "orn-reg-w": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "bic-reg-w": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "and-imm-x": {
+   "cases": 160,
+   "passed": 160,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "orr-imm-x": {
+   "cases": 160,
+   "passed": 160,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "eor-imm-x": {
+   "cases": 160,
+   "passed": 160,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "ands-imm-x": {
+   "cases": 160,
+   "passed": 160,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "and-reg-x": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "orr-reg-x": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "eor-reg-x": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "ands-reg-x": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "orn-reg-x": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "bic-reg-x": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "movz-w": {
+   "cases": 128,
+   "passed": 128,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "movz-x": {
+   "cases": 128,
+   "passed": 128,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "movn-w": {
+   "cases": 128,
+   "passed": 128,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "movn-x": {
+   "cases": 128,
+   "passed": 128,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "movk-w": {
+   "cases": 128,
+   "passed": 128,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "movk-x": {
+   "cases": 128,
+   "passed": 128,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "lslv-w": {
+   "cases": 128,
+   "passed": 128,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "lsrv-w": {
+   "cases": 128,
+   "passed": 128,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "asrv-w": {
+   "cases": 128,
+   "passed": 128,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "madd-w": {
+   "cases": 128,
+   "passed": 128,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "msub-w": {
+   "cases": 128,
+   "passed": 128,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "csel-w": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "csinc-w": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "ubfm-w": {
+   "cases": 168,
+   "passed": 168,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "sbfm-w": {
+   "cases": 168,
+   "passed": 168,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "lslv-x": {
+   "cases": 128,
+   "passed": 128,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "lsrv-x": {
+   "cases": 128,
+   "passed": 128,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "asrv-x": {
+   "cases": 128,
+   "passed": 128,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "madd-x": {
+   "cases": 128,
+   "passed": 128,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "msub-x": {
+   "cases": 128,
+   "passed": 128,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "csel-x": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "csinc-x": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "ubfm-x": {
+   "cases": 168,
+   "passed": 168,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "sbfm-x": {
+   "cases": 168,
+   "passed": 168,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "b": {
+   "cases": 52,
+   "passed": 52,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0,
+   "fetch_fault_after_jump": 24
+  },
+  "bl": {
+   "cases": 52,
+   "passed": 52,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0,
+   "fetch_fault_after_jump": 24
+  },
+  "b.cond": {
+   "cases": 260,
+   "passed": 260,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0,
+   "fetch_fault_after_jump": 68
+  },
+  "cbz-w": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0,
+   "fetch_fault_after_jump": 4
+  },
+  "cbz-x": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0,
+   "fetch_fault_after_jump": 2
+  },
+  "cbnz-w": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0,
+   "fetch_fault_after_jump": 63
+  },
+  "cbnz-x": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0,
+   "fetch_fault_after_jump": 63
+  },
+  "br": {
+   "cases": 128,
+   "passed": 128,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0,
+   "fetch_fault_after_jump": 128
+  },
+  "blr": {
+   "cases": 128,
+   "passed": 128,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0,
+   "fetch_fault_after_jump": 128
+  },
+  "ret": {
+   "cases": 128,
+   "passed": 128,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0,
+   "fetch_fault_after_jump": 128
+  },
+  "ldr-offset-w4": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "ldr-index-w4": {
+   "cases": 128,
+   "passed": 128,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "ldr-offset-x8": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "ldr-index-x8": {
+   "cases": 128,
+   "passed": 128,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "str-offset-w4": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "str-index-w4": {
+   "cases": 128,
+   "passed": 128,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "str-offset-x8": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "str-index-x8": {
+   "cases": 128,
+   "passed": 128,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "ldrb-offset-w1": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "ldrb-index-w1": {
+   "cases": 128,
+   "passed": 128,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "strb-offset-w1": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "strb-index-w1": {
+   "cases": 128,
+   "passed": 128,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "ldrh-offset-w2": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "ldrh-index-w2": {
+   "cases": 128,
+   "passed": 128,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "strh-offset-w2": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "strh-index-w2": {
+   "cases": 128,
+   "passed": 128,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "svc": {
+   "cases": 12,
+   "passed": 12,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "nop": {
+   "cases": 4,
+   "passed": 4,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  }
+ },
+ "by_mnemonic": {
+  "add": {
+   "cases": 544,
+   "passed": 544,
+   "excluded": 0
+  },
+  "adds": {
+   "cases": 544,
+   "passed": 544,
+   "excluded": 0
+  },
+  "sub": {
+   "cases": 544,
+   "passed": 544,
+   "excluded": 0
+  },
+  "subs": {
+   "cases": 544,
+   "passed": 544,
+   "excluded": 0
+  },
+  "and": {
+   "cases": 592,
+   "passed": 592,
+   "excluded": 0
+  },
+  "orr": {
+   "cases": 592,
+   "passed": 592,
+   "excluded": 0
+  },
+  "eor": {
+   "cases": 592,
+   "passed": 592,
+   "excluded": 0
+  },
+  "ands": {
+   "cases": 592,
+   "passed": 592,
+   "excluded": 0
+  },
+  "orn": {
+   "cases": 272,
+   "passed": 272,
+   "excluded": 0
+  },
+  "bic": {
+   "cases": 272,
+   "passed": 272,
+   "excluded": 0
+  },
+  "movz": {
+   "cases": 256,
+   "passed": 256,
+   "excluded": 0
+  },
+  "movn": {
+   "cases": 256,
+   "passed": 256,
+   "excluded": 0
+  },
+  "movk": {
+   "cases": 256,
+   "passed": 256,
+   "excluded": 0
+  },
+  "lslv": {
+   "cases": 256,
+   "passed": 256,
+   "excluded": 0
+  },
+  "lsrv": {
+   "cases": 256,
+   "passed": 256,
+   "excluded": 0
+  },
+  "asrv": {
+   "cases": 256,
+   "passed": 256,
+   "excluded": 0
+  },
+  "madd": {
+   "cases": 256,
+   "passed": 256,
+   "excluded": 0
+  },
+  "msub": {
+   "cases": 256,
+   "passed": 256,
+   "excluded": 0
+  },
+  "csel": {
+   "cases": 272,
+   "passed": 272,
+   "excluded": 0
+  },
+  "csinc": {
+   "cases": 272,
+   "passed": 272,
+   "excluded": 0
+  },
+  "ubfm": {
+   "cases": 336,
+   "passed": 336,
+   "excluded": 0
+  },
+  "sbfm": {
+   "cases": 336,
+   "passed": 336,
+   "excluded": 0
+  },
+  "b": {
+   "cases": 44,
+   "passed": 44,
+   "excluded": 0
+  },
+  "nop": {
+   "cases": 56,
+   "passed": 56,
+   "excluded": 0
+  },
+  "bl": {
+   "cases": 44,
+   "passed": 44,
+   "excluded": 0
+  },
+  "b.eq": {
+   "cases": 16,
+   "passed": 16,
+   "excluded": 0
+  },
+  "b.ne": {
+   "cases": 16,
+   "passed": 16,
+   "excluded": 0
+  },
+  "b.hs": {
+   "cases": 16,
+   "passed": 16,
+   "excluded": 0
+  },
+  "b.lo": {
+   "cases": 16,
+   "passed": 16,
+   "excluded": 0
+  },
+  "b.mi": {
+   "cases": 16,
+   "passed": 16,
+   "excluded": 0
+  },
+  "b.pl": {
+   "cases": 16,
+   "passed": 16,
+   "excluded": 0
+  },
+  "b.vs": {
+   "cases": 16,
+   "passed": 16,
+   "excluded": 0
+  },
+  "b.vc": {
+   "cases": 16,
+   "passed": 16,
+   "excluded": 0
+  },
+  "b.hi": {
+   "cases": 16,
+   "passed": 16,
+   "excluded": 0
+  },
+  "b.ls": {
+   "cases": 16,
+   "passed": 16,
+   "excluded": 0
+  },
+  "b.ge": {
+   "cases": 16,
+   "passed": 16,
+   "excluded": 0
+  },
+  "b.lt": {
+   "cases": 16,
+   "passed": 16,
+   "excluded": 0
+  },
+  "b.gt": {
+   "cases": 16,
+   "passed": 16,
+   "excluded": 0
+  },
+  "b.le": {
+   "cases": 16,
+   "passed": 16,
+   "excluded": 0
+  },
+  "b.al": {
+   "cases": 16,
+   "passed": 16,
+   "excluded": 0
+  },
+  "b.nv": {
+   "cases": 16,
+   "passed": 16,
+   "excluded": 0
+  },
+  "cbz": {
+   "cases": 256,
+   "passed": 256,
+   "excluded": 0
+  },
+  "cbnz": {
+   "cases": 256,
+   "passed": 256,
+   "excluded": 0
+  },
+  "br": {
+   "cases": 128,
+   "passed": 128,
+   "excluded": 0
+  },
+  "blr": {
+   "cases": 128,
+   "passed": 128,
+   "excluded": 0
+  },
+  "ret": {
+   "cases": 128,
+   "passed": 128,
+   "excluded": 0
+  },
+  "ldr": {
+   "cases": 528,
+   "passed": 528,
+   "excluded": 0
+  },
+  "str": {
+   "cases": 528,
+   "passed": 528,
+   "excluded": 0
+  },
+  "ldrb": {
+   "cases": 264,
+   "passed": 264,
+   "excluded": 0
+  },
+  "strb": {
+   "cases": 264,
+   "passed": 264,
+   "excluded": 0
+  },
+  "ldrh": {
+   "cases": 264,
+   "passed": 264,
+   "excluded": 0
+  },
+  "strh": {
+   "cases": 264,
+   "passed": 264,
+   "excluded": 0
+  },
+  "svc": {
+   "cases": 12,
+   "passed": 12,
+   "excluded": 0
+  }
+ },
+ "exclusions": {},
+ "partially_compared": {},
+ "excluded_examples": [],
+ "failures": [],
+ "failure_count": 0,
+ "format": 4,
+ "source": "75133daa269a3cf16e153565cbf718ca3b63616f6ff23e450af33bd58c58942c",
+ "tools": {
+  "python": "3.12.10",
+  "ziglang": "0.15.2",
+  "zig": "0.15.2",
+  "clang": "clang version 20.1.2 (https://github.com/ziglang/zig-bootstrap 7ef74e656cf8ddbd6bf891a8475892aa1afa6891)",
+  "capstone": "5.0.9",
+  "capstone_module_string": "5.0.7",
+  "capstone_core": "5.0",
+  "unicorn": "2.1.4",
+  "unicorn_core": "2.1",
+  "pyelftools": "0.33"
+ },
+ "reference_configuration": "Clang integrated assembler, Armv8-A A64 (-target aarch64-freestanding -mcpu=generic), LLD",
+ "seconds": 55.4
+}

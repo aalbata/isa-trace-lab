@@ -1,0 +1,73 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  recorded-results:
+    # The committed results must be those of the committed source tree: the recorded manifest must match the files
+    # that the validation reads or executes, every committed result file must record the combined hash of these files,
+    # and the committed summary documents must be the ones generated from the committed result files
+    # (docs/validation.md, section 5).
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+      - name: The recorded source manifest matches the source tree
+        run: node scripts/source-manifest.mjs --check
+      - name: Every result records the source tree, and the summary and the support matrix are generated from the results
+        run: node scripts/summarize-validation.ts --check
+      - name: The coverage tables are generated from the support matrix
+        run: node scripts/coverage-tables.ts --check
+
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Type check
+        run: npm run typecheck
+      - name: Unit and integration tests
+        run: npm test
+      - name: Production build
+        run: npm run build
+      - name: Browser tests on the production build under a repository path
+        run: |
+          npx playwright install --with-deps chromium
+          npx playwright test
+        env:
+          PW_CHANNEL: bundled
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+      - name: Reference tools
+        run: python -m pip install -r validation/requirements.txt
+      - name: Independent validation on a reduced corpus (10 generated programs per family)
+        run: node scripts/validate-all.mjs --per-family 10 --python python
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: test-and-validation-results
+          path: |
+            test-results/
+            validation/results/
+            docs/validation-results.md
+          retention-days: 30

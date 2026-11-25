@@ -1,0 +1,91 @@
+{
+ "stage": "crosscheck",
+ "tool": "isa-trace-lab",
+ "version": "1.0.0",
+ "source": "75133daa269a3cf16e153565cbf718ca3b63616f6ff23e450af33bd58c58942c",
+ "corpus": {
+  "generatorVersion": "1.0",
+  "firstInit": 1000,
+  "programsPerFamily": 200,
+  "argumentTuplesPerProgram": 3,
+  "programs": 1031
+ },
+ "engines": [
+  "reference evaluator",
+  "IR interpreter",
+  "riscv simulator",
+  "mips simulator",
+  "aarch64 simulator",
+  "x86 simulator"
+ ],
+ "totals": {
+  "runs": 2831,
+  "passed": 2831,
+  "failed": 0,
+  "incomplete": 0,
+  "boundariesCompared": 208909
+ },
+ "byGroup": {
+  "example": {
+   "programs": 14,
+   "runs": 68,
+   "passed": 68,
+   "incomplete": 0,
+   "exited": 67,
+   "trap": 1,
+   "limit": 0
+  },
+  "edge": {
+   "programs": 17,
+   "runs": 83,
+   "passed": 83,
+   "incomplete": 0,
+   "exited": 73,
+   "trap": 10,
+   "limit": 0
+  },
+  "generated": {
+   "programs": 1000,
+   "runs": 2680,
+   "passed": 2680,
+   "incomplete": 0,
+   "exited": 2058,
+   "trap": 622,
+   "limit": 0
+  }
+ },
+ "perTarget": {
+  "riscv": {
+   "runs": 2831,
+   "agreed": 2831,
+   "incomplete": 0,
+   "instructions": 1617457,
+   "boundaries": 208909
+  },
+  "mips": {
+   "runs": 2831,
+   "agreed": 2831,
+   "incomplete": 0,
+   "instructions": 1132071,
+   "boundaries": 208909
+  },
+  "aarch64": {
+   "runs": 2831,
+   "agreed": 2831,
+   "incomplete": 0,
+   "instructions": 848060,
+   "boundaries": 208909
+  },
+  "x86": {
+   "runs": 2831,
+   "agreed": 2831,
+   "incomplete": 0,
+   "instructions": 997085,
+   "boundaries": 208909
+  }
+ },
+ "failures": [],
+ "incomplete": [],
+ "failure_count": 0,
+ "seconds": 24.5
+}

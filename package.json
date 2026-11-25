@@ -1,0 +1,51 @@
+{
+  "name": "isa-trace-lab",
+  "version": "1.0.0",
+  "description": "Trace a restricted Python-syntax program through an intermediate representation, assembly, machine-code bytes, and simulated execution on RISC-V, MIPS, AArch64, and x86-64 subsets.",
+  "license": "MIT",
+  "author": "Ali Al Bataineh",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "bin": {
+    "isa-trace-lab": "src/cli/main.ts"
+  },
+  "exports": {
+    ".": "./src/core/api.ts"
+  },
+  "scripts": {
+    "dev": "node scripts/copy-runtime.mjs && vite",
+    "build": "node scripts/copy-runtime.mjs && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run",
+    "test:browser": "playwright test",
+    "cli": "node src/cli/main.ts"
+  },
+  "dependencies": {
+    "@codemirror/commands": "6.11.1",
+    "@codemirror/lang-python": "6.2.1",
+    "@codemirror/language": "6.13.1",
+    "@codemirror/lint": "6.9.8",
+    "@codemirror/state": "6.7.6",
+    "@codemirror/view": "6.43.15",
+    "codemirror": "6.0.2",
+    "pyodide": "314.0.8",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.14.0",
+    "@playwright/test": "1.65.1",
+    "@types/node": "24.19.2",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.3.0",
+    "ajv": "8.20.0",
+    "typescript": "7.0.2",
+    "vite": "8.3.8",
+    "vitest": "5.1.1"
+  }
+}

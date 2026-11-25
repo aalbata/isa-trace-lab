@@ -1,0 +1,6016 @@
+{
+ "schema": "isa-trace-lab/figure-data",
+ "schemaVersion": "1.0",
+ "software": {
+  "name": "isa-trace-lab",
+  "version": "1.0.0"
+ },
+ "profiles": [
+  {
+   "id": "riscv",
+   "name": "RISC-V RV32I",
+   "isa": "RV32I base integer instruction set, version 2.1, except FENCE and EBREAK, without extensions",
+   "registerBits": 32,
+   "operationBits": 32,
+   "endianness": "little",
+   "instructionLength": {
+    "min": 4,
+    "max": 4
+   },
+   "flags": [],
+   "registers": 32,
+   "serviceInstruction": "ecall"
+  },
+  {
+   "id": "mips",
+   "name": "MIPS32 Release 2",
+   "isa": "MIPS32 Release 2 integer subset, little-endian, with architectural branch delay slots; no Release 6 encodings",
+   "registerBits": 32,
+   "operationBits": 32,
+   "endianness": "little",
+   "instructionLength": {
+    "min": 4,
+    "max": 4
+   },
+   "flags": [],
+   "registers": 32,
+   "serviceInstruction": "syscall"
+  },
+  {
+   "id": "aarch64",
+   "name": "Arm AArch64 (A64)",
+   "isa": "Armv8-A AArch64 state, A64 instruction set, integer subset without floating point, Advanced SIMD, or system registers",
+   "registerBits": 64,
+   "operationBits": 32,
+   "endianness": "little",
+   "instructionLength": {
+    "min": 4,
+    "max": 4
+   },
+   "flags": [
+    "N",
+    "Z",
+    "C",
+    "V"
+   ],
+   "registers": 32,
+   "serviceInstruction": "svc #0"
+  },
+  {
+   "id": "x86",
+   "name": "x86-64",
+   "isa": "Intel 64 (x86-64) in 64-bit mode, a subset of the general-purpose integer instructions with 32-bit and 64-bit operand size",
+   "registerBits": 64,
+   "operationBits": 32,
+   "endianness": "little",
+   "instructionLength": {
+    "min": 1,
+    "max": 15
+   },
+   "flags": [
+    "OF",
+    "SF",
+    "ZF",
+    "AF",
+    "PF",
+    "CF"
+   ],
+   "registers": 16,
+   "serviceInstruction": "syscall"
+  }
+ ],
+ "examples": [
+  {
+   "id": "arithmetic",
+   "file": "examples/arithmetic.py",
+   "source": "# Arithmetic with small and large constants.\ndef main(a, b):\n    s = a + b\n    d = a - b\n    p = a * b\n    big = 100000 + s\n    print(s)\n    print(d)\n    print(p)\n    return big - 4096\n",
+   "args": [
+    21,
+    4
+   ],
+   "statementLine": 6,
+   "verdict": "agree",
+   "targets": [
+    {
+     "target": "riscv",
+     "outcome": {
+      "status": "exited",
+      "output": [
+       25,
+       17,
+       84
+      ],
+      "steps": 51,
+      "returnValue": 95929
+     },
+     "metrics": {
+      "staticInstructions": 41,
+      "staticInstructionsByRegion": {
+       "startup": 4,
+       "main": 28,
+       "helper": 9,
+       "trap": 0
+      },
+      "codeBytes": 164,
+      "codeBytesByRegion": {
+       "startup": 16,
+       "main": 112,
+       "helper": 36,
+       "trap": 0
+      },
+      "executedInstructions": 51,
+      "executedByRegion": {
+       "startup": 4,
+       "main": 28,
+       "helper": 19,
+       "trap": 0,
+       "unknown": 0
+      },
+      "dataLoads": 1,
+      "dataStores": 1,
+      "registersWritten": 15,
+      "boundaries": 8
+     },
+     "listing": [
+      {
+       "address": 4194304,
+       "bytes": "b7010010",
+       "text": "lui gp, 0x10000",
+       "region": "startup",
+       "lines": [],
+       "note": "gp = start of the data region"
+      },
+      {
+       "address": 4194308,
+       "bytes": "ef00c000",
+       "text": "jal ra, main",
+       "region": "startup",
+       "lines": [],
+       "note": "call main"
+      },
+      {
+       "address": 4194312,
+       "bytes": "93082000",
+       "text": "addi a7, zero, 2",
+       "region": "startup",
+       "lines": [],
+       "note": "exit service; a0 holds the return value"
+      },
+      {
+       "address": 4194316,
+       "bytes": "73000000",
+       "text": "ecall",
+       "region": "startup",
+       "lines": [],
+       "note": ""
+      },
+      {
+       "address": 4194320,
+       "bytes": "130101ff",
+       "text": "addi sp, sp, -16",
+       "region": "main",
+       "lines": [],
+       "note": "allocate the stack frame"
+      },
+      {
+       "address": 4194324,
+       "bytes": "23261100",
+       "text": "sw ra, 12(sp)",
+       "region": "main",
+       "lines": [],
+       "note": "save the return address"
+      },
+      {
+       "address": 4194328,
+       "bytes": "13040500",
+       "text": "addi s0, a0, 0",
+       "region": "main",
+       "lines": [],
+       "note": "parameter to its home register"
+      },
+      {
+       "address": 4194332,
+       "bytes": "93840500",
+       "text": "addi s1, a1, 0",
+       "region": "main",
+       "lines": [],
+       "note": "parameter to its home register"
+      },
+      {
+       "address": 4194336,
+       "bytes": "33099400",
+       "text": "add s2, s0, s1",
+       "region": "main",
+       "lines": [
+        3
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194340,
+       "bytes": "b3099440",
+       "text": "sub s3, s0, s1",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194344,
+       "bytes": "13050400",
+       "text": "addi a0, s0, 0",
+       "region": "main",
+       "lines": [
+        5
+       ],
+       "note": "multiplicand"
+      },
+      {
+       "address": 4194348,
+       "bytes": "93850400",
+       "text": "addi a1, s1, 0",
+       "region": "main",
+       "lines": [
+        5
+       ],
+       "note": "multiplier"
+      },
+      {
+       "address": 4194352,
+       "bytes": "ef000005",
+       "text": "jal ra, __mul",
+       "region": "main",
+       "lines": [
+        5
+       ],
+       "note": "call the software multiplication helper"
+      },
+      {
+       "address": 4194356,
+       "bytes": "130a0500",
+       "text": "addi s4, a0, 0",
+       "region": "main",
+       "lines": [
+        5
+       ],
+       "note": "product"
+      },
+      {
+       "address": 4194360,
+       "bytes": "378f0100",
+       "text": "lui t5, 0x18",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194364,
+       "bytes": "130f0f6a",
+       "text": "addi t5, t5, 1696",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194368,
+       "bytes": "b30ae901",
+       "text": "add s5, s2, t5",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194372,
+       "bytes": "13050900",
+       "text": "addi a0, s2, 0",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": "value to print"
+      },
+      {
+       "address": 4194376,
+       "bytes": "93081000",
+       "text": "addi a7, zero, 1",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": "output service"
+      },
+      {
+       "address": 4194380,
+       "bytes": "73000000",
+       "text": "ecall",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194384,
+       "bytes": "13850900",
+       "text": "addi a0, s3, 0",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": "value to print"
+      },
+      {
+       "address": 4194388,
+       "bytes": "93081000",
+       "text": "addi a7, zero, 1",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": "output service"
+      },
+      {
+       "address": 4194392,
+       "bytes": "73000000",
+       "text": "ecall",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194396,
+       "bytes": "13050a00",
+       "text": "addi a0, s4, 0",
+       "region": "main",
+       "lines": [
+        9
+       ],
+       "note": "value to print"
+      },
+      {
+       "address": 4194400,
+       "bytes": "93081000",
+       "text": "addi a7, zero, 1",
+       "region": "main",
+       "lines": [
+        9
+       ],
+       "note": "output service"
+      },
+      {
+       "address": 4194404,
+       "bytes": "73000000",
+       "text": "ecall",
+       "region": "main",
+       "lines": [
+        9
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194408,
+       "bytes": "371f0000",
+       "text": "lui t5, 0x1",
+       "region": "main",
+       "lines": [
+        10
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194412,
+       "bytes": "b382ea41",
+       "text": "sub t0, s5, t5",
+       "region": "main",
+       "lines": [
+        10
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194416,
+       "bytes": "13850200",
+       "text": "addi a0, t0, 0",
+       "region": "main",
+       "lines": [
+        10
+       ],
+       "note": "return value"
+      },
+      {
+       "address": 4194420,
+       "bytes": "8320c100",
+       "text": "lw ra, 12(sp)",
+       "region": "main",
+       "lines": [
+        10
+       ],
+       "note": "restore the return address"
+      },
+      {
+       "address": 4194424,
+       "bytes": "13010101",
+       "text": "addi sp, sp, 16",
+       "region": "main",
+       "lines": [
+        10
+       ],
+       "note": "release the stack frame"
+      },
+      {
+       "address": 4194428,
+       "bytes": "67800000",
+       "text": "jalr zero, 0(ra)",
+       "region": "main",
+       "lines": [
+        10
+       ],
+       "note": "return to the caller"
+      },
+      {
+       "address": 4194432,
+       "bytes": "130f0500",
+       "text": "addi t5, a0, 0",
+       "region": "helper",
+       "lines": [],
+       "note": "multiplicand, shifted left each round"
+      },
+      {
+       "address": 4194436,
+       "bytes": "13050000",
+       "text": "addi a0, zero, 0",
+       "region": "helper",
+       "lines": [],
+       "note": "product so far"
+      },
+      {
+       "address": 4194440,
+       "bytes": "93ff1500",
+       "text": "andi t6, a1, 1",
+       "region": "helper",
+       "lines": [],
+       "note": "lowest bit of the multiplier"
+      },
+      {
+       "address": 4194444,
+       "bytes": "63840f00",
+       "text": "beq t6, zero, __mul_skip",
+       "region": "helper",
+       "lines": [],
+       "note": ""
+      },
+      {
+       "address": 4194448,
+       "bytes": "3305e501",
+       "text": "add a0, a0, t5",
+       "region": "helper",
+       "lines": [],
+       "note": "add the shifted multiplicand"
+      },
+      {
+       "address": 4194452,
+       "bytes": "131f1f00",
+       "text": "slli t5, t5, 1",
+       "region": "helper",
+       "lines": [],
+       "note": ""
+      },
+      {
+       "address": 4194456,
+       "bytes": "93d51500",
+       "text": "srli a1, a1, 1",
+       "region": "helper",
+       "lines": [],
+       "note": ""
+      },
+      {
+       "address": 4194460,
+       "bytes": "e39605fe",
+       "text": "bne a1, zero, __mul_loop",
+       "region": "helper",
+       "lines": [],
+       "note": "repeat while multiplier bits remain"
+      },
+      {
+       "address": 4194464,
+       "bytes": "67800000",
+       "text": "jalr zero, 0(ra)",
+       "region": "helper",
+       "lines": [],
+       "note": ""
+      }
+     ],
+     "boundaries": [
+      {
+       "ordinal": 0,
+       "line": 3,
+       "step": 6
+      },
+      {
+       "ordinal": 1,
+       "line": 4,
+       "step": 7
+      },
+      {
+       "ordinal": 2,
+       "line": 5,
+       "step": 8
+      },
+      {
+       "ordinal": 3,
+       "line": 6,
+       "step": 31
+      },
+      {
+       "ordinal": 4,
+       "line": 7,
+       "step": 34
+      },
+      {
+       "ordinal": 5,
+       "line": 8,
+       "step": 37
+      },
+      {
+       "ordinal": 6,
+       "line": 9,
+       "step": 40
+      },
+      {
+       "ordinal": 7,
+       "line": 10,
+       "step": 43
+      }
+     ]
+    },
+    {
+     "target": "mips",
+     "outcome": {
+      "status": "exited",
+      "output": [
+       25,
+       17,
+       84
+      ],
+      "steps": 27,
+      "returnValue": 95929
+     },
+     "metrics": {
+      "staticInstructions": 27,
+      "staticInstructionsByRegion": {
+       "startup": 6,
+       "main": 21,
+       "helper": 0,
+       "trap": 0
+      },
+      "codeBytes": 108,
+      "codeBytesByRegion": {
+       "startup": 24,
+       "main": 84,
+       "helper": 0,
+       "trap": 0
+      },
+      "executedInstructions": 27,
+      "executedByRegion": {
+       "startup": 6,
+       "main": 21,
+       "helper": 0,
+       "trap": 0,
+       "unknown": 0
+      },
+      "dataLoads": 0,
+      "dataStores": 0,
+      "registersWritten": 13,
+      "boundaries": 8
+     },
+     "listing": [
+      {
+       "address": 4194304,
+       "bytes": "00101c3c",
+       "text": "lui $gp, 0x1000",
+       "region": "startup",
+       "lines": [],
+       "note": "$gp = start of the data region"
+      },
+      {
+       "address": 4194308,
+       "bytes": "0600100c",
+       "text": "jal main",
+       "region": "startup",
+       "lines": [],
+       "note": "call main; $ra = address after the delay slot"
+      },
+      {
+       "address": 4194312,
+       "bytes": "00000000",
+       "text": "sll $zero, $zero, 0",
+       "region": "startup",
+       "lines": [],
+       "note": "delay slot: executes before the branch or jump takes effect"
+      },
+      {
+       "address": 4194316,
+       "bytes": "25204000",
+       "text": "or $a0, $v0, $zero",
+       "region": "startup",
+       "lines": [],
+       "note": "return value of main becomes the service argument"
+      },
+      {
+       "address": 4194320,
+       "bytes": "02000224",
+       "text": "addiu $v0, $zero, 2",
+       "region": "startup",
+       "lines": [],
+       "note": "exit service"
+      },
+      {
+       "address": 4194324,
+       "bytes": "0c000000",
+       "text": "syscall",
+       "region": "startup",
+       "lines": [],
+       "note": ""
+      },
+      {
+       "address": 4194328,
+       "bytes": "25808000",
+       "text": "or $s0, $a0, $zero",
+       "region": "main",
+       "lines": [],
+       "note": "parameter to its home register"
+      },
+      {
+       "address": 4194332,
+       "bytes": "2588a000",
+       "text": "or $s1, $a1, $zero",
+       "region": "main",
+       "lines": [],
+       "note": "parameter to its home register"
+      },
+      {
+       "address": 4194336,
+       "bytes": "21901102",
+       "text": "addu $s2, $s0, $s1",
+       "region": "main",
+       "lines": [
+        3
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194340,
+       "bytes": "23981102",
+       "text": "subu $s3, $s0, $s1",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194344,
+       "bytes": "02a01172",
+       "text": "mul $s4, $s0, $s1",
+       "region": "main",
+       "lines": [
+        5
+       ],
+       "note": "low 32 bits of the product"
+      },
+      {
+       "address": 4194348,
+       "bytes": "0100183c",
+       "text": "lui $t8, 0x1",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194352,
+       "bytes": "a0861837",
+       "text": "ori $t8, $t8, 0x86a0",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194356,
+       "bytes": "21a85802",
+       "text": "addu $s5, $s2, $t8",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194360,
+       "bytes": "25204002",
+       "text": "or $a0, $s2, $zero",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": "value to print"
+      },
+      {
+       "address": 4194364,
+       "bytes": "01000224",
+       "text": "addiu $v0, $zero, 1",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": "output service"
+      },
+      {
+       "address": 4194368,
+       "bytes": "0c000000",
+       "text": "syscall",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194372,
+       "bytes": "25206002",
+       "text": "or $a0, $s3, $zero",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": "value to print"
+      },
+      {
+       "address": 4194376,
+       "bytes": "01000224",
+       "text": "addiu $v0, $zero, 1",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": "output service"
+      },
+      {
+       "address": 4194380,
+       "bytes": "0c000000",
+       "text": "syscall",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194384,
+       "bytes": "25208002",
+       "text": "or $a0, $s4, $zero",
+       "region": "main",
+       "lines": [
+        9
+       ],
+       "note": "value to print"
+      },
+      {
+       "address": 4194388,
+       "bytes": "01000224",
+       "text": "addiu $v0, $zero, 1",
+       "region": "main",
+       "lines": [
+        9
+       ],
+       "note": "output service"
+      },
+      {
+       "address": 4194392,
+       "bytes": "0c000000",
+       "text": "syscall",
+       "region": "main",
+       "lines": [
+        9
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194396,
+       "bytes": "00f0a826",
+       "text": "addiu $t0, $s5, -4096",
+       "region": "main",
+       "lines": [
+        10
+       ],
+       "note": "subtract 4096"
+      },
+      {
+       "address": 4194400,
+       "bytes": "25100001",
+       "text": "or $v0, $t0, $zero",
+       "region": "main",
+       "lines": [
+        10
+       ],
+       "note": "return value"
+      },
+      {
+       "address": 4194404,
+       "bytes": "0800e003",
+       "text": "jr $ra",
+       "region": "main",
+       "lines": [
+        10
+       ],
+       "note": "return to the caller"
+      },
+      {
+       "address": 4194408,
+       "bytes": "00000000",
+       "text": "sll $zero, $zero, 0",
+       "region": "main",
+       "lines": [
+        10
+       ],
+       "note": "delay slot: executes before the branch or jump takes effect"
+      }
+     ],
+     "boundaries": [
+      {
+       "ordinal": 0,
+       "line": 3,
+       "step": 5
+      },
+      {
+       "ordinal": 1,
+       "line": 4,
+       "step": 6
+      },
+      {
+       "ordinal": 2,
+       "line": 5,
+       "step": 7
+      },
+      {
+       "ordinal": 3,
+       "line": 6,
+       "step": 8
+      },
+      {
+       "ordinal": 4,
+       "line": 7,
+       "step": 11
+      },
+      {
+       "ordinal": 5,
+       "line": 8,
+       "step": 14
+      },
+      {
+       "ordinal": 6,
+       "line": 9,
+       "step": 17
+      },
+      {
+       "ordinal": 7,
+       "line": 10,
+       "step": 20
+      }
+     ]
+    },
+    {
+     "target": "aarch64",
+     "outcome": {
+      "status": "exited",
+      "output": [
+       25,
+       17,
+       84
+      ],
+      "steps": 23,
+      "returnValue": 95929
+     },
+     "metrics": {
+      "staticInstructions": 23,
+      "staticInstructionsByRegion": {
+       "startup": 3,
+       "main": 20,
+       "helper": 0,
+       "trap": 0
+      },
+      "codeBytes": 92,
+      "codeBytesByRegion": {
+       "startup": 12,
+       "main": 80,
+       "helper": 0,
+       "trap": 0
+      },
+      "executedInstructions": 23,
+      "executedByRegion": {
+       "startup": 3,
+       "main": 20,
+       "helper": 0,
+       "trap": 0,
+       "unknown": 0
+      },
+      "dataLoads": 0,
+      "dataStores": 0,
+      "registersWritten": 12,
+      "boundaries": 8
+     },
+     "listing": [
+      {
+       "address": 4194304,
+       "bytes": "03000094",
+       "text": "bl main",
+       "region": "startup",
+       "lines": [],
+       "note": "call main; the return address goes to x30"
+      },
+      {
+       "address": 4194308,
+       "bytes": "48008052",
+       "text": "movz w8, #0x2",
+       "region": "startup",
+       "lines": [],
+       "note": "exit service; w0 holds the return value"
+      },
+      {
+       "address": 4194312,
+       "bytes": "010000d4",
+       "text": "svc #0",
+       "region": "startup",
+       "lines": [],
+       "note": ""
+      },
+      {
+       "address": 4194316,
+       "bytes": "f303002a",
+       "text": "orr w19, wzr, w0",
+       "region": "main",
+       "lines": [],
+       "note": "parameter to its home register"
+      },
+      {
+       "address": 4194320,
+       "bytes": "f403012a",
+       "text": "orr w20, wzr, w1",
+       "region": "main",
+       "lines": [],
+       "note": "parameter to its home register"
+      },
+      {
+       "address": 4194324,
+       "bytes": "7502140b",
+       "text": "add w21, w19, w20",
+       "region": "main",
+       "lines": [
+        3
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194328,
+       "bytes": "7602144b",
+       "text": "sub w22, w19, w20",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194332,
+       "bytes": "777e141b",
+       "text": "madd w23, w19, w20, wzr",
+       "region": "main",
+       "lines": [
+        5
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194336,
+       "bytes": "10d49052",
+       "text": "movz w16, #0x86a0",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194340,
+       "bytes": "3000a072",
+       "text": "movk w16, #0x1, lsl #16",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": "upper 16 bits of the constant"
+      },
+      {
+       "address": 4194344,
+       "bytes": "b802100b",
+       "text": "add w24, w21, w16",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194348,
+       "bytes": "e003152a",
+       "text": "orr w0, wzr, w21",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": "value to print"
+      },
+      {
+       "address": 4194352,
+       "bytes": "28008052",
+       "text": "movz w8, #0x1",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": "output service"
+      },
+      {
+       "address": 4194356,
+       "bytes": "010000d4",
+       "text": "svc #0",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194360,
+       "bytes": "e003162a",
+       "text": "orr w0, wzr, w22",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": "value to print"
+      },
+      {
+       "address": 4194364,
+       "bytes": "28008052",
+       "text": "movz w8, #0x1",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": "output service"
+      },
+      {
+       "address": 4194368,
+       "bytes": "010000d4",
+       "text": "svc #0",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194372,
+       "bytes": "e003172a",
+       "text": "orr w0, wzr, w23",
+       "region": "main",
+       "lines": [
+        9
+       ],
+       "note": "value to print"
+      },
+      {
+       "address": 4194376,
+       "bytes": "28008052",
+       "text": "movz w8, #0x1",
+       "region": "main",
+       "lines": [
+        9
+       ],
+       "note": "output service"
+      },
+      {
+       "address": 4194380,
+       "bytes": "010000d4",
+       "text": "svc #0",
+       "region": "main",
+       "lines": [
+        9
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194384,
+       "bytes": "09074051",
+       "text": "sub w9, w24, #1, lsl #12",
+       "region": "main",
+       "lines": [
+        10
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194388,
+       "bytes": "e003092a",
+       "text": "orr w0, wzr, w9",
+       "region": "main",
+       "lines": [
+        10
+       ],
+       "note": "return value"
+      },
+      {
+       "address": 4194392,
+       "bytes": "c0035fd6",
+       "text": "ret x30",
+       "region": "main",
+       "lines": [
+        10
+       ],
+       "note": "return to the caller"
+      }
+     ],
+     "boundaries": [
+      {
+       "ordinal": 0,
+       "line": 3,
+       "step": 3
+      },
+      {
+       "ordinal": 1,
+       "line": 4,
+       "step": 4
+      },
+      {
+       "ordinal": 2,
+       "line": 5,
+       "step": 5
+      },
+      {
+       "ordinal": 3,
+       "line": 6,
+       "step": 6
+      },
+      {
+       "ordinal": 4,
+       "line": 7,
+       "step": 9
+      },
+      {
+       "ordinal": 5,
+       "line": 8,
+       "step": 12
+      },
+      {
+       "ordinal": 6,
+       "line": 9,
+       "step": 15
+      },
+      {
+       "ordinal": 7,
+       "line": 10,
+       "step": 18
+      }
+     ]
+    },
+    {
+     "target": "x86",
+     "outcome": {
+      "status": "exited",
+      "output": [
+       25,
+       17,
+       84
+      ],
+      "steps": 27,
+      "returnValue": 95929
+     },
+     "metrics": {
+      "staticInstructions": 27,
+      "staticInstructionsByRegion": {
+       "startup": 4,
+       "main": 23,
+       "helper": 0,
+       "trap": 0
+      },
+      "codeBytes": 91,
+      "codeBytesByRegion": {
+       "startup": 14,
+       "main": 77,
+       "helper": 0,
+       "trap": 0
+      },
+      "executedInstructions": 27,
+      "executedByRegion": {
+       "startup": 4,
+       "main": 23,
+       "helper": 0,
+       "trap": 0,
+       "unknown": 0
+      },
+      "dataLoads": 1,
+      "dataStores": 1,
+      "registersWritten": 13,
+      "boundaries": 8
+     },
+     "listing": [
+      {
+       "address": 4194304,
+       "bytes": "e809000000",
+       "text": "call main",
+       "region": "startup",
+       "lines": [],
+       "note": "call main; the return address is pushed on the stack"
+      },
+      {
+       "address": 4194309,
+       "bytes": "89c7",
+       "text": "mov edi, eax",
+       "region": "startup",
+       "lines": [],
+       "note": "return value of main is the argument of the exit service"
+      },
+      {
+       "address": 4194311,
+       "bytes": "b802000000",
+       "text": "mov eax, 2",
+       "region": "startup",
+       "lines": [],
+       "note": "exit service"
+      },
+      {
+       "address": 4194316,
+       "bytes": "0f05",
+       "text": "syscall",
+       "region": "startup",
+       "lines": [],
+       "note": ""
+      },
+      {
+       "address": 4194318,
+       "bytes": "89fb",
+       "text": "mov ebx, edi",
+       "region": "main",
+       "lines": [],
+       "note": "parameter to its home register"
+      },
+      {
+       "address": 4194320,
+       "bytes": "89f5",
+       "text": "mov ebp, esi",
+       "region": "main",
+       "lines": [],
+       "note": "parameter to its home register"
+      },
+      {
+       "address": 4194322,
+       "bytes": "4189dc",
+       "text": "mov r12d, ebx",
+       "region": "main",
+       "lines": [
+        3
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194325,
+       "bytes": "4101ec",
+       "text": "add r12d, ebp",
+       "region": "main",
+       "lines": [
+        3
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194328,
+       "bytes": "4189dd",
+       "text": "mov r13d, ebx",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194331,
+       "bytes": "4129ed",
+       "text": "sub r13d, ebp",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194334,
+       "bytes": "4189de",
+       "text": "mov r14d, ebx",
+       "region": "main",
+       "lines": [
+        5
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194337,
+       "bytes": "440faff5",
+       "text": "imul r14d, ebp",
+       "region": "main",
+       "lines": [
+        5
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194341,
+       "bytes": "4589e7",
+       "text": "mov r15d, r12d",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194344,
+       "bytes": "4181c7a0860100",
+       "text": "add r15d, 100000",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194351,
+       "bytes": "4489e7",
+       "text": "mov edi, r12d",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": "value to print"
+      },
+      {
+       "address": 4194354,
+       "bytes": "b801000000",
+       "text": "mov eax, 1",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": "output service"
+      },
+      {
+       "address": 4194359,
+       "bytes": "0f05",
+       "text": "syscall",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194361,
+       "bytes": "4489ef",
+       "text": "mov edi, r13d",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": "value to print"
+      },
+      {
+       "address": 4194364,
+       "bytes": "b801000000",
+       "text": "mov eax, 1",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": "output service"
+      },
+      {
+       "address": 4194369,
+       "bytes": "0f05",
+       "text": "syscall",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194371,
+       "bytes": "4489f7",
+       "text": "mov edi, r14d",
+       "region": "main",
+       "lines": [
+        9
+       ],
+       "note": "value to print"
+      },
+      {
+       "address": 4194374,
+       "bytes": "b801000000",
+       "text": "mov eax, 1",
+       "region": "main",
+       "lines": [
+        9
+       ],
+       "note": "output service"
+      },
+      {
+       "address": 4194379,
+       "bytes": "0f05",
+       "text": "syscall",
+       "region": "main",
+       "lines": [
+        9
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194381,
+       "bytes": "4589f8",
+       "text": "mov r8d, r15d",
+       "region": "main",
+       "lines": [
+        10
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194384,
+       "bytes": "4181e800100000",
+       "text": "sub r8d, 4096",
+       "region": "main",
+       "lines": [
+        10
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194391,
+       "bytes": "4489c0",
+       "text": "mov eax, r8d",
+       "region": "main",
+       "lines": [
+        10
+       ],
+       "note": "return value"
+      },
+      {
+       "address": 4194394,
+       "bytes": "c3",
+       "text": "ret",
+       "region": "main",
+       "lines": [
+        10
+       ],
+       "note": "pop the return address and jump to it"
+      }
+     ],
+     "boundaries": [
+      {
+       "ordinal": 0,
+       "line": 3,
+       "step": 3
+      },
+      {
+       "ordinal": 1,
+       "line": 4,
+       "step": 5
+      },
+      {
+       "ordinal": 2,
+       "line": 5,
+       "step": 7
+      },
+      {
+       "ordinal": 3,
+       "line": 6,
+       "step": 9
+      },
+      {
+       "ordinal": 4,
+       "line": 7,
+       "step": 11
+      },
+      {
+       "ordinal": 5,
+       "line": 8,
+       "step": 14
+      },
+      {
+       "ordinal": 6,
+       "line": 9,
+       "step": 17
+      },
+      {
+       "ordinal": 7,
+       "line": 10,
+       "step": 20
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "summation",
+   "file": "examples/summation.py",
+   "source": "# Sum of the integers from 1 to n with a for loop.\ndef main(n):\n    total = 0\n    for i in range(1, n + 1):\n        total += i\n    print(total)\n    return total\n",
+   "args": [
+    10
+   ],
+   "statementLine": 0,
+   "verdict": "agree",
+   "targets": [
+    {
+     "target": "riscv",
+     "outcome": {
+      "status": "exited",
+      "output": [
+       55
+      ],
+      "steps": 82,
+      "returnValue": 55
+     },
+     "metrics": {
+      "staticInstructions": 21,
+      "staticInstructionsByRegion": {
+       "startup": 4,
+       "main": 17,
+       "helper": 0,
+       "trap": 0
+      },
+      "codeBytes": 84,
+      "codeBytesByRegion": {
+       "startup": 16,
+       "main": 68,
+       "helper": 0,
+       "trap": 0
+      },
+      "executedInstructions": 82,
+      "executedByRegion": {
+       "startup": 4,
+       "main": 78,
+       "helper": 0,
+       "trap": 0,
+       "unknown": 0
+      },
+      "dataLoads": 0,
+      "dataStores": 0,
+      "registersWritten": 11,
+      "boundaries": 24
+     },
+     "listing": [
+      {
+       "address": 4194304,
+       "bytes": "b7010010",
+       "text": "lui gp, 0x10000",
+       "region": "startup",
+       "lines": [],
+       "note": "gp = start of the data region"
+      },
+      {
+       "address": 4194308,
+       "bytes": "ef00c000",
+       "text": "jal ra, main",
+       "region": "startup",
+       "lines": [],
+       "note": "call main"
+      },
+      {
+       "address": 4194312,
+       "bytes": "93082000",
+       "text": "addi a7, zero, 2",
+       "region": "startup",
+       "lines": [],
+       "note": "exit service; a0 holds the return value"
+      },
+      {
+       "address": 4194316,
+       "bytes": "73000000",
+       "text": "ecall",
+       "region": "startup",
+       "lines": [],
+       "note": ""
+      },
+      {
+       "address": 4194320,
+       "bytes": "13040500",
+       "text": "addi s0, a0, 0",
+       "region": "main",
+       "lines": [],
+       "note": "parameter to its home register"
+      },
+      {
+       "address": 4194324,
+       "bytes": "93040000",
+       "text": "addi s1, zero, 0",
+       "region": "main",
+       "lines": [
+        3
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194328,
+       "bytes": "93091000",
+       "text": "addi s3, zero, 1",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194332,
+       "bytes": "130a1400",
+       "text": "addi s4, s0, 1",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194336,
+       "bytes": "63d04903",
+       "text": "bge s3, s4, .Lb4",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194340,
+       "bytes": "13890900",
+       "text": "addi s2, s3, 0",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194344,
+       "bytes": "b3842401",
+       "text": "add s1, s1, s2",
+       "region": "main",
+       "lines": [
+        5
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194348,
+       "bytes": "b3023a41",
+       "text": "sub t0, s4, s3",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194352,
+       "bytes": "130f1000",
+       "text": "addi t5, zero, 1",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194356,
+       "bytes": "63765f00",
+       "text": "bgeu t5, t0, .Lb4",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": "a <= b is b >= a (unsigned)"
+      },
+      {
+       "address": 4194360,
+       "bytes": "93891900",
+       "text": "addi s3, s3, 1",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194364,
+       "bytes": "6ff09ffe",
+       "text": "jal zero, .Lb1",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194368,
+       "bytes": "13850400",
+       "text": "addi a0, s1, 0",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": "value to print"
+      },
+      {
+       "address": 4194372,
+       "bytes": "93081000",
+       "text": "addi a7, zero, 1",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": "output service"
+      },
+      {
+       "address": 4194376,
+       "bytes": "73000000",
+       "text": "ecall",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194380,
+       "bytes": "13850400",
+       "text": "addi a0, s1, 0",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": "return value"
+      },
+      {
+       "address": 4194384,
+       "bytes": "67800000",
+       "text": "jalr zero, 0(ra)",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": "return to the caller"
+      }
+     ],
+     "boundaries": [
+      {
+       "ordinal": 0,
+       "line": 3,
+       "step": 3
+      },
+      {
+       "ordinal": 1,
+       "line": 4,
+       "step": 4
+      },
+      {
+       "ordinal": 2,
+       "line": 5,
+       "step": 8
+      },
+      {
+       "ordinal": 3,
+       "line": 4,
+       "step": 9
+      },
+      {
+       "ordinal": 4,
+       "line": 5,
+       "step": 15
+      },
+      {
+       "ordinal": 5,
+       "line": 4,
+       "step": 16
+      },
+      {
+       "ordinal": 6,
+       "line": 5,
+       "step": 22
+      },
+      {
+       "ordinal": 7,
+       "line": 4,
+       "step": 23
+      },
+      {
+       "ordinal": 8,
+       "line": 5,
+       "step": 29
+      },
+      {
+       "ordinal": 9,
+       "line": 4,
+       "step": 30
+      },
+      {
+       "ordinal": 10,
+       "line": 5,
+       "step": 36
+      },
+      {
+       "ordinal": 11,
+       "line": 4,
+       "step": 37
+      },
+      {
+       "ordinal": 12,
+       "line": 5,
+       "step": 43
+      },
+      {
+       "ordinal": 13,
+       "line": 4,
+       "step": 44
+      },
+      {
+       "ordinal": 14,
+       "line": 5,
+       "step": 50
+      },
+      {
+       "ordinal": 15,
+       "line": 4,
+       "step": 51
+      },
+      {
+       "ordinal": 16,
+       "line": 5,
+       "step": 57
+      },
+      {
+       "ordinal": 17,
+       "line": 4,
+       "step": 58
+      },
+      {
+       "ordinal": 18,
+       "line": 5,
+       "step": 64
+      },
+      {
+       "ordinal": 19,
+       "line": 4,
+       "step": 65
+      },
+      {
+       "ordinal": 20,
+       "line": 5,
+       "step": 71
+      },
+      {
+       "ordinal": 21,
+       "line": 4,
+       "step": 72
+      },
+      {
+       "ordinal": 22,
+       "line": 6,
+       "step": 75
+      },
+      {
+       "ordinal": 23,
+       "line": 7,
+       "step": 78
+      }
+     ]
+    },
+    {
+     "target": "mips",
+     "outcome": {
+      "status": "exited",
+      "output": [
+       55
+      ],
+      "steps": 116,
+      "returnValue": 55
+     },
+     "metrics": {
+      "staticInstructions": 29,
+      "staticInstructionsByRegion": {
+       "startup": 6,
+       "main": 23,
+       "helper": 0,
+       "trap": 0
+      },
+      "codeBytes": 116,
+      "codeBytesByRegion": {
+       "startup": 24,
+       "main": 92,
+       "helper": 0,
+       "trap": 0
+      },
+      "executedInstructions": 116,
+      "executedByRegion": {
+       "startup": 6,
+       "main": 110,
+       "helper": 0,
+       "trap": 0,
+       "unknown": 0
+      },
+      "dataLoads": 0,
+      "dataStores": 0,
+      "registersWritten": 11,
+      "boundaries": 24
+     },
+     "listing": [
+      {
+       "address": 4194304,
+       "bytes": "00101c3c",
+       "text": "lui $gp, 0x1000",
+       "region": "startup",
+       "lines": [],
+       "note": "$gp = start of the data region"
+      },
+      {
+       "address": 4194308,
+       "bytes": "0600100c",
+       "text": "jal main",
+       "region": "startup",
+       "lines": [],
+       "note": "call main; $ra = address after the delay slot"
+      },
+      {
+       "address": 4194312,
+       "bytes": "00000000",
+       "text": "sll $zero, $zero, 0",
+       "region": "startup",
+       "lines": [],
+       "note": "delay slot: executes before the branch or jump takes effect"
+      },
+      {
+       "address": 4194316,
+       "bytes": "25204000",
+       "text": "or $a0, $v0, $zero",
+       "region": "startup",
+       "lines": [],
+       "note": "return value of main becomes the service argument"
+      },
+      {
+       "address": 4194320,
+       "bytes": "02000224",
+       "text": "addiu $v0, $zero, 2",
+       "region": "startup",
+       "lines": [],
+       "note": "exit service"
+      },
+      {
+       "address": 4194324,
+       "bytes": "0c000000",
+       "text": "syscall",
+       "region": "startup",
+       "lines": [],
+       "note": ""
+      },
+      {
+       "address": 4194328,
+       "bytes": "25808000",
+       "text": "or $s0, $a0, $zero",
+       "region": "main",
+       "lines": [],
+       "note": "parameter to its home register"
+      },
+      {
+       "address": 4194332,
+       "bytes": "00001124",
+       "text": "addiu $s1, $zero, 0",
+       "region": "main",
+       "lines": [
+        3
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194336,
+       "bytes": "01001324",
+       "text": "addiu $s3, $zero, 1",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194340,
+       "bytes": "01001426",
+       "text": "addiu $s4, $s0, 1",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194344,
+       "bytes": "2ac07402",
+       "text": "slt $t8, $s3, $s4",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194348,
+       "bytes": "0b000013",
+       "text": "beq $t8, $zero, .Lb4",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": "taken when not (a < b)"
+      },
+      {
+       "address": 4194352,
+       "bytes": "00000000",
+       "text": "sll $zero, $zero, 0",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": "delay slot: executes before the branch or jump takes effect"
+      },
+      {
+       "address": 4194356,
+       "bytes": "25906002",
+       "text": "or $s2, $s3, $zero",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194360,
+       "bytes": "21883202",
+       "text": "addu $s1, $s1, $s2",
+       "region": "main",
+       "lines": [
+        5
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194364,
+       "bytes": "23409302",
+       "text": "subu $t0, $s4, $s3",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194368,
+       "bytes": "01001824",
+       "text": "addiu $t8, $zero, 1",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194372,
+       "bytes": "2bc00803",
+       "text": "sltu $t8, $t8, $t0",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": "b < a"
+      },
+      {
+       "address": 4194376,
+       "bytes": "04000013",
+       "text": "beq $t8, $zero, .Lb4",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": "taken when not (b < a)"
+      },
+      {
+       "address": 4194380,
+       "bytes": "00000000",
+       "text": "sll $zero, $zero, 0",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": "delay slot: executes before the branch or jump takes effect"
+      },
+      {
+       "address": 4194384,
+       "bytes": "01007326",
+       "text": "addiu $s3, $s3, 1",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194388,
+       "bytes": "f7ff0010",
+       "text": "beq $zero, $zero, .Lb1",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194392,
+       "bytes": "00000000",
+       "text": "sll $zero, $zero, 0",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": "delay slot: executes before the branch or jump takes effect"
+      },
+      {
+       "address": 4194396,
+       "bytes": "25202002",
+       "text": "or $a0, $s1, $zero",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": "value to print"
+      },
+      {
+       "address": 4194400,
+       "bytes": "01000224",
+       "text": "addiu $v0, $zero, 1",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": "output service"
+      },
+      {
+       "address": 4194404,
+       "bytes": "0c000000",
+       "text": "syscall",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194408,
+       "bytes": "25102002",
+       "text": "or $v0, $s1, $zero",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": "return value"
+      },
+      {
+       "address": 4194412,
+       "bytes": "0800e003",
+       "text": "jr $ra",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": "return to the caller"
+      },
+      {
+       "address": 4194416,
+       "bytes": "00000000",
+       "text": "sll $zero, $zero, 0",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": "delay slot: executes before the branch or jump takes effect"
+      }
+     ],
+     "boundaries": [
+      {
+       "ordinal": 0,
+       "line": 3,
+       "step": 4
+      },
+      {
+       "ordinal": 1,
+       "line": 4,
+       "step": 5
+      },
+      {
+       "ordinal": 2,
+       "line": 5,
+       "step": 11
+      },
+      {
+       "ordinal": 3,
+       "line": 4,
+       "step": 12
+      },
+      {
+       "ordinal": 4,
+       "line": 5,
+       "step": 21
+      },
+      {
+       "ordinal": 5,
+       "line": 4,
+       "step": 22
+      },
+      {
+       "ordinal": 6,
+       "line": 5,
+       "step": 31
+      },
+      {
+       "ordinal": 7,
+       "line": 4,
+       "step": 32
+      },
+      {
+       "ordinal": 8,
+       "line": 5,
+       "step": 41
+      },
+      {
+       "ordinal": 9,
+       "line": 4,
+       "step": 42
+      },
+      {
+       "ordinal": 10,
+       "line": 5,
+       "step": 51
+      },
+      {
+       "ordinal": 11,
+       "line": 4,
+       "step": 52
+      },
+      {
+       "ordinal": 12,
+       "line": 5,
+       "step": 61
+      },
+      {
+       "ordinal": 13,
+       "line": 4,
+       "step": 62
+      },
+      {
+       "ordinal": 14,
+       "line": 5,
+       "step": 71
+      },
+      {
+       "ordinal": 15,
+       "line": 4,
+       "step": 72
+      },
+      {
+       "ordinal": 16,
+       "line": 5,
+       "step": 81
+      },
+      {
+       "ordinal": 17,
+       "line": 4,
+       "step": 82
+      },
+      {
+       "ordinal": 18,
+       "line": 5,
+       "step": 91
+      },
+      {
+       "ordinal": 19,
+       "line": 4,
+       "step": 92
+      },
+      {
+       "ordinal": 20,
+       "line": 5,
+       "step": 101
+      },
+      {
+       "ordinal": 21,
+       "line": 4,
+       "step": 102
+      },
+      {
+       "ordinal": 22,
+       "line": 6,
+       "step": 107
+      },
+      {
+       "ordinal": 23,
+       "line": 7,
+       "step": 110
+      }
+     ]
+    },
+    {
+     "target": "aarch64",
+     "outcome": {
+      "status": "exited",
+      "output": [
+       55
+      ],
+      "steps": 82,
+      "returnValue": 55
+     },
+     "metrics": {
+      "staticInstructions": 21,
+      "staticInstructionsByRegion": {
+       "startup": 3,
+       "main": 18,
+       "helper": 0,
+       "trap": 0
+      },
+      "codeBytes": 84,
+      "codeBytesByRegion": {
+       "startup": 12,
+       "main": 72,
+       "helper": 0,
+       "trap": 0
+      },
+      "executedInstructions": 82,
+      "executedByRegion": {
+       "startup": 3,
+       "main": 79,
+       "helper": 0,
+       "trap": 0,
+       "unknown": 0
+      },
+      "dataLoads": 0,
+      "dataStores": 0,
+      "registersWritten": 9,
+      "boundaries": 24
+     },
+     "listing": [
+      {
+       "address": 4194304,
+       "bytes": "03000094",
+       "text": "bl main",
+       "region": "startup",
+       "lines": [],
+       "note": "call main; the return address goes to x30"
+      },
+      {
+       "address": 4194308,
+       "bytes": "48008052",
+       "text": "movz w8, #0x2",
+       "region": "startup",
+       "lines": [],
+       "note": "exit service; w0 holds the return value"
+      },
+      {
+       "address": 4194312,
+       "bytes": "010000d4",
+       "text": "svc #0",
+       "region": "startup",
+       "lines": [],
+       "note": ""
+      },
+      {
+       "address": 4194316,
+       "bytes": "f303002a",
+       "text": "orr w19, wzr, w0",
+       "region": "main",
+       "lines": [],
+       "note": "parameter to its home register"
+      },
+      {
+       "address": 4194320,
+       "bytes": "14008052",
+       "text": "movz w20, #0x0",
+       "region": "main",
+       "lines": [
+        3
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194324,
+       "bytes": "36008052",
+       "text": "movz w22, #0x1",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194328,
+       "bytes": "77060011",
+       "text": "add w23, w19, #1",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194332,
+       "bytes": "df02176b",
+       "text": "subs wzr, w22, w23",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194336,
+       "bytes": "0a010054",
+       "text": "b.ge .Lb4",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194340,
+       "bytes": "f503162a",
+       "text": "orr w21, wzr, w22",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194344,
+       "bytes": "9402150b",
+       "text": "add w20, w20, w21",
+       "region": "main",
+       "lines": [
+        5
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194348,
+       "bytes": "e902164b",
+       "text": "sub w9, w23, w22",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194352,
+       "bytes": "3f050071",
+       "text": "subs wzr, w9, #1",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194356,
+       "bytes": "69000054",
+       "text": "b.ls .Lb4",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194360,
+       "bytes": "d6060011",
+       "text": "add w22, w22, #1",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194364,
+       "bytes": "faffff17",
+       "text": "b .Lb1",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194368,
+       "bytes": "e003142a",
+       "text": "orr w0, wzr, w20",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": "value to print"
+      },
+      {
+       "address": 4194372,
+       "bytes": "28008052",
+       "text": "movz w8, #0x1",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": "output service"
+      },
+      {
+       "address": 4194376,
+       "bytes": "010000d4",
+       "text": "svc #0",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194380,
+       "bytes": "e003142a",
+       "text": "orr w0, wzr, w20",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": "return value"
+      },
+      {
+       "address": 4194384,
+       "bytes": "c0035fd6",
+       "text": "ret x30",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": "return to the caller"
+      }
+     ],
+     "boundaries": [
+      {
+       "ordinal": 0,
+       "line": 3,
+       "step": 2
+      },
+      {
+       "ordinal": 1,
+       "line": 4,
+       "step": 3
+      },
+      {
+       "ordinal": 2,
+       "line": 5,
+       "step": 8
+      },
+      {
+       "ordinal": 3,
+       "line": 4,
+       "step": 9
+      },
+      {
+       "ordinal": 4,
+       "line": 5,
+       "step": 15
+      },
+      {
+       "ordinal": 5,
+       "line": 4,
+       "step": 16
+      },
+      {
+       "ordinal": 6,
+       "line": 5,
+       "step": 22
+      },
+      {
+       "ordinal": 7,
+       "line": 4,
+       "step": 23
+      },
+      {
+       "ordinal": 8,
+       "line": 5,
+       "step": 29
+      },
+      {
+       "ordinal": 9,
+       "line": 4,
+       "step": 30
+      },
+      {
+       "ordinal": 10,
+       "line": 5,
+       "step": 36
+      },
+      {
+       "ordinal": 11,
+       "line": 4,
+       "step": 37
+      },
+      {
+       "ordinal": 12,
+       "line": 5,
+       "step": 43
+      },
+      {
+       "ordinal": 13,
+       "line": 4,
+       "step": 44
+      },
+      {
+       "ordinal": 14,
+       "line": 5,
+       "step": 50
+      },
+      {
+       "ordinal": 15,
+       "line": 4,
+       "step": 51
+      },
+      {
+       "ordinal": 16,
+       "line": 5,
+       "step": 57
+      },
+      {
+       "ordinal": 17,
+       "line": 4,
+       "step": 58
+      },
+      {
+       "ordinal": 18,
+       "line": 5,
+       "step": 64
+      },
+      {
+       "ordinal": 19,
+       "line": 4,
+       "step": 65
+      },
+      {
+       "ordinal": 20,
+       "line": 5,
+       "step": 71
+      },
+      {
+       "ordinal": 21,
+       "line": 4,
+       "step": 72
+      },
+      {
+       "ordinal": 22,
+       "line": 6,
+       "step": 75
+      },
+      {
+       "ordinal": 23,
+       "line": 7,
+       "step": 78
+      }
+     ]
+    },
+    {
+     "target": "x86",
+     "outcome": {
+      "status": "exited",
+      "output": [
+       55
+      ],
+      "steps": 94,
+      "returnValue": 55
+     },
+     "metrics": {
+      "staticInstructions": 24,
+      "staticInstructionsByRegion": {
+       "startup": 4,
+       "main": 20,
+       "helper": 0,
+       "trap": 0
+      },
+      "codeBytes": 75,
+      "codeBytesByRegion": {
+       "startup": 14,
+       "main": 61,
+       "helper": 0,
+       "trap": 0
+      },
+      "executedInstructions": 94,
+      "executedByRegion": {
+       "startup": 4,
+       "main": 90,
+       "helper": 0,
+       "trap": 0,
+       "unknown": 0
+      },
+      "dataLoads": 1,
+      "dataStores": 1,
+      "registersWritten": 11,
+      "boundaries": 24
+     },
+     "listing": [
+      {
+       "address": 4194304,
+       "bytes": "e809000000",
+       "text": "call main",
+       "region": "startup",
+       "lines": [],
+       "note": "call main; the return address is pushed on the stack"
+      },
+      {
+       "address": 4194309,
+       "bytes": "89c7",
+       "text": "mov edi, eax",
+       "region": "startup",
+       "lines": [],
+       "note": "return value of main is the argument of the exit service"
+      },
+      {
+       "address": 4194311,
+       "bytes": "b802000000",
+       "text": "mov eax, 2",
+       "region": "startup",
+       "lines": [],
+       "note": "exit service"
+      },
+      {
+       "address": 4194316,
+       "bytes": "0f05",
+       "text": "syscall",
+       "region": "startup",
+       "lines": [],
+       "note": ""
+      },
+      {
+       "address": 4194318,
+       "bytes": "89fb",
+       "text": "mov ebx, edi",
+       "region": "main",
+       "lines": [],
+       "note": "parameter to its home register"
+      },
+      {
+       "address": 4194320,
+       "bytes": "bd00000000",
+       "text": "mov ebp, 0",
+       "region": "main",
+       "lines": [
+        3
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194325,
+       "bytes": "41bd01000000",
+       "text": "mov r13d, 1",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194331,
+       "bytes": "4189de",
+       "text": "mov r14d, ebx",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194334,
+       "bytes": "4183c601",
+       "text": "add r14d, 1",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194338,
+       "bytes": "4539f5",
+       "text": "cmp r13d, r14d",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194341,
+       "bytes": "7d18",
+       "text": "jge .Lb4",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194343,
+       "bytes": "4589ec",
+       "text": "mov r12d, r13d",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194346,
+       "bytes": "4401e5",
+       "text": "add ebp, r12d",
+       "region": "main",
+       "lines": [
+        5
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194349,
+       "bytes": "4589f0",
+       "text": "mov r8d, r14d",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194352,
+       "bytes": "4529e8",
+       "text": "sub r8d, r13d",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194355,
+       "bytes": "4183f801",
+       "text": "cmp r8d, 1",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194359,
+       "bytes": "7606",
+       "text": "jbe .Lb4",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194361,
+       "bytes": "4183c501",
+       "text": "add r13d, 1",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194365,
+       "bytes": "ebe8",
+       "text": "jmp .Lb1",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194367,
+       "bytes": "89ef",
+       "text": "mov edi, ebp",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": "value to print"
+      },
+      {
+       "address": 4194369,
+       "bytes": "b801000000",
+       "text": "mov eax, 1",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": "output service"
+      },
+      {
+       "address": 4194374,
+       "bytes": "0f05",
+       "text": "syscall",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194376,
+       "bytes": "89e8",
+       "text": "mov eax, ebp",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": "return value"
+      },
+      {
+       "address": 4194378,
+       "bytes": "c3",
+       "text": "ret",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": "pop the return address and jump to it"
+      }
+     ],
+     "boundaries": [
+      {
+       "ordinal": 0,
+       "line": 3,
+       "step": 2
+      },
+      {
+       "ordinal": 1,
+       "line": 4,
+       "step": 3
+      },
+      {
+       "ordinal": 2,
+       "line": 5,
+       "step": 9
+      },
+      {
+       "ordinal": 3,
+       "line": 4,
+       "step": 10
+      },
+      {
+       "ordinal": 4,
+       "line": 5,
+       "step": 17
+      },
+      {
+       "ordinal": 5,
+       "line": 4,
+       "step": 18
+      },
+      {
+       "ordinal": 6,
+       "line": 5,
+       "step": 25
+      },
+      {
+       "ordinal": 7,
+       "line": 4,
+       "step": 26
+      },
+      {
+       "ordinal": 8,
+       "line": 5,
+       "step": 33
+      },
+      {
+       "ordinal": 9,
+       "line": 4,
+       "step": 34
+      },
+      {
+       "ordinal": 10,
+       "line": 5,
+       "step": 41
+      },
+      {
+       "ordinal": 11,
+       "line": 4,
+       "step": 42
+      },
+      {
+       "ordinal": 12,
+       "line": 5,
+       "step": 49
+      },
+      {
+       "ordinal": 13,
+       "line": 4,
+       "step": 50
+      },
+      {
+       "ordinal": 14,
+       "line": 5,
+       "step": 57
+      },
+      {
+       "ordinal": 15,
+       "line": 4,
+       "step": 58
+      },
+      {
+       "ordinal": 16,
+       "line": 5,
+       "step": 65
+      },
+      {
+       "ordinal": 17,
+       "line": 4,
+       "step": 66
+      },
+      {
+       "ordinal": 18,
+       "line": 5,
+       "step": 73
+      },
+      {
+       "ordinal": 19,
+       "line": 4,
+       "step": 74
+      },
+      {
+       "ordinal": 20,
+       "line": 5,
+       "step": 81
+      },
+      {
+       "ordinal": 21,
+       "line": 4,
+       "step": 82
+      },
+      {
+       "ordinal": 22,
+       "line": 6,
+       "step": 86
+      },
+      {
+       "ordinal": 23,
+       "line": 7,
+       "step": 89
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "array_traversal",
+   "file": "examples/array_traversal.py",
+   "source": "# Sum and maximum of a fixed-length array.\ndef main():\n    data = [12, -7, 30, 5, 18, -2, 9, 21]\n    total = 0\n    largest = data[0]\n    for i in range(len(data)):\n        total += data[i]\n        if data[i] > largest:\n            largest = data[i]\n    print(total)\n    print(largest)\n    return largest\n",
+   "args": [],
+   "statementLine": 7,
+   "verdict": "agree",
+   "targets": [
+    {
+     "target": "riscv",
+     "outcome": {
+      "status": "exited",
+      "output": [
+       86,
+       30
+      ],
+      "steps": 164,
+      "returnValue": 30
+     },
+     "metrics": {
+      "staticInstructions": 43,
+      "staticInstructionsByRegion": {
+       "startup": 4,
+       "main": 36,
+       "helper": 0,
+       "trap": 3
+      },
+      "codeBytes": 172,
+      "codeBytesByRegion": {
+       "startup": 16,
+       "main": 144,
+       "helper": 0,
+       "trap": 12
+      },
+      "executedInstructions": 164,
+      "executedByRegion": {
+       "startup": 4,
+       "main": 160,
+       "helper": 0,
+       "trap": 0,
+       "unknown": 0
+      },
+      "dataLoads": 18,
+      "dataStores": 0,
+      "registersWritten": 11,
+      "boundaries": 32
+     },
+     "listing": [
+      {
+       "address": 4194304,
+       "bytes": "b7010010",
+       "text": "lui gp, 0x10000",
+       "region": "startup",
+       "lines": [],
+       "note": "gp = start of the data region"
+      },
+      {
+       "address": 4194308,
+       "bytes": "ef00c000",
+       "text": "jal ra, main",
+       "region": "startup",
+       "lines": [],
+       "note": "call main"
+      },
+      {
+       "address": 4194312,
+       "bytes": "93082000",
+       "text": "addi a7, zero, 2",
+       "region": "startup",
+       "lines": [],
+       "note": "exit service; a0 holds the return value"
+      },
+      {
+       "address": 4194316,
+       "bytes": "73000000",
+       "text": "ecall",
+       "region": "startup",
+       "lines": [],
+       "note": ""
+      },
+      {
+       "address": 4194320,
+       "bytes": "13040000",
+       "text": "addi s0, zero, 0",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194324,
+       "bytes": "83a40100",
+       "text": "lw s1, 0(gp)",
+       "region": "main",
+       "lines": [
+        5
+       ],
+       "note": "load array element"
+      },
+      {
+       "address": 4194328,
+       "bytes": "93090000",
+       "text": "addi s3, zero, 0",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194332,
+       "bytes": "130a8000",
+       "text": "addi s4, zero, 8",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194336,
+       "bytes": "63d04907",
+       "text": "bge s3, s4, .Lb8",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194340,
+       "bytes": "13890900",
+       "text": "addi s2, s3, 0",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194344,
+       "bytes": "130f8000",
+       "text": "addi t5, zero, 8",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194348,
+       "bytes": "637ae907",
+       "text": "bgeu s2, t5, .Lb9",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194352,
+       "bytes": "131f2900",
+       "text": "slli t5, s2, 2",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": "index times 4"
+      },
+      {
+       "address": 4194356,
+       "bytes": "330f3f00",
+       "text": "add t5, t5, gp",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": "plus start of data"
+      },
+      {
+       "address": 4194360,
+       "bytes": "83220f00",
+       "text": "lw t0, 0(t5)",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": "load array element"
+      },
+      {
+       "address": 4194364,
+       "bytes": "33045400",
+       "text": "add s0, s0, t0",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194368,
+       "bytes": "130f8000",
+       "text": "addi t5, zero, 8",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194372,
+       "bytes": "637ee905",
+       "text": "bgeu s2, t5, .Lb9",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194376,
+       "bytes": "131f2900",
+       "text": "slli t5, s2, 2",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": "index times 4"
+      },
+      {
+       "address": 4194380,
+       "bytes": "330f3f00",
+       "text": "add t5, t5, gp",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": "plus start of data"
+      },
+      {
+       "address": 4194384,
+       "bytes": "83220f00",
+       "text": "lw t0, 0(t5)",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": "load array element"
+      },
+      {
+       "address": 4194388,
+       "bytes": "63dc5400",
+       "text": "bge s1, t0, .Lb6",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": "a <= b is b >= a"
+      },
+      {
+       "address": 4194392,
+       "bytes": "130f8000",
+       "text": "addi t5, zero, 8",
+       "region": "main",
+       "lines": [
+        9
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194396,
+       "bytes": "6372e905",
+       "text": "bgeu s2, t5, .Lb9",
+       "region": "main",
+       "lines": [
+        9
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194400,
+       "bytes": "131f2900",
+       "text": "slli t5, s2, 2",
+       "region": "main",
+       "lines": [
+        9
+       ],
+       "note": "index times 4"
+      },
+      {
+       "address": 4194404,
+       "bytes": "330f3f00",
+       "text": "add t5, t5, gp",
+       "region": "main",
+       "lines": [
+        9
+       ],
+       "note": "plus start of data"
+      },
+      {
+       "address": 4194408,
+       "bytes": "83240f00",
+       "text": "lw s1, 0(t5)",
+       "region": "main",
+       "lines": [
+        9
+       ],
+       "note": "load array element"
+      },
+      {
+       "address": 4194412,
+       "bytes": "b3023a41",
+       "text": "sub t0, s4, s3",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194416,
+       "bytes": "130f1000",
+       "text": "addi t5, zero, 1",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194420,
+       "bytes": "63765f00",
+       "text": "bgeu t5, t0, .Lb8",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": "a <= b is b >= a (unsigned)"
+      },
+      {
+       "address": 4194424,
+       "bytes": "93891900",
+       "text": "addi s3, s3, 1",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194428,
+       "bytes": "6ff09ffa",
+       "text": "jal zero, .Lb1",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194432,
+       "bytes": "13050400",
+       "text": "addi a0, s0, 0",
+       "region": "main",
+       "lines": [
+        10
+       ],
+       "note": "value to print"
+      },
+      {
+       "address": 4194436,
+       "bytes": "93081000",
+       "text": "addi a7, zero, 1",
+       "region": "main",
+       "lines": [
+        10
+       ],
+       "note": "output service"
+      },
+      {
+       "address": 4194440,
+       "bytes": "73000000",
+       "text": "ecall",
+       "region": "main",
+       "lines": [
+        10
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194444,
+       "bytes": "13850400",
+       "text": "addi a0, s1, 0",
+       "region": "main",
+       "lines": [
+        11
+       ],
+       "note": "value to print"
+      },
+      {
+       "address": 4194448,
+       "bytes": "93081000",
+       "text": "addi a7, zero, 1",
+       "region": "main",
+       "lines": [
+        11
+       ],
+       "note": "output service"
+      },
+      {
+       "address": 4194452,
+       "bytes": "73000000",
+       "text": "ecall",
+       "region": "main",
+       "lines": [
+        11
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194456,
+       "bytes": "13850400",
+       "text": "addi a0, s1, 0",
+       "region": "main",
+       "lines": [
+        12
+       ],
+       "note": "return value"
+      },
+      {
+       "address": 4194460,
+       "bytes": "67800000",
+       "text": "jalr zero, 0(ra)",
+       "region": "main",
+       "lines": [
+        12
+       ],
+       "note": "return to the caller"
+      },
+      {
+       "address": 4194464,
+       "bytes": "13051000",
+       "text": "addi a0, zero, 1",
+       "region": "trap",
+       "lines": [
+        2
+       ],
+       "note": "error code"
+      },
+      {
+       "address": 4194468,
+       "bytes": "93083000",
+       "text": "addi a7, zero, 3",
+       "region": "trap",
+       "lines": [
+        2
+       ],
+       "note": "error service"
+      },
+      {
+       "address": 4194472,
+       "bytes": "73000000",
+       "text": "ecall",
+       "region": "trap",
+       "lines": [
+        2
+       ],
+       "note": "runtime error"
+      }
+     ],
+     "boundaries": [
+      {
+       "ordinal": 0,
+       "line": 3,
+       "step": 2
+      },
+      {
+       "ordinal": 1,
+       "line": 4,
+       "step": 2
+      },
+      {
+       "ordinal": 2,
+       "line": 5,
+       "step": 3
+      },
+      {
+       "ordinal": 3,
+       "line": 6,
+       "step": 4
+      },
+      {
+       "ordinal": 4,
+       "line": 7,
+       "step": 8
+      },
+      {
+       "ordinal": 5,
+       "line": 8,
+       "step": 14
+      },
+      {
+       "ordinal": 6,
+       "line": 6,
+       "step": 20
+      },
+      {
+       "ordinal": 7,
+       "line": 7,
+       "step": 26
+      },
+      {
+       "ordinal": 8,
+       "line": 8,
+       "step": 32
+      },
+      {
+       "ordinal": 9,
+       "line": 6,
+       "step": 38
+      },
+      {
+       "ordinal": 10,
+       "line": 7,
+       "step": 44
+      },
+      {
+       "ordinal": 11,
+       "line": 8,
+       "step": 50
+      },
+      {
+       "ordinal": 12,
+       "line": 9,
+       "step": 56
+      },
+      {
+       "ordinal": 13,
+       "line": 6,
+       "step": 61
+      },
+      {
+       "ordinal": 14,
+       "line": 7,
+       "step": 67
+      },
+      {
+       "ordinal": 15,
+       "line": 8,
+       "step": 73
+      },
+      {
+       "ordinal": 16,
+       "line": 6,
+       "step": 79
+      },
+      {
+       "ordinal": 17,
+       "line": 7,
+       "step": 85
+      },
+      {
+       "ordinal": 18,
+       "line": 8,
+       "step": 91
+      },
+      {
+       "ordinal": 19,
+       "line": 6,
+       "step": 97
+      },
+      {
+       "ordinal": 20,
+       "line": 7,
+       "step": 103
+      },
+      {
+       "ordinal": 21,
+       "line": 8,
+       "step": 109
+      },
+      {
+       "ordinal": 22,
+       "line": 6,
+       "step": 115
+      },
+      {
+       "ordinal": 23,
+       "line": 7,
+       "step": 121
+      },
+      {
+       "ordinal": 24,
+       "line": 8,
+       "step": 127
+      },
+      {
+       "ordinal": 25,
+       "line": 6,
+       "step": 133
+      },
+      {
+       "ordinal": 26,
+       "line": 7,
+       "step": 139
+      },
+      {
+       "ordinal": 27,
+       "line": 8,
+       "step": 145
+      },
+      {
+       "ordinal": 28,
+       "line": 6,
+       "step": 151
+      },
+      {
+       "ordinal": 29,
+       "line": 10,
+       "step": 154
+      },
+      {
+       "ordinal": 30,
+       "line": 11,
+       "step": 157
+      },
+      {
+       "ordinal": 31,
+       "line": 12,
+       "step": 160
+      }
+     ]
+    },
+    {
+     "target": "mips",
+     "outcome": {
+      "status": "exited",
+      "output": [
+       86,
+       30
+      ],
+      "steps": 225,
+      "returnValue": 30
+     },
+     "metrics": {
+      "staticInstructions": 56,
+      "staticInstructionsByRegion": {
+       "startup": 6,
+       "main": 47,
+       "helper": 0,
+       "trap": 3
+      },
+      "codeBytes": 224,
+      "codeBytesByRegion": {
+       "startup": 24,
+       "main": 188,
+       "helper": 0,
+       "trap": 12
+      },
+      "executedInstructions": 225,
+      "executedByRegion": {
+       "startup": 6,
+       "main": 219,
+       "helper": 0,
+       "trap": 0,
+       "unknown": 0
+      },
+      "dataLoads": 18,
+      "dataStores": 0,
+      "registersWritten": 11,
+      "boundaries": 32
+     },
+     "listing": [
+      {
+       "address": 4194304,
+       "bytes": "00101c3c",
+       "text": "lui $gp, 0x1000",
+       "region": "startup",
+       "lines": [],
+       "note": "$gp = start of the data region"
+      },
+      {
+       "address": 4194308,
+       "bytes": "0600100c",
+       "text": "jal main",
+       "region": "startup",
+       "lines": [],
+       "note": "call main; $ra = address after the delay slot"
+      },
+      {
+       "address": 4194312,
+       "bytes": "00000000",
+       "text": "sll $zero, $zero, 0",
+       "region": "startup",
+       "lines": [],
+       "note": "delay slot: executes before the branch or jump takes effect"
+      },
+      {
+       "address": 4194316,
+       "bytes": "25204000",
+       "text": "or $a0, $v0, $zero",
+       "region": "startup",
+       "lines": [],
+       "note": "return value of main becomes the service argument"
+      },
+      {
+       "address": 4194320,
+       "bytes": "02000224",
+       "text": "addiu $v0, $zero, 2",
+       "region": "startup",
+       "lines": [],
+       "note": "exit service"
+      },
+      {
+       "address": 4194324,
+       "bytes": "0c000000",
+       "text": "syscall",
+       "region": "startup",
+       "lines": [],
+       "note": ""
+      },
+      {
+       "address": 4194328,
+       "bytes": "00001024",
+       "text": "addiu $s0, $zero, 0",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194332,
+       "bytes": "0000918f",
+       "text": "lw $s1, 0($gp)",
+       "region": "main",
+       "lines": [
+        5
+       ],
+       "note": "load array element"
+      },
+      {
+       "address": 4194336,
+       "bytes": "00001324",
+       "text": "addiu $s3, $zero, 0",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194340,
+       "bytes": "08001424",
+       "text": "addiu $s4, $zero, 8",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194344,
+       "bytes": "2ac07402",
+       "text": "slt $t8, $s3, $s4",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194348,
+       "bytes": "20000013",
+       "text": "beq $t8, $zero, .Lb8",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": "taken when not (a < b)"
+      },
+      {
+       "address": 4194352,
+       "bytes": "00000000",
+       "text": "sll $zero, $zero, 0",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": "delay slot: executes before the branch or jump takes effect"
+      },
+      {
+       "address": 4194356,
+       "bytes": "25906002",
+       "text": "or $s2, $s3, $zero",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194360,
+       "bytes": "0800582e",
+       "text": "sltiu $t8, $s2, 8",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194364,
+       "bytes": "25000013",
+       "text": "beq $t8, $zero, .Lb9",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": "taken when not (a < b)"
+      },
+      {
+       "address": 4194368,
+       "bytes": "00000000",
+       "text": "sll $zero, $zero, 0",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": "delay slot: executes before the branch or jump takes effect"
+      },
+      {
+       "address": 4194372,
+       "bytes": "80c01200",
+       "text": "sll $t8, $s2, 2",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": "index times 4"
+      },
+      {
+       "address": 4194376,
+       "bytes": "21c01c03",
+       "text": "addu $t8, $t8, $gp",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": "plus start of data"
+      },
+      {
+       "address": 4194380,
+       "bytes": "0000088f",
+       "text": "lw $t0, 0($t8)",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": "load array element"
+      },
+      {
+       "address": 4194384,
+       "bytes": "21800802",
+       "text": "addu $s0, $s0, $t0",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194388,
+       "bytes": "0800582e",
+       "text": "sltiu $t8, $s2, 8",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194392,
+       "bytes": "1e000013",
+       "text": "beq $t8, $zero, .Lb9",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": "taken when not (a < b)"
+      },
+      {
+       "address": 4194396,
+       "bytes": "00000000",
+       "text": "sll $zero, $zero, 0",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": "delay slot: executes before the branch or jump takes effect"
+      },
+      {
+       "address": 4194400,
+       "bytes": "80c01200",
+       "text": "sll $t8, $s2, 2",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": "index times 4"
+      },
+      {
+       "address": 4194404,
+       "bytes": "21c01c03",
+       "text": "addu $t8, $t8, $gp",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": "plus start of data"
+      },
+      {
+       "address": 4194408,
+       "bytes": "0000088f",
+       "text": "lw $t0, 0($t8)",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": "load array element"
+      },
+      {
+       "address": 4194412,
+       "bytes": "2ac02802",
+       "text": "slt $t8, $s1, $t0",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": "b < a"
+      },
+      {
+       "address": 4194416,
+       "bytes": "07000013",
+       "text": "beq $t8, $zero, .Lb6",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": "taken when not (b < a)"
+      },
+      {
+       "address": 4194420,
+       "bytes": "00000000",
+       "text": "sll $zero, $zero, 0",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": "delay slot: executes before the branch or jump takes effect"
+      },
+      {
+       "address": 4194424,
+       "bytes": "0800582e",
+       "text": "sltiu $t8, $s2, 8",
+       "region": "main",
+       "lines": [
+        9
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194428,
+       "bytes": "15000013",
+       "text": "beq $t8, $zero, .Lb9",
+       "region": "main",
+       "lines": [
+        9
+       ],
+       "note": "taken when not (a < b)"
+      },
+      {
+       "address": 4194432,
+       "bytes": "00000000",
+       "text": "sll $zero, $zero, 0",
+       "region": "main",
+       "lines": [
+        9
+       ],
+       "note": "delay slot: executes before the branch or jump takes effect"
+      },
+      {
+       "address": 4194436,
+       "bytes": "80c01200",
+       "text": "sll $t8, $s2, 2",
+       "region": "main",
+       "lines": [
+        9
+       ],
+       "note": "index times 4"
+      },
+      {
+       "address": 4194440,
+       "bytes": "21c01c03",
+       "text": "addu $t8, $t8, $gp",
+       "region": "main",
+       "lines": [
+        9
+       ],
+       "note": "plus start of data"
+      },
+      {
+       "address": 4194444,
+       "bytes": "0000118f",
+       "text": "lw $s1, 0($t8)",
+       "region": "main",
+       "lines": [
+        9
+       ],
+       "note": "load array element"
+      },
+      {
+       "address": 4194448,
+       "bytes": "23409302",
+       "text": "subu $t0, $s4, $s3",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194452,
+       "bytes": "01001824",
+       "text": "addiu $t8, $zero, 1",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194456,
+       "bytes": "2bc00803",
+       "text": "sltu $t8, $t8, $t0",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": "b < a"
+      },
+      {
+       "address": 4194460,
+       "bytes": "04000013",
+       "text": "beq $t8, $zero, .Lb8",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": "taken when not (b < a)"
+      },
+      {
+       "address": 4194464,
+       "bytes": "00000000",
+       "text": "sll $zero, $zero, 0",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": "delay slot: executes before the branch or jump takes effect"
+      },
+      {
+       "address": 4194468,
+       "bytes": "01007326",
+       "text": "addiu $s3, $s3, 1",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194472,
+       "bytes": "e2ff0010",
+       "text": "beq $zero, $zero, .Lb1",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194476,
+       "bytes": "00000000",
+       "text": "sll $zero, $zero, 0",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": "delay slot: executes before the branch or jump takes effect"
+      },
+      {
+       "address": 4194480,
+       "bytes": "25200002",
+       "text": "or $a0, $s0, $zero",
+       "region": "main",
+       "lines": [
+        10
+       ],
+       "note": "value to print"
+      },
+      {
+       "address": 4194484,
+       "bytes": "01000224",
+       "text": "addiu $v0, $zero, 1",
+       "region": "main",
+       "lines": [
+        10
+       ],
+       "note": "output service"
+      },
+      {
+       "address": 4194488,
+       "bytes": "0c000000",
+       "text": "syscall",
+       "region": "main",
+       "lines": [
+        10
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194492,
+       "bytes": "25202002",
+       "text": "or $a0, $s1, $zero",
+       "region": "main",
+       "lines": [
+        11
+       ],
+       "note": "value to print"
+      },
+      {
+       "address": 4194496,
+       "bytes": "01000224",
+       "text": "addiu $v0, $zero, 1",
+       "region": "main",
+       "lines": [
+        11
+       ],
+       "note": "output service"
+      },
+      {
+       "address": 4194500,
+       "bytes": "0c000000",
+       "text": "syscall",
+       "region": "main",
+       "lines": [
+        11
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194504,
+       "bytes": "25102002",
+       "text": "or $v0, $s1, $zero",
+       "region": "main",
+       "lines": [
+        12
+       ],
+       "note": "return value"
+      },
+      {
+       "address": 4194508,
+       "bytes": "0800e003",
+       "text": "jr $ra",
+       "region": "main",
+       "lines": [
+        12
+       ],
+       "note": "return to the caller"
+      },
+      {
+       "address": 4194512,
+       "bytes": "00000000",
+       "text": "sll $zero, $zero, 0",
+       "region": "main",
+       "lines": [
+        12
+       ],
+       "note": "delay slot: executes before the branch or jump takes effect"
+      },
+      {
+       "address": 4194516,
+       "bytes": "01000424",
+       "text": "addiu $a0, $zero, 1",
+       "region": "trap",
+       "lines": [
+        2
+       ],
+       "note": "error code"
+      },
+      {
+       "address": 4194520,
+       "bytes": "03000224",
+       "text": "addiu $v0, $zero, 3",
+       "region": "trap",
+       "lines": [
+        2
+       ],
+       "note": "error service"
+      },
+      {
+       "address": 4194524,
+       "bytes": "0c000000",
+       "text": "syscall",
+       "region": "trap",
+       "lines": [
+        2
+       ],
+       "note": "runtime error"
+      }
+     ],
+     "boundaries": [
+      {
+       "ordinal": 0,
+       "line": 3,
+       "step": 3
+      },
+      {
+       "ordinal": 1,
+       "line": 4,
+       "step": 3
+      },
+      {
+       "ordinal": 2,
+       "line": 5,
+       "step": 4
+      },
+      {
+       "ordinal": 3,
+       "line": 6,
+       "step": 5
+      },
+      {
+       "ordinal": 4,
+       "line": 7,
+       "step": 11
+      },
+      {
+       "ordinal": 5,
+       "line": 8,
+       "step": 18
+      },
+      {
+       "ordinal": 6,
+       "line": 6,
+       "step": 27
+      },
+      {
+       "ordinal": 7,
+       "line": 7,
+       "step": 36
+      },
+      {
+       "ordinal": 8,
+       "line": 8,
+       "step": 43
+      },
+      {
+       "ordinal": 9,
+       "line": 6,
+       "step": 52
+      },
+      {
+       "ordinal": 10,
+       "line": 7,
+       "step": 61
+      },
+      {
+       "ordinal": 11,
+       "line": 8,
+       "step": 68
+      },
+      {
+       "ordinal": 12,
+       "line": 9,
+       "step": 77
+      },
+      {
+       "ordinal": 13,
+       "line": 6,
+       "step": 83
+      },
+      {
+       "ordinal": 14,
+       "line": 7,
+       "step": 92
+      },
+      {
+       "ordinal": 15,
+       "line": 8,
+       "step": 99
+      },
+      {
+       "ordinal": 16,
+       "line": 6,
+       "step": 108
+      },
+      {
+       "ordinal": 17,
+       "line": 7,
+       "step": 117
+      },
+      {
+       "ordinal": 18,
+       "line": 8,
+       "step": 124
+      },
+      {
+       "ordinal": 19,
+       "line": 6,
+       "step": 133
+      },
+      {
+       "ordinal": 20,
+       "line": 7,
+       "step": 142
+      },
+      {
+       "ordinal": 21,
+       "line": 8,
+       "step": 149
+      },
+      {
+       "ordinal": 22,
+       "line": 6,
+       "step": 158
+      },
+      {
+       "ordinal": 23,
+       "line": 7,
+       "step": 167
+      },
+      {
+       "ordinal": 24,
+       "line": 8,
+       "step": 174
+      },
+      {
+       "ordinal": 25,
+       "line": 6,
+       "step": 183
+      },
+      {
+       "ordinal": 26,
+       "line": 7,
+       "step": 192
+      },
+      {
+       "ordinal": 27,
+       "line": 8,
+       "step": 199
+      },
+      {
+       "ordinal": 28,
+       "line": 6,
+       "step": 208
+      },
+      {
+       "ordinal": 29,
+       "line": 10,
+       "step": 213
+      },
+      {
+       "ordinal": 30,
+       "line": 11,
+       "step": 216
+      },
+      {
+       "ordinal": 31,
+       "line": 12,
+       "step": 219
+      }
+     ]
+    },
+    {
+     "target": "aarch64",
+     "outcome": {
+      "status": "exited",
+      "output": [
+       86,
+       30
+      ],
+      "steps": 156,
+      "returnValue": 30
+     },
+     "metrics": {
+      "staticInstructions": 42,
+      "staticInstructionsByRegion": {
+       "startup": 3,
+       "main": 36,
+       "helper": 0,
+       "trap": 3
+      },
+      "codeBytes": 168,
+      "codeBytesByRegion": {
+       "startup": 12,
+       "main": 144,
+       "helper": 0,
+       "trap": 12
+      },
+      "executedInstructions": 156,
+      "executedByRegion": {
+       "startup": 3,
+       "main": 153,
+       "helper": 0,
+       "trap": 0,
+       "unknown": 0
+      },
+      "dataLoads": 18,
+      "dataStores": 0,
+      "registersWritten": 10,
+      "boundaries": 32
+     },
+     "listing": [
+      {
+       "address": 4194304,
+       "bytes": "03000094",
+       "text": "bl main",
+       "region": "startup",
+       "lines": [],
+       "note": "call main; the return address goes to x30"
+      },
+      {
+       "address": 4194308,
+       "bytes": "48008052",
+       "text": "movz w8, #0x2",
+       "region": "startup",
+       "lines": [],
+       "note": "exit service; w0 holds the return value"
+      },
+      {
+       "address": 4194312,
+       "bytes": "010000d4",
+       "text": "svc #0",
+       "region": "startup",
+       "lines": [],
+       "note": ""
+      },
+      {
+       "address": 4194316,
+       "bytes": "13008052",
+       "text": "movz w19, #0x0",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194320,
+       "bytes": "1100a2d2",
+       "text": "movz x17, #0x1000, lsl #16",
+       "region": "main",
+       "lines": [
+        5
+       ],
+       "note": "address of the array"
+      },
+      {
+       "address": 4194324,
+       "bytes": "340240b9",
+       "text": "ldr w20, [x17]",
+       "region": "main",
+       "lines": [
+        5
+       ],
+       "note": "load array element"
+      },
+      {
+       "address": 4194328,
+       "bytes": "16008052",
+       "text": "movz w22, #0x0",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194332,
+       "bytes": "17018052",
+       "text": "movz w23, #0x8",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194336,
+       "bytes": "df02176b",
+       "text": "subs wzr, w22, w23",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194340,
+       "bytes": "ca020054",
+       "text": "b.ge .Lb8",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194344,
+       "bytes": "f503162a",
+       "text": "orr w21, wzr, w22",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194348,
+       "bytes": "bf220071",
+       "text": "subs wzr, w21, #8",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194352,
+       "bytes": "62030054",
+       "text": "b.hs .Lb9",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194356,
+       "bytes": "1100a2d2",
+       "text": "movz x17, #0x1000, lsl #16",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": "address of the array"
+      },
+      {
+       "address": 4194360,
+       "bytes": "295a75b8",
+       "text": "ldr w9, [x17, w21, uxtw #2]",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": "load array element"
+      },
+      {
+       "address": 4194364,
+       "bytes": "7302090b",
+       "text": "add w19, w19, w9",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194368,
+       "bytes": "bf220071",
+       "text": "subs wzr, w21, #8",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194372,
+       "bytes": "c2020054",
+       "text": "b.hs .Lb9",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194376,
+       "bytes": "1100a2d2",
+       "text": "movz x17, #0x1000, lsl #16",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": "address of the array"
+      },
+      {
+       "address": 4194380,
+       "bytes": "295a75b8",
+       "text": "ldr w9, [x17, w21, uxtw #2]",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": "load array element"
+      },
+      {
+       "address": 4194384,
+       "bytes": "3f01146b",
+       "text": "subs wzr, w9, w20",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194388,
+       "bytes": "ad000054",
+       "text": "b.le .Lb6",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194392,
+       "bytes": "bf220071",
+       "text": "subs wzr, w21, #8",
+       "region": "main",
+       "lines": [
+        9
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194396,
+       "bytes": "02020054",
+       "text": "b.hs .Lb9",
+       "region": "main",
+       "lines": [
+        9
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194400,
+       "bytes": "1100a2d2",
+       "text": "movz x17, #0x1000, lsl #16",
+       "region": "main",
+       "lines": [
+        9
+       ],
+       "note": "address of the array"
+      },
+      {
+       "address": 4194404,
+       "bytes": "345a75b8",
+       "text": "ldr w20, [x17, w21, uxtw #2]",
+       "region": "main",
+       "lines": [
+        9
+       ],
+       "note": "load array element"
+      },
+      {
+       "address": 4194408,
+       "bytes": "e902164b",
+       "text": "sub w9, w23, w22",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194412,
+       "bytes": "3f050071",
+       "text": "subs wzr, w9, #1",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194416,
+       "bytes": "69000054",
+       "text": "b.ls .Lb8",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194420,
+       "bytes": "d6060011",
+       "text": "add w22, w22, #1",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194424,
+       "bytes": "ecffff17",
+       "text": "b .Lb1",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194428,
+       "bytes": "e003132a",
+       "text": "orr w0, wzr, w19",
+       "region": "main",
+       "lines": [
+        10
+       ],
+       "note": "value to print"
+      },
+      {
+       "address": 4194432,
+       "bytes": "28008052",
+       "text": "movz w8, #0x1",
+       "region": "main",
+       "lines": [
+        10
+       ],
+       "note": "output service"
+      },
+      {
+       "address": 4194436,
+       "bytes": "010000d4",
+       "text": "svc #0",
+       "region": "main",
+       "lines": [
+        10
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194440,
+       "bytes": "e003142a",
+       "text": "orr w0, wzr, w20",
+       "region": "main",
+       "lines": [
+        11
+       ],
+       "note": "value to print"
+      },
+      {
+       "address": 4194444,
+       "bytes": "28008052",
+       "text": "movz w8, #0x1",
+       "region": "main",
+       "lines": [
+        11
+       ],
+       "note": "output service"
+      },
+      {
+       "address": 4194448,
+       "bytes": "010000d4",
+       "text": "svc #0",
+       "region": "main",
+       "lines": [
+        11
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194452,
+       "bytes": "e003142a",
+       "text": "orr w0, wzr, w20",
+       "region": "main",
+       "lines": [
+        12
+       ],
+       "note": "return value"
+      },
+      {
+       "address": 4194456,
+       "bytes": "c0035fd6",
+       "text": "ret x30",
+       "region": "main",
+       "lines": [
+        12
+       ],
+       "note": "return to the caller"
+      },
+      {
+       "address": 4194460,
+       "bytes": "20008052",
+       "text": "movz w0, #0x1",
+       "region": "trap",
+       "lines": [
+        2
+       ],
+       "note": "error code"
+      },
+      {
+       "address": 4194464,
+       "bytes": "68008052",
+       "text": "movz w8, #0x3",
+       "region": "trap",
+       "lines": [
+        2
+       ],
+       "note": "error service"
+      },
+      {
+       "address": 4194468,
+       "bytes": "010000d4",
+       "text": "svc #0",
+       "region": "trap",
+       "lines": [
+        2
+       ],
+       "note": "runtime error"
+      }
+     ],
+     "boundaries": [
+      {
+       "ordinal": 0,
+       "line": 3,
+       "step": 1
+      },
+      {
+       "ordinal": 1,
+       "line": 4,
+       "step": 1
+      },
+      {
+       "ordinal": 2,
+       "line": 5,
+       "step": 2
+      },
+      {
+       "ordinal": 3,
+       "line": 6,
+       "step": 4
+      },
+      {
+       "ordinal": 4,
+       "line": 7,
+       "step": 9
+      },
+      {
+       "ordinal": 5,
+       "line": 8,
+       "step": 14
+      },
+      {
+       "ordinal": 6,
+       "line": 6,
+       "step": 20
+      },
+      {
+       "ordinal": 7,
+       "line": 7,
+       "step": 26
+      },
+      {
+       "ordinal": 8,
+       "line": 8,
+       "step": 31
+      },
+      {
+       "ordinal": 9,
+       "line": 6,
+       "step": 37
+      },
+      {
+       "ordinal": 10,
+       "line": 7,
+       "step": 43
+      },
+      {
+       "ordinal": 11,
+       "line": 8,
+       "step": 48
+      },
+      {
+       "ordinal": 12,
+       "line": 9,
+       "step": 54
+      },
+      {
+       "ordinal": 13,
+       "line": 6,
+       "step": 58
+      },
+      {
+       "ordinal": 14,
+       "line": 7,
+       "step": 64
+      },
+      {
+       "ordinal": 15,
+       "line": 8,
+       "step": 69
+      },
+      {
+       "ordinal": 16,
+       "line": 6,
+       "step": 75
+      },
+      {
+       "ordinal": 17,
+       "line": 7,
+       "step": 81
+      },
+      {
+       "ordinal": 18,
+       "line": 8,
+       "step": 86
+      },
+      {
+       "ordinal": 19,
+       "line": 6,
+       "step": 92
+      },
+      {
+       "ordinal": 20,
+       "line": 7,
+       "step": 98
+      },
+      {
+       "ordinal": 21,
+       "line": 8,
+       "step": 103
+      },
+      {
+       "ordinal": 22,
+       "line": 6,
+       "step": 109
+      },
+      {
+       "ordinal": 23,
+       "line": 7,
+       "step": 115
+      },
+      {
+       "ordinal": 24,
+       "line": 8,
+       "step": 120
+      },
+      {
+       "ordinal": 25,
+       "line": 6,
+       "step": 126
+      },
+      {
+       "ordinal": 26,
+       "line": 7,
+       "step": 132
+      },
+      {
+       "ordinal": 27,
+       "line": 8,
+       "step": 137
+      },
+      {
+       "ordinal": 28,
+       "line": 6,
+       "step": 143
+      },
+      {
+       "ordinal": 29,
+       "line": 10,
+       "step": 146
+      },
+      {
+       "ordinal": 30,
+       "line": 11,
+       "step": 149
+      },
+      {
+       "ordinal": 31,
+       "line": 12,
+       "step": 152
+      }
+     ]
+    },
+    {
+     "target": "x86",
+     "outcome": {
+      "status": "exited",
+      "output": [
+       86,
+       30
+      ],
+      "steps": 147,
+      "returnValue": 30
+     },
+     "metrics": {
+      "staticInstructions": 40,
+      "staticInstructionsByRegion": {
+       "startup": 4,
+       "main": 33,
+       "helper": 0,
+       "trap": 3
+      },
+      "codeBytes": 147,
+      "codeBytesByRegion": {
+       "startup": 14,
+       "main": 121,
+       "helper": 0,
+       "trap": 12
+      },
+      "executedInstructions": 147,
+      "executedByRegion": {
+       "startup": 4,
+       "main": 143,
+       "helper": 0,
+       "trap": 0,
+       "unknown": 0
+      },
+      "dataLoads": 19,
+      "dataStores": 1,
+      "registersWritten": 11,
+      "boundaries": 32
+     },
+     "listing": [
+      {
+       "address": 4194304,
+       "bytes": "e809000000",
+       "text": "call main",
+       "region": "startup",
+       "lines": [],
+       "note": "call main; the return address is pushed on the stack"
+      },
+      {
+       "address": 4194309,
+       "bytes": "89c7",
+       "text": "mov edi, eax",
+       "region": "startup",
+       "lines": [],
+       "note": "return value of main is the argument of the exit service"
+      },
+      {
+       "address": 4194311,
+       "bytes": "b802000000",
+       "text": "mov eax, 2",
+       "region": "startup",
+       "lines": [],
+       "note": "exit service"
+      },
+      {
+       "address": 4194316,
+       "bytes": "0f05",
+       "text": "syscall",
+       "region": "startup",
+       "lines": [],
+       "note": ""
+      },
+      {
+       "address": 4194318,
+       "bytes": "bb00000000",
+       "text": "mov ebx, 0",
+       "region": "main",
+       "lines": [
+        4
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194323,
+       "bytes": "8b2c2500000010",
+       "text": "mov ebp, dword ptr [0x10000000]",
+       "region": "main",
+       "lines": [
+        5
+       ],
+       "note": "load array element"
+      },
+      {
+       "address": 4194330,
+       "bytes": "41bd00000000",
+       "text": "mov r13d, 0",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194336,
+       "bytes": "41be08000000",
+       "text": "mov r14d, 8",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194342,
+       "bytes": "4539f5",
+       "text": "cmp r13d, r14d",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194345,
+       "bytes": "7d47",
+       "text": "jge .Lb8",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194347,
+       "bytes": "4589ec",
+       "text": "mov r12d, r13d",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194350,
+       "bytes": "4183fc08",
+       "text": "cmp r12d, 8",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194354,
+       "bytes": "7353",
+       "text": "jae .Lb9",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194356,
+       "bytes": "468b04a500000010",
+       "text": "mov r8d, dword ptr [r12*4 + 0x10000000]",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": "load array element"
+      },
+      {
+       "address": 4194364,
+       "bytes": "4401c3",
+       "text": "add ebx, r8d",
+       "region": "main",
+       "lines": [
+        7
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194367,
+       "bytes": "4183fc08",
+       "text": "cmp r12d, 8",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194371,
+       "bytes": "7342",
+       "text": "jae .Lb9",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194373,
+       "bytes": "468b04a500000010",
+       "text": "mov r8d, dword ptr [r12*4 + 0x10000000]",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": "load array element"
+      },
+      {
+       "address": 4194381,
+       "bytes": "4139e8",
+       "text": "cmp r8d, ebp",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194384,
+       "bytes": "7e0e",
+       "text": "jle .Lb6",
+       "region": "main",
+       "lines": [
+        8
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194386,
+       "bytes": "4183fc08",
+       "text": "cmp r12d, 8",
+       "region": "main",
+       "lines": [
+        9
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194390,
+       "bytes": "732f",
+       "text": "jae .Lb9",
+       "region": "main",
+       "lines": [
+        9
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194392,
+       "bytes": "428b2ca500000010",
+       "text": "mov ebp, dword ptr [r12*4 + 0x10000000]",
+       "region": "main",
+       "lines": [
+        9
+       ],
+       "note": "load array element"
+      },
+      {
+       "address": 4194400,
+       "bytes": "4589f0",
+       "text": "mov r8d, r14d",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194403,
+       "bytes": "4529e8",
+       "text": "sub r8d, r13d",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194406,
+       "bytes": "4183f801",
+       "text": "cmp r8d, 1",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194410,
+       "bytes": "7606",
+       "text": "jbe .Lb8",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194412,
+       "bytes": "4183c501",
+       "text": "add r13d, 1",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194416,
+       "bytes": "ebb9",
+       "text": "jmp .Lb1",
+       "region": "main",
+       "lines": [
+        6
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194418,
+       "bytes": "89df",
+       "text": "mov edi, ebx",
+       "region": "main",
+       "lines": [
+        10
+       ],
+       "note": "value to print"
+      },
+      {
+       "address": 4194420,
+       "bytes": "b801000000",
+       "text": "mov eax, 1",
+       "region": "main",
+       "lines": [
+        10
+       ],
+       "note": "output service"
+      },
+      {
+       "address": 4194425,
+       "bytes": "0f05",
+       "text": "syscall",
+       "region": "main",
+       "lines": [
+        10
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194427,
+       "bytes": "89ef",
+       "text": "mov edi, ebp",
+       "region": "main",
+       "lines": [
+        11
+       ],
+       "note": "value to print"
+      },
+      {
+       "address": 4194429,
+       "bytes": "b801000000",
+       "text": "mov eax, 1",
+       "region": "main",
+       "lines": [
+        11
+       ],
+       "note": "output service"
+      },
+      {
+       "address": 4194434,
+       "bytes": "0f05",
+       "text": "syscall",
+       "region": "main",
+       "lines": [
+        11
+       ],
+       "note": ""
+      },
+      {
+       "address": 4194436,
+       "bytes": "89e8",
+       "text": "mov eax, ebp",
+       "region": "main",
+       "lines": [
+        12
+       ],
+       "note": "return value"
+      },
+      {
+       "address": 4194438,
+       "bytes": "c3",
+       "text": "ret",
+       "region": "main",
+       "lines": [
+        12
+       ],
+       "note": "pop the return address and jump to it"
+      },
+      {
+       "address": 4194439,
+       "bytes": "bf01000000",
+       "text": "mov edi, 1",
+       "region": "trap",
+       "lines": [
+        2
+       ],
+       "note": "error code"
+      },
+      {
+       "address": 4194444,
+       "bytes": "b803000000",
+       "text": "mov eax, 3",
+       "region": "trap",
+       "lines": [
+        2
+       ],
+       "note": "error service"
+      },
+      {
+       "address": 4194449,
+       "bytes": "0f05",
+       "text": "syscall",
+       "region": "trap",
+       "lines": [
+        2
+       ],
+       "note": "runtime error"
+      }
+     ],
+     "boundaries": [
+      {
+       "ordinal": 0,
+       "line": 3,
+       "step": 1
+      },
+      {
+       "ordinal": 1,
+       "line": 4,
+       "step": 1
+      },
+      {
+       "ordinal": 2,
+       "line": 5,
+       "step": 2
+      },
+      {
+       "ordinal": 3,
+       "line": 6,
+       "step": 3
+      },
+      {
+       "ordinal": 4,
+       "line": 7,
+       "step": 8
+      },
+      {
+       "ordinal": 5,
+       "line": 8,
+       "step": 12
+      },
+      {
+       "ordinal": 6,
+       "line": 6,
+       "step": 17
+      },
+      {
+       "ordinal": 7,
+       "line": 7,
+       "step": 24
+      },
+      {
+       "ordinal": 8,
+       "line": 8,
+       "step": 28
+      },
+      {
+       "ordinal": 9,
+       "line": 6,
+       "step": 33
+      },
+      {
+       "ordinal": 10,
+       "line": 7,
+       "step": 40
+      },
+      {
+       "ordinal": 11,
+       "line": 8,
+       "step": 44
+      },
+      {
+       "ordinal": 12,
+       "line": 9,
+       "step": 49
+      },
+      {
+       "ordinal": 13,
+       "line": 6,
+       "step": 52
+      },
+      {
+       "ordinal": 14,
+       "line": 7,
+       "step": 59
+      },
+      {
+       "ordinal": 15,
+       "line": 8,
+       "step": 63
+      },
+      {
+       "ordinal": 16,
+       "line": 6,
+       "step": 68
+      },
+      {
+       "ordinal": 17,
+       "line": 7,
+       "step": 75
+      },
+      {
+       "ordinal": 18,
+       "line": 8,
+       "step": 79
+      },
+      {
+       "ordinal": 19,
+       "line": 6,
+       "step": 84
+      },
+      {
+       "ordinal": 20,
+       "line": 7,
+       "step": 91
+      },
+      {
+       "ordinal": 21,
+       "line": 8,
+       "step": 95
+      },
+      {
+       "ordinal": 22,
+       "line": 6,
+       "step": 100
+      },
+      {
+       "ordinal": 23,
+       "line": 7,
+       "step": 107
+      },
+      {
+       "ordinal": 24,
+       "line": 8,
+       "step": 111
+      },
+      {
+       "ordinal": 25,
+       "line": 6,
+       "step": 116
+      },
+      {
+       "ordinal": 26,
+       "line": 7,
+       "step": 123
+      },
+      {
+       "ordinal": 27,
+       "line": 8,
+       "step": 127
+      },
+      {
+       "ordinal": 28,
+       "line": 6,
+       "step": 132
+      },
+      {
+       "ordinal": 29,
+       "line": 10,
+       "step": 136
+      },
+      {
+       "ordinal": 30,
+       "line": 11,
+       "step": 139
+      },
+      {
+       "ordinal": 31,
+       "line": 12,
+       "step": 142
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "encodings": [
+  {
+   "target": "riscv",
+   "line": 7,
+   "instruction": {
+    "address": 4194360,
+    "bytes": "83220f00",
+    "ok": true,
+    "text": "lw t0, 0(t5)",
+    "fields": [
+     {
+      "name": "imm[11:0]",
+      "hi": 31,
+      "lo": 20,
+      "value": 0,
+      "text": "0 (sign-extended)"
+     },
+     {
+      "name": "rs1",
+      "hi": 19,
+      "lo": 15,
+      "value": 30,
+      "text": "t5 (x30)"
+     },
+     {
+      "name": "funct3",
+      "hi": 14,
+      "lo": 12,
+      "value": 2,
+      "text": "selects the operation"
+     },
+     {
+      "name": "rd",
+      "hi": 11,
+      "lo": 7,
+      "value": 5,
+      "text": "t0 (x5)"
+     },
+     {
+      "name": "opcode",
+      "hi": 6,
+      "lo": 0,
+      "value": 3,
+      "text": "lw"
+     }
+    ]
+   }
+  },
+  {
+   "target": "mips",
+   "line": 7,
+   "instruction": {
+    "address": 4194380,
+    "bytes": "0000088f",
+    "ok": true,
+    "text": "lw $t0, 0($t8)",
+    "fields": [
+     {
+      "name": "opcode",
+      "hi": 31,
+      "lo": 26,
+      "value": 35,
+      "text": "lw"
+     },
+     {
+      "name": "base",
+      "hi": 25,
+      "lo": 21,
+      "value": 24,
+      "text": "$t8 ($24)"
+     },
+     {
+      "name": "rt",
+      "hi": 20,
+      "lo": 16,
+      "value": 8,
+      "text": "$t0 ($8)"
+     },
+     {
+      "name": "offset",
+      "hi": 15,
+      "lo": 0,
+      "value": 0,
+      "text": "0 (sign-extended)"
+     }
+    ]
+   }
+  },
+  {
+   "target": "aarch64",
+   "line": 7,
+   "instruction": {
+    "address": 4194360,
+    "bytes": "295a75b8",
+    "ok": true,
+    "text": "ldr w9, [x17, w21, uxtw #2]",
+    "fields": [
+     {
+      "name": "size",
+      "hi": 31,
+      "lo": 30,
+      "value": 2,
+      "text": "4-byte access"
+     },
+     {
+      "name": "opcode",
+      "hi": 29,
+      "lo": 24,
+      "value": 56,
+      "text": "load or store, register offset"
+     },
+     {
+      "name": "opc",
+      "hi": 23,
+      "lo": 22,
+      "value": 1,
+      "text": "load"
+     },
+     {
+      "name": "opcode",
+      "hi": 21,
+      "lo": 21,
+      "value": 1,
+      "text": "fixed bits of the encoding"
+     },
+     {
+      "name": "Rm",
+      "hi": 20,
+      "lo": 16,
+      "value": 21,
+      "text": "w21"
+     },
+     {
+      "name": "option",
+      "hi": 15,
+      "lo": 13,
+      "value": 2,
+      "text": "uxtw"
+     },
+     {
+      "name": "S",
+      "hi": 12,
+      "lo": 12,
+      "value": 1,
+      "text": "index shifted left by 2"
+     },
+     {
+      "name": "opcode",
+      "hi": 11,
+      "lo": 10,
+      "value": 2,
+      "text": "fixed bits of the encoding"
+     },
+     {
+      "name": "Rn",
+      "hi": 9,
+      "lo": 5,
+      "value": 17,
+      "text": "x17"
+     },
+     {
+      "name": "Rt",
+      "hi": 4,
+      "lo": 0,
+      "value": 9,
+      "text": "w9"
+     }
+    ]
+   }
+  },
+  {
+   "target": "x86",
+   "line": 7,
+   "instruction": {
+    "address": 4194356,
+    "bytes": "468b04a500000010",
+    "ok": true,
+    "text": "mov r8d, dword ptr [r12*4 + 0x10000000]",
+    "fields": [],
+    "byteFields": [
+     {
+      "name": "REX",
+      "offset": 0,
+      "length": 1,
+      "text": "REX prefix 46: 64-bit operand size not selected; gives access to r8 to r15 and to spl, bpl, sil, dil",
+      "bits": [
+       {
+        "name": "0100",
+        "hi": 7,
+        "lo": 4,
+        "value": 4,
+        "text": "fixed pattern of a REX prefix"
+       },
+       {
+        "name": "W",
+        "hi": 3,
+        "lo": 3,
+        "value": 0,
+        "text": "default operand size"
+       },
+       {
+        "name": "R",
+        "hi": 2,
+        "lo": 2,
+        "value": 1,
+        "text": "extends the ModR/M reg field"
+       },
+       {
+        "name": "X",
+        "hi": 1,
+        "lo": 1,
+        "value": 1,
+        "text": "extends the SIB index field"
+       },
+       {
+        "name": "B",
+        "hi": 0,
+        "lo": 0,
+        "value": 0,
+        "text": "not decoded: with mod = 00, SIB base field 101 selects no base register"
+       }
+      ]
+     },
+     {
+      "name": "opcode",
+      "offset": 1,
+      "length": 1,
+      "text": "opcode 8B: mov; the reg operand is the destination"
+     },
+     {
+      "name": "ModR/M",
+      "offset": 2,
+      "length": 1,
+      "text": "ModR/M 04: memory operand without a base register; the SIB base field 101 selects a 32-bit displacement",
+      "bits": [
+       {
+        "name": "mod",
+        "hi": 7,
+        "lo": 6,
+        "value": 0,
+        "text": "memory operand without a base register; the SIB base field 101 selects a 32-bit displacement"
+       },
+       {
+        "name": "reg",
+        "hi": 5,
+        "lo": 3,
+        "value": 0,
+        "text": "register r8d"
+       },
+       {
+        "name": "r/m",
+        "hi": 2,
+        "lo": 0,
+        "value": 4,
+        "text": "a SIB byte follows"
+       }
+      ]
+     },
+     {
+      "name": "SIB",
+      "offset": 3,
+      "length": 1,
+      "text": "SIB A5: no base register; a 32-bit displacement follows, index register r12 times 4",
+      "bits": [
+       {
+        "name": "scale",
+        "hi": 7,
+        "lo": 6,
+        "value": 2,
+        "text": "index is multiplied by 4"
+       },
+       {
+        "name": "index",
+        "hi": 5,
+        "lo": 3,
+        "value": 4,
+        "text": "index register r12"
+       },
+       {
+        "name": "base",
+        "hi": 2,
+        "lo": 0,
+        "value": 5,
+        "text": "no base register; a 32-bit displacement follows"
+       }
+      ]
+     },
+     {
+      "name": "displacement",
+      "offset": 4,
+      "length": 4,
+      "text": "32-bit displacement 268435456, least significant byte first"
+     }
+    ]
+   }
+  }
+ ]
+}

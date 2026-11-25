@@ -1,0 +1,86 @@
+{
+ "environment": {
+  "date": "2026-11-24T17:41:36.283Z",
+  "browser": "Google Chrome 158.0.8127.88",
+  "channel": "chrome",
+  "node": "v24.19.0",
+  "playwright": "1.65.1",
+  "os": "Windows_NT 10.0.22631",
+  "cpu": "Intel(R) Core(TM) Ultra 7 155U",
+  "logicalCores": 14,
+  "memoryGiB": 16,
+  "server": "scripts/serve.mjs on localhost (no network transfer time beyond the loopback interface)",
+  "method": "cold start, bytecode load, and long run: Date.now() in the Node.js process around the Playwright actions; step latency: performance.now() in the page, read before the click and after the status line shows the new count",
+  "repetitions": 10
+ },
+ "coldStartMs": {
+  "n": 10,
+  "median": 996,
+  "p25": 910.3,
+  "p75": 1057.5,
+  "min": 837,
+  "max": 1800
+ },
+ "bytecodeFirstLoadMs": {
+  "n": 10,
+  "median": 3494.5,
+  "p25": 3086.3,
+  "p75": 4024.5,
+  "min": 2932,
+  "max": 5644
+ },
+ "stepLatencyMs": {
+  "n": 200,
+  "median": 66,
+  "p25": 64.4,
+  "p75": 70.1,
+  "min": 53.2,
+  "max": 136.6
+ },
+ "longRun": {
+  "riscv": {
+   "executedInstructions": 540009,
+   "ms": {
+    "n": 5,
+    "median": 143,
+    "p25": 143,
+    "p75": 144,
+    "min": 130,
+    "max": 148
+   }
+  },
+  "mips": {
+   "executedInstructions": 720013,
+   "ms": {
+    "n": 5,
+    "median": 167,
+    "p25": 152,
+    "p75": 171,
+    "min": 146,
+    "max": 331
+   }
+  },
+  "aarch64": {
+   "executedInstructions": 540009,
+   "ms": {
+    "n": 5,
+    "median": 271,
+    "p25": 258,
+    "p75": 298,
+    "min": 236,
+    "max": 313
+   }
+  },
+  "x86": {
+   "executedInstructions": 660010,
+   "ms": {
+    "n": 5,
+    "median": 255,
+    "p25": 242,
+    "p75": 364,
+    "min": 237,
+    "max": 401
+   }
+  }
+ }
+}

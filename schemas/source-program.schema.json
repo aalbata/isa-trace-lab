@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/aalbata/isa-trace-lab/schemas/source-program.schema.json",
+  "title": "ISA Trace Lab source program",
+  "description": "A program of the restricted source language with the arguments of main.",
+  "type": "object",
+  "required": [
+    "schema",
+    "schemaVersion",
+    "name",
+    "source",
+    "args"
+  ],
+  "properties": {
+    "schema": {
+      "const": "isa-trace-lab/source-program"
+    },
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "name": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string",
+      "maxLength": 65536
+    },
+    "args": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": -2147483648,
+        "maximum": 2147483647
+      },
+      "maxItems": 4
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,1314 @@
+{
+ "generated": "2026-11-24",
+ "source": "75133daa269a3cf16e153565cbf718ca3b63616f6ff23e450af33bd58c58942c",
+ "targets": {
+  "riscv": {
+   "add": {
+    "compilerGenerates": true,
+    "assemblerChecked": 5115,
+    "emulatorChecked": 136
+   },
+   "sub": {
+    "compilerGenerates": true,
+    "assemblerChecked": 14211,
+    "emulatorChecked": 136
+   },
+   "addi": {
+    "compilerGenerates": true,
+    "assemblerChecked": 58684,
+    "emulatorChecked": 192
+   },
+   "lui": {
+    "compilerGenerates": true,
+    "assemblerChecked": 7669,
+    "emulatorChecked": 152
+   },
+   "auipc": {
+    "compilerGenerates": false,
+    "assemblerChecked": 38,
+    "emulatorChecked": 152
+   },
+   "and": {
+    "compilerGenerates": true,
+    "assemblerChecked": 1546,
+    "emulatorChecked": 136
+   },
+   "or": {
+    "compilerGenerates": true,
+    "assemblerChecked": 1426,
+    "emulatorChecked": 136
+   },
+   "xor": {
+    "compilerGenerates": true,
+    "assemblerChecked": 1920,
+    "emulatorChecked": 136
+   },
+   "andi": {
+    "compilerGenerates": true,
+    "assemblerChecked": 3527,
+    "emulatorChecked": 168
+   },
+   "ori": {
+    "compilerGenerates": true,
+    "assemblerChecked": 576,
+    "emulatorChecked": 168
+   },
+   "xori": {
+    "compilerGenerates": true,
+    "assemblerChecked": 2527,
+    "emulatorChecked": 168
+   },
+   "sll": {
+    "compilerGenerates": true,
+    "assemblerChecked": 860,
+    "emulatorChecked": 136
+   },
+   "srl": {
+    "compilerGenerates": false,
+    "assemblerChecked": 34,
+    "emulatorChecked": 136
+   },
+   "sra": {
+    "compilerGenerates": true,
+    "assemblerChecked": 834,
+    "emulatorChecked": 136
+   },
+   "slli": {
+    "compilerGenerates": true,
+    "assemblerChecked": 3464,
+    "emulatorChecked": 128
+   },
+   "srli": {
+    "compilerGenerates": true,
+    "assemblerChecked": 975,
+    "emulatorChecked": 128
+   },
+   "srai": {
+    "compilerGenerates": true,
+    "assemblerChecked": 1405,
+    "emulatorChecked": 128
+   },
+   "slt": {
+    "compilerGenerates": true,
+    "assemblerChecked": 446,
+    "emulatorChecked": 136
+   },
+   "sltu": {
+    "compilerGenerates": true,
+    "assemblerChecked": 171,
+    "emulatorChecked": 136
+   },
+   "slti": {
+    "compilerGenerates": true,
+    "assemblerChecked": 61,
+    "emulatorChecked": 168
+   },
+   "sltiu": {
+    "compilerGenerates": true,
+    "assemblerChecked": 179,
+    "emulatorChecked": 168
+   },
+   "lw": {
+    "compilerGenerates": true,
+    "assemblerChecked": 5099,
+    "emulatorChecked": 228
+   },
+   "lh": {
+    "compilerGenerates": false,
+    "assemblerChecked": 57,
+    "emulatorChecked": 228
+   },
+   "lhu": {
+    "compilerGenerates": false,
+    "assemblerChecked": 57,
+    "emulatorChecked": 228
+   },
+   "lb": {
+    "compilerGenerates": false,
+    "assemblerChecked": 57,
+    "emulatorChecked": 228
+   },
+   "lbu": {
+    "compilerGenerates": false,
+    "assemblerChecked": 57,
+    "emulatorChecked": 228
+   },
+   "sw": {
+    "compilerGenerates": true,
+    "assemblerChecked": 3454,
+    "emulatorChecked": 228
+   },
+   "sh": {
+    "compilerGenerates": false,
+    "assemblerChecked": 57,
+    "emulatorChecked": 228
+   },
+   "sb": {
+    "compilerGenerates": false,
+    "assemblerChecked": 57,
+    "emulatorChecked": 228
+   },
+   "beq": {
+    "compilerGenerates": true,
+    "assemblerChecked": 2192,
+    "emulatorChecked": 200
+   },
+   "bne": {
+    "compilerGenerates": true,
+    "assemblerChecked": 1811,
+    "emulatorChecked": 200
+   },
+   "blt": {
+    "compilerGenerates": true,
+    "assemblerChecked": 1778,
+    "emulatorChecked": 200
+   },
+   "bge": {
+    "compilerGenerates": true,
+    "assemblerChecked": 2962,
+    "emulatorChecked": 200
+   },
+   "bltu": {
+    "compilerGenerates": true,
+    "assemblerChecked": 1676,
+    "emulatorChecked": 200
+   },
+   "bgeu": {
+    "compilerGenerates": true,
+    "assemblerChecked": 1950,
+    "emulatorChecked": 200
+   },
+   "jal": {
+    "compilerGenerates": true,
+    "assemblerChecked": 8657,
+    "emulatorChecked": 168
+   },
+   "jalr": {
+    "compilerGenerates": true,
+    "assemblerChecked": 2177,
+    "emulatorChecked": 228
+   },
+   "ecall": {
+    "compilerGenerates": true,
+    "assemblerChecked": 7188,
+    "emulatorChecked": 4
+   },
+   "nop": {
+    "compilerGenerates": false,
+    "assemblerChecked": 1,
+    "emulatorChecked": 0
+   },
+   "li": {
+    "compilerGenerates": true,
+    "assemblerChecked": 34316,
+    "emulatorChecked": 0
+   },
+   "mv": {
+    "compilerGenerates": true,
+    "assemblerChecked": 19832,
+    "emulatorChecked": 0
+   },
+   "not": {
+    "compilerGenerates": true,
+    "assemblerChecked": 1695,
+    "emulatorChecked": 0
+   },
+   "neg": {
+    "compilerGenerates": true,
+    "assemblerChecked": 10083,
+    "emulatorChecked": 0
+   },
+   "seqz": {
+    "compilerGenerates": true,
+    "assemblerChecked": 137,
+    "emulatorChecked": 0
+   },
+   "snez": {
+    "compilerGenerates": true,
+    "assemblerChecked": 137,
+    "emulatorChecked": 0
+   },
+   "sltz": {
+    "compilerGenerates": false,
+    "assemblerChecked": 1,
+    "emulatorChecked": 0
+   },
+   "sgtz": {
+    "compilerGenerates": false,
+    "assemblerChecked": 1,
+    "emulatorChecked": 0
+   },
+   "beqz": {
+    "compilerGenerates": true,
+    "assemblerChecked": 943,
+    "emulatorChecked": 0
+   },
+   "bnez": {
+    "compilerGenerates": true,
+    "assemblerChecked": 943,
+    "emulatorChecked": 0
+   },
+   "bgez": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   },
+   "bltz": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   },
+   "blez": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   },
+   "bgtz": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   },
+   "bgt": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   },
+   "ble": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   },
+   "bgtu": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   },
+   "bleu": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   },
+   "j": {
+    "compilerGenerates": true,
+    "assemblerChecked": 3892,
+    "emulatorChecked": 0
+   },
+   "jr": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   },
+   "ret": {
+    "compilerGenerates": true,
+    "assemblerChecked": 2120,
+    "emulatorChecked": 0
+   }
+  },
+  "mips": {
+   "addu": {
+    "compilerGenerates": true,
+    "assemblerChecked": 4002,
+    "emulatorChecked": 144
+   },
+   "addiu": {
+    "compilerGenerates": true,
+    "assemblerChecked": 32098,
+    "emulatorChecked": 1464
+   },
+   "subu": {
+    "compilerGenerates": true,
+    "assemblerChecked": 14131,
+    "emulatorChecked": 144
+   },
+   "add": {
+    "compilerGenerates": false,
+    "assemblerChecked": 36,
+    "emulatorChecked": 144
+   },
+   "addi": {
+    "compilerGenerates": false,
+    "assemblerChecked": 43,
+    "emulatorChecked": 172
+   },
+   "sub": {
+    "compilerGenerates": false,
+    "assemblerChecked": 36,
+    "emulatorChecked": 144
+   },
+   "mul": {
+    "compilerGenerates": true,
+    "assemblerChecked": 3728,
+    "emulatorChecked": 144
+   },
+   "lui": {
+    "compilerGenerates": true,
+    "assemblerChecked": 5535,
+    "emulatorChecked": 168
+   },
+   "and": {
+    "compilerGenerates": true,
+    "assemblerChecked": 1427,
+    "emulatorChecked": 144
+   },
+   "or": {
+    "compilerGenerates": true,
+    "assemblerChecked": 11137,
+    "emulatorChecked": 144
+   },
+   "xor": {
+    "compilerGenerates": true,
+    "assemblerChecked": 1811,
+    "emulatorChecked": 144
+   },
+   "nor": {
+    "compilerGenerates": true,
+    "assemblerChecked": 1732,
+    "emulatorChecked": 144
+   },
+   "andi": {
+    "compilerGenerates": true,
+    "assemblerChecked": 2706,
+    "emulatorChecked": 172
+   },
+   "ori": {
+    "compilerGenerates": true,
+    "assemblerChecked": 4674,
+    "emulatorChecked": 172
+   },
+   "xori": {
+    "compilerGenerates": true,
+    "assemblerChecked": 944,
+    "emulatorChecked": 172
+   },
+   "sll": {
+    "compilerGenerates": true,
+    "assemblerChecked": 18854,
+    "emulatorChecked": 324
+   },
+   "srl": {
+    "compilerGenerates": false,
+    "assemblerChecked": 34,
+    "emulatorChecked": 136
+   },
+   "sra": {
+    "compilerGenerates": true,
+    "assemblerChecked": 1407,
+    "emulatorChecked": 136
+   },
+   "sllv": {
+    "compilerGenerates": true,
+    "assemblerChecked": 862,
+    "emulatorChecked": 144
+   },
+   "srlv": {
+    "compilerGenerates": false,
+    "assemblerChecked": 36,
+    "emulatorChecked": 144
+   },
+   "srav": {
+    "compilerGenerates": true,
+    "assemblerChecked": 836,
+    "emulatorChecked": 144
+   },
+   "slt": {
+    "compilerGenerates": true,
+    "assemblerChecked": 4349,
+    "emulatorChecked": 144
+   },
+   "sltu": {
+    "compilerGenerates": true,
+    "assemblerChecked": 2719,
+    "emulatorChecked": 144
+   },
+   "slti": {
+    "compilerGenerates": true,
+    "assemblerChecked": 329,
+    "emulatorChecked": 172
+   },
+   "sltiu": {
+    "compilerGenerates": true,
+    "assemblerChecked": 1158,
+    "emulatorChecked": 172
+   },
+   "lw": {
+    "compilerGenerates": true,
+    "assemblerChecked": 7792,
+    "emulatorChecked": 200
+   },
+   "lh": {
+    "compilerGenerates": false,
+    "assemblerChecked": 50,
+    "emulatorChecked": 200
+   },
+   "lhu": {
+    "compilerGenerates": false,
+    "assemblerChecked": 50,
+    "emulatorChecked": 200
+   },
+   "lb": {
+    "compilerGenerates": false,
+    "assemblerChecked": 50,
+    "emulatorChecked": 200
+   },
+   "lbu": {
+    "compilerGenerates": false,
+    "assemblerChecked": 50,
+    "emulatorChecked": 200
+   },
+   "sw": {
+    "compilerGenerates": true,
+    "assemblerChecked": 5465,
+    "emulatorChecked": 200
+   },
+   "sh": {
+    "compilerGenerates": false,
+    "assemblerChecked": 50,
+    "emulatorChecked": 200
+   },
+   "sb": {
+    "compilerGenerates": false,
+    "assemblerChecked": 50,
+    "emulatorChecked": 200
+   },
+   "beq": {
+    "compilerGenerates": true,
+    "assemblerChecked": 9497,
+    "emulatorChecked": 152
+   },
+   "bne": {
+    "compilerGenerates": true,
+    "assemblerChecked": 4184,
+    "emulatorChecked": 152
+   },
+   "bltz": {
+    "compilerGenerates": true,
+    "assemblerChecked": 54,
+    "emulatorChecked": 152
+   },
+   "bgez": {
+    "compilerGenerates": true,
+    "assemblerChecked": 43,
+    "emulatorChecked": 152
+   },
+   "blez": {
+    "compilerGenerates": true,
+    "assemblerChecked": 477,
+    "emulatorChecked": 152
+   },
+   "bgtz": {
+    "compilerGenerates": true,
+    "assemblerChecked": 48,
+    "emulatorChecked": 152
+   },
+   "j": {
+    "compilerGenerates": false,
+    "assemblerChecked": 16,
+    "emulatorChecked": 64
+   },
+   "jal": {
+    "compilerGenerates": true,
+    "assemblerChecked": 1047,
+    "emulatorChecked": 64
+   },
+   "jr": {
+    "compilerGenerates": true,
+    "assemblerChecked": 1217,
+    "emulatorChecked": 160
+   },
+   "jalr": {
+    "compilerGenerates": false,
+    "assemblerChecked": 64,
+    "emulatorChecked": 256
+   },
+   "syscall": {
+    "compilerGenerates": true,
+    "assemblerChecked": 7190,
+    "emulatorChecked": 12
+   },
+   "nop": {
+    "compilerGenerates": true,
+    "assemblerChecked": 16331,
+    "emulatorChecked": 0
+   },
+   "li": {
+    "compilerGenerates": true,
+    "assemblerChecked": 31470,
+    "emulatorChecked": 0
+   },
+   "move": {
+    "compilerGenerates": true,
+    "assemblerChecked": 9797,
+    "emulatorChecked": 0
+   },
+   "negu": {
+    "compilerGenerates": true,
+    "assemblerChecked": 10084,
+    "emulatorChecked": 0
+   },
+   "not": {
+    "compilerGenerates": true,
+    "assemblerChecked": 1696,
+    "emulatorChecked": 0
+   },
+   "b": {
+    "compilerGenerates": true,
+    "assemblerChecked": 3892,
+    "emulatorChecked": 0
+   },
+   "beqz": {
+    "compilerGenerates": true,
+    "assemblerChecked": 4368,
+    "emulatorChecked": 0
+   },
+   "bnez": {
+    "compilerGenerates": true,
+    "assemblerChecked": 3328,
+    "emulatorChecked": 0
+   }
+  },
+  "aarch64": {
+   "add": {
+    "compilerGenerates": true,
+    "assemblerChecked": 5871,
+    "emulatorChecked": 544
+   },
+   "adds": {
+    "compilerGenerates": false,
+    "assemblerChecked": 144,
+    "emulatorChecked": 544
+   },
+   "sub": {
+    "compilerGenerates": true,
+    "assemblerChecked": 16056,
+    "emulatorChecked": 544
+   },
+   "subs": {
+    "compilerGenerates": true,
+    "assemblerChecked": 10496,
+    "emulatorChecked": 544
+   },
+   "and": {
+    "compilerGenerates": true,
+    "assemblerChecked": 4203,
+    "emulatorChecked": 592
+   },
+   "orr": {
+    "compilerGenerates": true,
+    "assemblerChecked": 11747,
+    "emulatorChecked": 592
+   },
+   "eor": {
+    "compilerGenerates": true,
+    "assemblerChecked": 2337,
+    "emulatorChecked": 592
+   },
+   "ands": {
+    "compilerGenerates": false,
+    "assemblerChecked": 152,
+    "emulatorChecked": 592
+   },
+   "orn": {
+    "compilerGenerates": true,
+    "assemblerChecked": 1764,
+    "emulatorChecked": 272
+   },
+   "bic": {
+    "compilerGenerates": false,
+    "assemblerChecked": 68,
+    "emulatorChecked": 272
+   },
+   "movz": {
+    "compilerGenerates": true,
+    "assemblerChecked": 30322,
+    "emulatorChecked": 256
+   },
+   "movn": {
+    "compilerGenerates": true,
+    "assemblerChecked": 682,
+    "emulatorChecked": 256
+   },
+   "movk": {
+    "compilerGenerates": true,
+    "assemblerChecked": 3055,
+    "emulatorChecked": 256
+   },
+   "lslv": {
+    "compilerGenerates": true,
+    "assemblerChecked": 892,
+    "emulatorChecked": 256
+   },
+   "lsrv": {
+    "compilerGenerates": false,
+    "assemblerChecked": 66,
+    "emulatorChecked": 256
+   },
+   "asrv": {
+    "compilerGenerates": true,
+    "assemblerChecked": 866,
+    "emulatorChecked": 256
+   },
+   "ubfm": {
+    "compilerGenerates": true,
+    "assemblerChecked": 1282,
+    "emulatorChecked": 336
+   },
+   "sbfm": {
+    "compilerGenerates": true,
+    "assemblerChecked": 1470,
+    "emulatorChecked": 336
+   },
+   "madd": {
+    "compilerGenerates": true,
+    "assemblerChecked": 3758,
+    "emulatorChecked": 256
+   },
+   "msub": {
+    "compilerGenerates": false,
+    "assemblerChecked": 66,
+    "emulatorChecked": 256
+   },
+   "csel": {
+    "compilerGenerates": false,
+    "assemblerChecked": 68,
+    "emulatorChecked": 272
+   },
+   "csinc": {
+    "compilerGenerates": true,
+    "assemblerChecked": 799,
+    "emulatorChecked": 272
+   },
+   "b": {
+    "compilerGenerates": true,
+    "assemblerChecked": 3904,
+    "emulatorChecked": 44
+   },
+   "bl": {
+    "compilerGenerates": true,
+    "assemblerChecked": 1042,
+    "emulatorChecked": 44
+   },
+   "b.cond": {
+    "compilerGenerates": true,
+    "assemblerChecked": 9713,
+    "emulatorChecked": 256
+   },
+   "cbz": {
+    "compilerGenerates": true,
+    "assemblerChecked": 487,
+    "emulatorChecked": 256
+   },
+   "cbnz": {
+    "compilerGenerates": true,
+    "assemblerChecked": 175,
+    "emulatorChecked": 256
+   },
+   "br": {
+    "compilerGenerates": false,
+    "assemblerChecked": 32,
+    "emulatorChecked": 128
+   },
+   "blr": {
+    "compilerGenerates": false,
+    "assemblerChecked": 32,
+    "emulatorChecked": 128
+   },
+   "ret": {
+    "compilerGenerates": true,
+    "assemblerChecked": 1209,
+    "emulatorChecked": 128
+   },
+   "ldr": {
+    "compilerGenerates": true,
+    "assemblerChecked": 5900,
+    "emulatorChecked": 528
+   },
+   "str": {
+    "compilerGenerates": true,
+    "assemblerChecked": 3764,
+    "emulatorChecked": 528
+   },
+   "ldrb": {
+    "compilerGenerates": false,
+    "assemblerChecked": 67,
+    "emulatorChecked": 264
+   },
+   "ldrh": {
+    "compilerGenerates": false,
+    "assemblerChecked": 66,
+    "emulatorChecked": 264
+   },
+   "strb": {
+    "compilerGenerates": false,
+    "assemblerChecked": 67,
+    "emulatorChecked": 264
+   },
+   "strh": {
+    "compilerGenerates": false,
+    "assemblerChecked": 66,
+    "emulatorChecked": 264
+   },
+   "svc": {
+    "compilerGenerates": true,
+    "assemblerChecked": 7190,
+    "emulatorChecked": 12
+   },
+   "nop": {
+    "compilerGenerates": false,
+    "assemblerChecked": 14,
+    "emulatorChecked": 56
+   },
+   "mov": {
+    "compilerGenerates": true,
+    "assemblerChecked": 40552,
+    "emulatorChecked": 0
+   },
+   "mvn": {
+    "compilerGenerates": true,
+    "assemblerChecked": 1696,
+    "emulatorChecked": 0
+   },
+   "neg": {
+    "compilerGenerates": true,
+    "assemblerChecked": 10084,
+    "emulatorChecked": 0
+   },
+   "negs": {
+    "compilerGenerates": false,
+    "assemblerChecked": 2,
+    "emulatorChecked": 0
+   },
+   "cmp": {
+    "compilerGenerates": true,
+    "assemblerChecked": 10359,
+    "emulatorChecked": 0
+   },
+   "cmn": {
+    "compilerGenerates": false,
+    "assemblerChecked": 5,
+    "emulatorChecked": 0
+   },
+   "tst": {
+    "compilerGenerates": false,
+    "assemblerChecked": 4,
+    "emulatorChecked": 0
+   },
+   "mul": {
+    "compilerGenerates": true,
+    "assemblerChecked": 3694,
+    "emulatorChecked": 0
+   },
+   "mneg": {
+    "compilerGenerates": false,
+    "assemblerChecked": 2,
+    "emulatorChecked": 0
+   },
+   "lsl": {
+    "compilerGenerates": true,
+    "assemblerChecked": 2015,
+    "emulatorChecked": 0
+   },
+   "lsr": {
+    "compilerGenerates": false,
+    "assemblerChecked": 5,
+    "emulatorChecked": 0
+   },
+   "asr": {
+    "compilerGenerates": true,
+    "assemblerChecked": 2178,
+    "emulatorChecked": 0
+   },
+   "cset": {
+    "compilerGenerates": true,
+    "assemblerChecked": 717,
+    "emulatorChecked": 0
+   },
+   "cinc": {
+    "compilerGenerates": false,
+    "assemblerChecked": 14,
+    "emulatorChecked": 0
+   },
+   "ubfiz": {
+    "compilerGenerates": false,
+    "assemblerChecked": 3,
+    "emulatorChecked": 0
+   },
+   "ubfx": {
+    "compilerGenerates": false,
+    "assemblerChecked": 3,
+    "emulatorChecked": 0
+   },
+   "sbfiz": {
+    "compilerGenerates": false,
+    "assemblerChecked": 2,
+    "emulatorChecked": 0
+   },
+   "sbfx": {
+    "compilerGenerates": false,
+    "assemblerChecked": 3,
+    "emulatorChecked": 0
+   },
+   "uxtb": {
+    "compilerGenerates": false,
+    "assemblerChecked": 1,
+    "emulatorChecked": 0
+   },
+   "uxth": {
+    "compilerGenerates": false,
+    "assemblerChecked": 1,
+    "emulatorChecked": 0
+   },
+   "sxtb": {
+    "compilerGenerates": false,
+    "assemblerChecked": 2,
+    "emulatorChecked": 0
+   },
+   "sxth": {
+    "compilerGenerates": false,
+    "assemblerChecked": 2,
+    "emulatorChecked": 0
+   },
+   "sxtw": {
+    "compilerGenerates": false,
+    "assemblerChecked": 1,
+    "emulatorChecked": 0
+   }
+  },
+  "x86": {
+   "mov": {
+    "compilerGenerates": true,
+    "assemblerChecked": 79182,
+    "emulatorChecked": 1740
+   },
+   "movzx": {
+    "compilerGenerates": true,
+    "assemblerChecked": 840,
+    "emulatorChecked": 556
+   },
+   "movsxd": {
+    "compilerGenerates": false,
+    "assemblerChecked": 131,
+    "emulatorChecked": 524
+   },
+   "lea": {
+    "compilerGenerates": false,
+    "assemblerChecked": 202,
+    "emulatorChecked": 808
+   },
+   "add": {
+    "compilerGenerates": true,
+    "assemblerChecked": 6522,
+    "emulatorChecked": 1740
+   },
+   "sub": {
+    "compilerGenerates": true,
+    "assemblerChecked": 6395,
+    "emulatorChecked": 1740
+   },
+   "and": {
+    "compilerGenerates": true,
+    "assemblerChecked": 4489,
+    "emulatorChecked": 1740
+   },
+   "or": {
+    "compilerGenerates": true,
+    "assemblerChecked": 2361,
+    "emulatorChecked": 1740
+   },
+   "xor": {
+    "compilerGenerates": true,
+    "assemblerChecked": 2623,
+    "emulatorChecked": 1740
+   },
+   "cmp": {
+    "compilerGenerates": true,
+    "assemblerChecked": 11319,
+    "emulatorChecked": 1740
+   },
+   "test": {
+    "compilerGenerates": false,
+    "assemblerChecked": 172,
+    "emulatorChecked": 688
+   },
+   "imul": {
+    "compilerGenerates": true,
+    "assemblerChecked": 3978,
+    "emulatorChecked": 1144
+   },
+   "neg": {
+    "compilerGenerates": true,
+    "assemblerChecked": 10238,
+    "emulatorChecked": 624
+   },
+   "not": {
+    "compilerGenerates": true,
+    "assemblerChecked": 1850,
+    "emulatorChecked": 624
+   },
+   "inc": {
+    "compilerGenerates": false,
+    "assemblerChecked": 156,
+    "emulatorChecked": 624
+   },
+   "dec": {
+    "compilerGenerates": false,
+    "assemblerChecked": 156,
+    "emulatorChecked": 624
+   },
+   "shl": {
+    "compilerGenerates": true,
+    "assemblerChecked": 2282,
+    "emulatorChecked": 932
+   },
+   "sar": {
+    "compilerGenerates": true,
+    "assemblerChecked": 2406,
+    "emulatorChecked": 932
+   },
+   "shr": {
+    "compilerGenerates": false,
+    "assemblerChecked": 233,
+    "emulatorChecked": 932
+   },
+   "seto": {
+    "compilerGenerates": false,
+    "assemblerChecked": 9,
+    "emulatorChecked": 36
+   },
+   "setno": {
+    "compilerGenerates": false,
+    "assemblerChecked": 9,
+    "emulatorChecked": 36
+   },
+   "setb": {
+    "compilerGenerates": false,
+    "assemblerChecked": 9,
+    "emulatorChecked": 36
+   },
+   "setae": {
+    "compilerGenerates": false,
+    "assemblerChecked": 9,
+    "emulatorChecked": 36
+   },
+   "sete": {
+    "compilerGenerates": true,
+    "assemblerChecked": 145,
+    "emulatorChecked": 36
+   },
+   "setne": {
+    "compilerGenerates": true,
+    "assemblerChecked": 145,
+    "emulatorChecked": 36
+   },
+   "setbe": {
+    "compilerGenerates": false,
+    "assemblerChecked": 9,
+    "emulatorChecked": 36
+   },
+   "seta": {
+    "compilerGenerates": false,
+    "assemblerChecked": 9,
+    "emulatorChecked": 36
+   },
+   "sets": {
+    "compilerGenerates": false,
+    "assemblerChecked": 9,
+    "emulatorChecked": 36
+   },
+   "setns": {
+    "compilerGenerates": false,
+    "assemblerChecked": 9,
+    "emulatorChecked": 36
+   },
+   "setp": {
+    "compilerGenerates": false,
+    "assemblerChecked": 9,
+    "emulatorChecked": 36
+   },
+   "setnp": {
+    "compilerGenerates": false,
+    "assemblerChecked": 9,
+    "emulatorChecked": 36
+   },
+   "setl": {
+    "compilerGenerates": true,
+    "assemblerChecked": 127,
+    "emulatorChecked": 36
+   },
+   "setge": {
+    "compilerGenerates": true,
+    "assemblerChecked": 112,
+    "emulatorChecked": 36
+   },
+   "setle": {
+    "compilerGenerates": true,
+    "assemblerChecked": 123,
+    "emulatorChecked": 36
+   },
+   "setg": {
+    "compilerGenerates": true,
+    "assemblerChecked": 103,
+    "emulatorChecked": 36
+   },
+   "jmp": {
+    "compilerGenerates": true,
+    "assemblerChecked": 3898,
+    "emulatorChecked": 48
+   },
+   "jo": {
+    "compilerGenerates": false,
+    "assemblerChecked": 11,
+    "emulatorChecked": 44
+   },
+   "jno": {
+    "compilerGenerates": false,
+    "assemblerChecked": 11,
+    "emulatorChecked": 44
+   },
+   "jb": {
+    "compilerGenerates": false,
+    "assemblerChecked": 11,
+    "emulatorChecked": 44
+   },
+   "jae": {
+    "compilerGenerates": true,
+    "assemblerChecked": 990,
+    "emulatorChecked": 44
+   },
+   "je": {
+    "compilerGenerates": true,
+    "assemblerChecked": 1210,
+    "emulatorChecked": 44
+   },
+   "jne": {
+    "compilerGenerates": true,
+    "assemblerChecked": 829,
+    "emulatorChecked": 44
+   },
+   "jbe": {
+    "compilerGenerates": true,
+    "assemblerChecked": 932,
+    "emulatorChecked": 44
+   },
+   "ja": {
+    "compilerGenerates": true,
+    "assemblerChecked": 1637,
+    "emulatorChecked": 44
+   },
+   "js": {
+    "compilerGenerates": false,
+    "assemblerChecked": 11,
+    "emulatorChecked": 44
+   },
+   "jns": {
+    "compilerGenerates": false,
+    "assemblerChecked": 11,
+    "emulatorChecked": 44
+   },
+   "jp": {
+    "compilerGenerates": false,
+    "assemblerChecked": 11,
+    "emulatorChecked": 44
+   },
+   "jnp": {
+    "compilerGenerates": false,
+    "assemblerChecked": 11,
+    "emulatorChecked": 44
+   },
+   "jl": {
+    "compilerGenerates": true,
+    "assemblerChecked": 959,
+    "emulatorChecked": 44
+   },
+   "jge": {
+    "compilerGenerates": true,
+    "assemblerChecked": 1563,
+    "emulatorChecked": 44
+   },
+   "jle": {
+    "compilerGenerates": true,
+    "assemblerChecked": 1371,
+    "emulatorChecked": 44
+   },
+   "jg": {
+    "compilerGenerates": true,
+    "assemblerChecked": 791,
+    "emulatorChecked": 44
+   },
+   "call": {
+    "compilerGenerates": true,
+    "assemblerChecked": 1037,
+    "emulatorChecked": 24
+   },
+   "ret": {
+    "compilerGenerates": true,
+    "assemblerChecked": 1178,
+    "emulatorChecked": 4
+   },
+   "push": {
+    "compilerGenerates": false,
+    "assemblerChecked": 16,
+    "emulatorChecked": 64
+   },
+   "pop": {
+    "compilerGenerates": false,
+    "assemblerChecked": 16,
+    "emulatorChecked": 64
+   },
+   "syscall": {
+    "compilerGenerates": true,
+    "assemblerChecked": 7188,
+    "emulatorChecked": 4
+   },
+   "nop": {
+    "compilerGenerates": false,
+    "assemblerChecked": 36,
+    "emulatorChecked": 144
+   },
+   "jc": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   },
+   "setc": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   },
+   "jnae": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   },
+   "setnae": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   },
+   "jnc": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   },
+   "setnc": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   },
+   "jnb": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   },
+   "setnb": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   },
+   "jz": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   },
+   "setz": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   },
+   "jnz": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   },
+   "setnz": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   },
+   "jna": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   },
+   "setna": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   },
+   "jnbe": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   },
+   "setnbe": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   },
+   "jpe": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   },
+   "setpe": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   },
+   "jpo": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   },
+   "setpo": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   },
+   "jnge": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   },
+   "setnge": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   },
+   "jnl": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   },
+   "setnl": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   },
+   "jng": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   },
+   "setng": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   },
+   "jnle": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   },
+   "setnle": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   },
+   "sal": {
+    "compilerGenerates": false,
+    "assemblerChecked": 0,
+    "emulatorChecked": 0
+   }
+  }
+ }
+}

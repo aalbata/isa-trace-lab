@@ -1,0 +1,494 @@
+{
+ "stage": "execution",
+ "target": "riscv",
+ "totals": {
+  "cases": 6504,
+  "passed": 6504,
+  "faults_agreed": 344,
+  "excluded": 0,
+  "partially_compared": 0
+ },
+ "by_instruction": {
+  "lui": {
+   "cases": 152,
+   "passed": 152,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "auipc": {
+   "cases": 152,
+   "passed": 152,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "jal": {
+   "cases": 168,
+   "passed": 168,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0,
+   "fetch_fault_after_jump": 20
+  },
+  "jalr": {
+   "cases": 228,
+   "passed": 228,
+   "faults_agreed": 44,
+   "excluded": 0,
+   "partially_compared": 0,
+   "fetch_fault_after_jump": 4
+  },
+  "beq": {
+   "cases": 204,
+   "passed": 204,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "bne": {
+   "cases": 204,
+   "passed": 204,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "blt": {
+   "cases": 204,
+   "passed": 204,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "bge": {
+   "cases": 204,
+   "passed": 204,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "bltu": {
+   "cases": 204,
+   "passed": 204,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "bgeu": {
+   "cases": 204,
+   "passed": 204,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "lb": {
+   "cases": 228,
+   "passed": 228,
+   "faults_agreed": 4,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "lh": {
+   "cases": 228,
+   "passed": 228,
+   "faults_agreed": 48,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "lw": {
+   "cases": 228,
+   "passed": 228,
+   "faults_agreed": 72,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "lbu": {
+   "cases": 228,
+   "passed": 228,
+   "faults_agreed": 4,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "lhu": {
+   "cases": 228,
+   "passed": 228,
+   "faults_agreed": 48,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "sb": {
+   "cases": 228,
+   "passed": 228,
+   "faults_agreed": 4,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "sh": {
+   "cases": 228,
+   "passed": 228,
+   "faults_agreed": 48,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "sw": {
+   "cases": 228,
+   "passed": 228,
+   "faults_agreed": 72,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "addi": {
+   "cases": 168,
+   "passed": 168,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "slti": {
+   "cases": 168,
+   "passed": 168,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "sltiu": {
+   "cases": 168,
+   "passed": 168,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "xori": {
+   "cases": 168,
+   "passed": 168,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "ori": {
+   "cases": 168,
+   "passed": 168,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "andi": {
+   "cases": 168,
+   "passed": 168,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "slli": {
+   "cases": 128,
+   "passed": 128,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "srli": {
+   "cases": 128,
+   "passed": 128,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "srai": {
+   "cases": 128,
+   "passed": 128,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "add": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "sub": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "sll": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "slt": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "sltu": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "xor": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "srl": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "sra": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "or": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "and": {
+   "cases": 136,
+   "passed": 136,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  },
+  "ecall": {
+   "cases": 4,
+   "passed": 4,
+   "faults_agreed": 0,
+   "excluded": 0,
+   "partially_compared": 0
+  }
+ },
+ "by_mnemonic": {
+  "lui": {
+   "cases": 152,
+   "passed": 152,
+   "excluded": 0
+  },
+  "auipc": {
+   "cases": 152,
+   "passed": 152,
+   "excluded": 0
+  },
+  "jal": {
+   "cases": 168,
+   "passed": 168,
+   "excluded": 0
+  },
+  "jalr": {
+   "cases": 228,
+   "passed": 228,
+   "excluded": 0
+  },
+  "beq": {
+   "cases": 200,
+   "passed": 200,
+   "excluded": 0
+  },
+  "addi": {
+   "cases": 192,
+   "passed": 192,
+   "excluded": 0
+  },
+  "bne": {
+   "cases": 200,
+   "passed": 200,
+   "excluded": 0
+  },
+  "blt": {
+   "cases": 200,
+   "passed": 200,
+   "excluded": 0
+  },
+  "bge": {
+   "cases": 200,
+   "passed": 200,
+   "excluded": 0
+  },
+  "bltu": {
+   "cases": 200,
+   "passed": 200,
+   "excluded": 0
+  },
+  "bgeu": {
+   "cases": 200,
+   "passed": 200,
+   "excluded": 0
+  },
+  "lb": {
+   "cases": 228,
+   "passed": 228,
+   "excluded": 0
+  },
+  "lh": {
+   "cases": 228,
+   "passed": 228,
+   "excluded": 0
+  },
+  "lw": {
+   "cases": 228,
+   "passed": 228,
+   "excluded": 0
+  },
+  "lbu": {
+   "cases": 228,
+   "passed": 228,
+   "excluded": 0
+  },
+  "lhu": {
+   "cases": 228,
+   "passed": 228,
+   "excluded": 0
+  },
+  "sb": {
+   "cases": 228,
+   "passed": 228,
+   "excluded": 0
+  },
+  "sh": {
+   "cases": 228,
+   "passed": 228,
+   "excluded": 0
+  },
+  "sw": {
+   "cases": 228,
+   "passed": 228,
+   "excluded": 0
+  },
+  "slti": {
+   "cases": 168,
+   "passed": 168,
+   "excluded": 0
+  },
+  "sltiu": {
+   "cases": 168,
+   "passed": 168,
+   "excluded": 0
+  },
+  "xori": {
+   "cases": 168,
+   "passed": 168,
+   "excluded": 0
+  },
+  "ori": {
+   "cases": 168,
+   "passed": 168,
+   "excluded": 0
+  },
+  "andi": {
+   "cases": 168,
+   "passed": 168,
+   "excluded": 0
+  },
+  "slli": {
+   "cases": 128,
+   "passed": 128,
+   "excluded": 0
+  },
+  "srli": {
+   "cases": 128,
+   "passed": 128,
+   "excluded": 0
+  },
+  "srai": {
+   "cases": 128,
+   "passed": 128,
+   "excluded": 0
+  },
+  "add": {
+   "cases": 136,
+   "passed": 136,
+   "excluded": 0
+  },
+  "sub": {
+   "cases": 136,
+   "passed": 136,
+   "excluded": 0
+  },
+  "sll": {
+   "cases": 136,
+   "passed": 136,
+   "excluded": 0
+  },
+  "slt": {
+   "cases": 136,
+   "passed": 136,
+   "excluded": 0
+  },
+  "sltu": {
+   "cases": 136,
+   "passed": 136,
+   "excluded": 0
+  },
+  "xor": {
+   "cases": 136,
+   "passed": 136,
+   "excluded": 0
+  },
+  "srl": {
+   "cases": 136,
+   "passed": 136,
+   "excluded": 0
+  },
+  "sra": {
+   "cases": 136,
+   "passed": 136,
+   "excluded": 0
+  },
+  "or": {
+   "cases": 136,
+   "passed": 136,
+   "excluded": 0
+  },
+  "and": {
+   "cases": 136,
+   "passed": 136,
+   "excluded": 0
+  },
+  "ecall": {
+   "cases": 4,
+   "passed": 4,
+   "excluded": 0
+  }
+ },
+ "exclusions": {},
+ "partially_compared": {},
+ "excluded_examples": [],
+ "failures": [],
+ "failure_count": 0,
+ "format": 4,
+ "source": "75133daa269a3cf16e153565cbf718ca3b63616f6ff23e450af33bd58c58942c",
+ "tools": {
+  "python": "3.12.10",
+  "ziglang": "0.15.2",
+  "zig": "0.15.2",
+  "clang": "clang version 20.1.2 (https://github.com/ziglang/zig-bootstrap 7ef74e656cf8ddbd6bf891a8475892aa1afa6891)",
+  "capstone": "5.0.9",
+  "capstone_module_string": "5.0.7",
+  "capstone_core": "5.0",
+  "unicorn": "2.1.4",
+  "unicorn_core": "2.1",
+  "pyelftools": "0.33"
+ },
+ "reference_configuration": "Clang integrated assembler, RV32I without extensions (-mcpu=generic_rv32), linker relaxation off",
+ "seconds": 25.1
+}

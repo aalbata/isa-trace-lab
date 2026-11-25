@@ -1,0 +1,421 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/aalbata/isa-trace-lab/schemas/batch-result.schema.json",
+  "title": "ISA Trace Lab batch result",
+  "description": "Result of the batch command: for every program and argument tuple of a manifest, the run on each target and the verdict of their comparison.",
+  "type": "object",
+  "required": [
+    "schema",
+    "schemaVersion",
+    "tool",
+    "version",
+    "targets",
+    "limits",
+    "counts",
+    "results"
+  ],
+  "properties": {
+    "schema": {
+      "const": "isa-trace-lab/batch-result"
+    },
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "tool": {
+      "const": "isa-trace-lab"
+    },
+    "version": {
+      "description": "Software version.",
+      "type": "string"
+    },
+    "targets": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/target"
+      }
+    },
+    "limits": {
+      "type": "object",
+      "required": [
+        "maxSteps",
+        "maxOutput"
+      ],
+      "properties": {
+        "maxSteps": {
+          "description": "Limit on the instructions that each target executes in a run.",
+          "type": "integer",
+          "minimum": 1
+        },
+        "maxOutput": {
+          "description": "Limit on printed values.",
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "counts": {
+      "description": "Number of comparisons with each verdict, and number of entries that could not be run.",
+      "type": "object",
+      "required": [
+        "agree",
+        "disagree",
+        "incomplete",
+        "error"
+      ],
+      "properties": {
+        "agree": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "disagree": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "incomplete": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "error": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/$defs/comparison"
+          },
+          {
+            "$ref": "#/$defs/error"
+          }
+        ]
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "target": {
+      "enum": [
+        "riscv",
+        "mips",
+        "aarch64",
+        "x86"
+      ]
+    },
+    "args": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": -2147483648,
+        "maximum": 2147483647
+      }
+    },
+    "comparison": {
+      "description": "Runs of one program and argument tuple on every target.",
+      "type": "object",
+      "required": [
+        "program",
+        "args",
+        "verdict",
+        "outcomesAgree",
+        "boundariesAgree",
+        "boundaries",
+        "limitReached",
+        "runs"
+      ],
+      "properties": {
+        "program": {
+          "type": "string"
+        },
+        "args": {
+          "$ref": "#/$defs/args"
+        },
+        "verdict": {
+          "description": "agree: no disagreement, and no run stopped at the instruction limit. disagree: outcomesAgree or boundariesAgree is false. incomplete: no disagreement was found, and at least one run stopped at the instruction limit.",
+          "enum": [
+            "agree",
+            "disagree",
+            "incomplete"
+          ]
+        },
+        "outcomesAgree": {
+          "description": "The runs that ended on their own all ended the same way with the same output and return value. Runs listed in limitReached are left out.",
+          "type": "boolean"
+        },
+        "boundariesAgree": {
+          "description": "Every compared boundary agrees across the targets that reached it, and no run that ended on its own fired fewer boundaries than another run.",
+          "type": "boolean"
+        },
+        "boundaries": {
+          "description": "Boundaries compared: those of the first 100000 boundaries that at least two targets reached.",
+          "type": "integer",
+          "minimum": 0
+        },
+        "limitReached": {
+          "description": "Targets whose run stopped at the instruction limit. Each is compared on the boundaries it reached, and its outcome is not compared.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/target"
+          }
+        },
+        "runs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "target",
+              "outcome",
+              "metrics"
+            ],
+            "properties": {
+              "target": {
+                "$ref": "#/$defs/target"
+              },
+              "outcome": {
+                "$ref": "#/$defs/outcome"
+              },
+              "metrics": {
+                "$ref": "#/$defs/metrics"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "error": {
+      "description": "A program and argument tuple that could not be run: diagnostics of the source text, or code that does not fit a target.",
+      "type": "object",
+      "required": [
+        "program",
+        "args",
+        "error"
+      ],
+      "properties": {
+        "program": {
+          "type": "string"
+        },
+        "args": {
+          "$ref": "#/$defs/args"
+        },
+        "error": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "outcome": {
+      "type": "object",
+      "required": [
+        "status",
+        "output",
+        "steps"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "exited",
+            "trap",
+            "limit",
+            "fault"
+          ]
+        },
+        "returnValue": {
+          "type": "integer",
+          "minimum": -2147483648,
+          "maximum": 2147483647
+        },
+        "output": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": -2147483648,
+            "maximum": 2147483647
+          }
+        },
+        "trap": {
+          "type": "object",
+          "required": [
+            "code",
+            "message",
+            "line"
+          ],
+          "properties": {
+            "code": {
+              "type": "integer"
+            },
+            "message": {
+              "type": "string"
+            },
+            "line": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "limit": {
+          "enum": [
+            "steps",
+            "output"
+          ]
+        },
+        "fault": {
+          "type": "string"
+        },
+        "steps": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "staticInstructions",
+        "staticInstructionsByRegion",
+        "codeBytes",
+        "codeBytesByRegion",
+        "executedInstructions",
+        "executedByRegion",
+        "dataLoads",
+        "dataStores",
+        "registersWritten",
+        "boundaries"
+      ],
+      "properties": {
+        "staticInstructions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "staticInstructionsByRegion": {
+          "type": "object",
+          "required": [
+            "startup",
+            "main",
+            "helper",
+            "trap"
+          ],
+          "properties": {
+            "startup": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "main": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "helper": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "trap": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "additionalProperties": false
+        },
+        "codeBytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "codeBytesByRegion": {
+          "type": "object",
+          "required": [
+            "startup",
+            "main",
+            "helper",
+            "trap"
+          ],
+          "properties": {
+            "startup": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "main": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "helper": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "trap": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "additionalProperties": false
+        },
+        "executedInstructions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "executedByRegion": {
+          "type": "object",
+          "required": [
+            "startup",
+            "main",
+            "helper",
+            "trap",
+            "unknown"
+          ],
+          "properties": {
+            "startup": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "main": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "helper": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "trap": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "unknown": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "additionalProperties": false
+        },
+        "dataLoads": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "dataStores": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "registersWritten": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "boundaries": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

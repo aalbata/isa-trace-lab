@@ -1,0 +1,356 @@
+{
+ "stage": "encoding",
+ "target": "aarch64",
+ "summary": {
+  "sweep": {
+   "programs": 88,
+   "programs_passed": 88,
+   "instructions": 2943,
+   "instructions_in_passed_programs": 2943,
+   "bytes": 11772
+  },
+  "pseudo": {
+   "programs": 1,
+   "programs_passed": 1,
+   "instructions": 148,
+   "instructions_in_passed_programs": 148,
+   "bytes": 592,
+   "expansions_equivalent": 0
+  },
+  "compiled": {
+   "programs": 1031,
+   "programs_passed": 1031,
+   "instructions": 126801,
+   "instructions_in_passed_programs": 126801,
+   "bytes": 507204
+  }
+ },
+ "by_mnemonic": {
+  "add": {
+   "sweep": 136,
+   "pseudo": 6,
+   "compiled": 5729
+  },
+  "adds": {
+   "sweep": 136,
+   "pseudo": 8
+  },
+  "sub": {
+   "sweep": 136,
+   "pseudo": 3,
+   "compiled": 15917
+  },
+  "subs": {
+   "sweep": 136,
+   "pseudo": 10,
+   "compiled": 10350
+  },
+  "and": {
+   "sweep": 148,
+   "pseudo": 1,
+   "compiled": 4054
+  },
+  "orr": {
+   "sweep": 148,
+   "pseudo": 14,
+   "compiled": 11585
+  },
+  "eor": {
+   "sweep": 148,
+   "pseudo": 1,
+   "compiled": 2188
+  },
+  "ands": {
+   "sweep": 148,
+   "pseudo": 4
+  },
+  "orn": {
+   "sweep": 68,
+   "pseudo": 2,
+   "compiled": 1694
+  },
+  "bic": {
+   "sweep": 68
+  },
+  "movz": {
+   "sweep": 64,
+   "pseudo": 15,
+   "compiled": 30243
+  },
+  "movn": {
+   "sweep": 64,
+   "pseudo": 11,
+   "compiled": 607
+  },
+  "movk": {
+   "sweep": 64,
+   "compiled": 2991
+  },
+  "lslv": {
+   "sweep": 64,
+   "pseudo": 2,
+   "compiled": 826
+  },
+  "lsrv": {
+   "sweep": 64,
+   "pseudo": 2
+  },
+  "asrv": {
+   "sweep": 64,
+   "pseudo": 2,
+   "compiled": 800
+  },
+  "madd": {
+   "sweep": 64,
+   "pseudo": 2,
+   "compiled": 3692
+  },
+  "msub": {
+   "sweep": 64,
+   "pseudo": 2
+  },
+  "csel": {
+   "sweep": 68
+  },
+  "csinc": {
+   "sweep": 68,
+   "pseudo": 30,
+   "compiled": 701
+  },
+  "ubfm": {
+   "sweep": 84,
+   "pseudo": 16,
+   "compiled": 1182
+  },
+  "sbfm": {
+   "sweep": 84,
+   "pseudo": 13,
+   "compiled": 1373
+  },
+  "b": {
+   "sweep": 11,
+   "compiled": 3893
+  },
+  "nop": {
+   "sweep": 14
+  },
+  "bl": {
+   "sweep": 11,
+   "compiled": 1031
+  },
+  "b.eq": {
+   "sweep": 4,
+   "compiled": 776
+  },
+  "b.ne": {
+   "sweep": 4,
+   "compiled": 707
+  },
+  "b.hs": {
+   "sweep": 4,
+   "compiled": 979
+  },
+  "b.lo": {
+   "sweep": 4
+  },
+  "b.mi": {
+   "sweep": 4
+  },
+  "b.pl": {
+   "sweep": 4
+  },
+  "b.vs": {
+   "sweep": 4
+  },
+  "b.vc": {
+   "sweep": 4
+  },
+  "b.hi": {
+   "sweep": 4,
+   "compiled": 1626
+  },
+  "b.ls": {
+   "sweep": 4,
+   "compiled": 921
+  },
+  "b.ge": {
+   "sweep": 4,
+   "compiled": 1552
+  },
+  "b.lt": {
+   "sweep": 4,
+   "compiled": 948
+  },
+  "b.gt": {
+   "sweep": 4,
+   "compiled": 780
+  },
+  "b.le": {
+   "sweep": 4,
+   "compiled": 1360
+  },
+  "b.al": {
+   "sweep": 4
+  },
+  "b.nv": {
+   "sweep": 4
+  },
+  "cbz": {
+   "sweep": 64,
+   "compiled": 423
+  },
+  "cbnz": {
+   "sweep": 64,
+   "compiled": 111
+  },
+  "br": {
+   "sweep": 32
+  },
+  "blr": {
+   "sweep": 32
+  },
+  "ret": {
+   "sweep": 32,
+   "compiled": 1177
+  },
+  "ldr": {
+   "sweep": 132,
+   "pseudo": 2,
+   "compiled": 5766
+  },
+  "str": {
+   "sweep": 132,
+   "compiled": 3632
+  },
+  "ldrb": {
+   "sweep": 66,
+   "pseudo": 1
+  },
+  "strb": {
+   "sweep": 66,
+   "pseudo": 1
+  },
+  "ldrh": {
+   "sweep": 66
+  },
+  "strh": {
+   "sweep": 66
+  },
+  "svc": {
+   "sweep": 3,
+   "compiled": 7187
+  }
+ },
+ "by_pseudo": {
+  "mov": {
+   "pseudo": 43,
+   "compiled": 40509
+  },
+  "mvn": {
+   "pseudo": 2,
+   "compiled": 1694
+  },
+  "neg": {
+   "pseudo": 2,
+   "compiled": 10082
+  },
+  "negs": {
+   "pseudo": 2
+  },
+  "cmp": {
+   "pseudo": 9,
+   "compiled": 10350
+  },
+  "cmn": {
+   "pseudo": 5
+  },
+  "tst": {
+   "pseudo": 4
+  },
+  "mul": {
+   "pseudo": 2,
+   "compiled": 3692
+  },
+  "mneg": {
+   "pseudo": 2
+  },
+  "lsl": {
+   "pseudo": 7,
+   "compiled": 2008
+  },
+  "lsr": {
+   "pseudo": 5
+  },
+  "asr": {
+   "pseudo": 5,
+   "compiled": 2173
+  },
+  "cset": {
+   "pseudo": 16,
+   "compiled": 701
+  },
+  "cinc": {
+   "pseudo": 14
+  },
+  "ubfiz": {
+   "pseudo": 3
+  },
+  "ubfx": {
+   "pseudo": 3
+  },
+  "sbfiz": {
+   "pseudo": 2
+  },
+  "sbfx": {
+   "pseudo": 3
+  },
+  "uxtb": {
+   "pseudo": 1
+  },
+  "uxth": {
+   "pseudo": 1
+  },
+  "sxtb": {
+   "pseudo": 2
+  },
+  "sxth": {
+   "pseudo": 2
+  },
+  "sxtw": {
+   "pseudo": 1
+  },
+  "add": {
+   "pseudo": 2
+  },
+  "sub": {
+   "pseudo": 1
+  },
+  "adds": {
+   "pseudo": 1
+  },
+  "subs": {
+   "pseudo": 1
+  },
+  "ret": {
+   "compiled": 1177
+  }
+ },
+ "failures": [],
+ "failure_count": 0,
+ "format": 4,
+ "source": "75133daa269a3cf16e153565cbf718ca3b63616f6ff23e450af33bd58c58942c",
+ "tools": {
+  "python": "3.12.10",
+  "ziglang": "0.15.2",
+  "zig": "0.15.2",
+  "clang": "clang version 20.1.2 (https://github.com/ziglang/zig-bootstrap 7ef74e656cf8ddbd6bf891a8475892aa1afa6891)",
+  "capstone": "5.0.9",
+  "capstone_module_string": "5.0.7",
+  "capstone_core": "5.0",
+  "unicorn": "2.1.4",
+  "unicorn_core": "2.1",
+  "pyelftools": "0.33"
+ },
+ "reference_configuration": "Clang integrated assembler, Armv8-A A64 (-target aarch64-freestanding -mcpu=generic), LLD",
+ "seconds": 442.5
+}

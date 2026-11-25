@@ -1,0 +1,247 @@
+{
+ "stage": "encoding",
+ "target": "riscv",
+ "summary": {
+  "sweep": {
+   "programs": 38,
+   "programs_passed": 38,
+   "instructions": 1626,
+   "instructions_in_passed_programs": 1626,
+   "bytes": 54456
+  },
+  "pseudo": {
+   "programs": 1,
+   "programs_passed": 1,
+   "instructions": 44,
+   "instructions_in_passed_programs": 44,
+   "bytes": 176,
+   "expansions_equivalent": 2,
+   "equivalent_but_not_identical": 1
+  },
+  "compiled": {
+   "programs": 1031,
+   "programs_passed": 1031,
+   "instructions": 143288,
+   "instructions_in_passed_programs": 143288,
+   "bytes": 573152
+  }
+ },
+ "by_mnemonic": {
+  "lui": {
+   "sweep": 38,
+   "compiled": 7616,
+   "pseudo": 15
+  },
+  "auipc": {
+   "sweep": 38
+  },
+  "jal": {
+   "sweep": 42,
+   "compiled": 8615
+  },
+  "jalr": {
+   "sweep": 57,
+   "compiled": 2120
+  },
+  "beq": {
+   "sweep": 50,
+   "compiled": 2142
+  },
+  "addi": {
+   "sweep": 48,
+   "compiled": 58617,
+   "pseudo": 19
+  },
+  "bne": {
+   "sweep": 50,
+   "compiled": 1761
+  },
+  "blt": {
+   "sweep": 50,
+   "compiled": 1728
+  },
+  "bge": {
+   "sweep": 50,
+   "compiled": 2912
+  },
+  "bltu": {
+   "sweep": 50,
+   "compiled": 1626
+  },
+  "bgeu": {
+   "sweep": 50,
+   "compiled": 1900
+  },
+  "lb": {
+   "sweep": 57
+  },
+  "lh": {
+   "sweep": 57
+  },
+  "lw": {
+   "sweep": 57,
+   "compiled": 5042
+  },
+  "lbu": {
+   "sweep": 57
+  },
+  "lhu": {
+   "sweep": 57
+  },
+  "sb": {
+   "sweep": 57
+  },
+  "sh": {
+   "sweep": 57
+  },
+  "sw": {
+   "sweep": 57,
+   "compiled": 3397
+  },
+  "slti": {
+   "sweep": 42,
+   "compiled": 19
+  },
+  "sltiu": {
+   "sweep": 42,
+   "compiled": 136,
+   "pseudo": 1
+  },
+  "xori": {
+   "sweep": 42,
+   "compiled": 2484,
+   "pseudo": 1
+  },
+  "ori": {
+   "sweep": 42,
+   "compiled": 534
+  },
+  "andi": {
+   "sweep": 42,
+   "compiled": 3485
+  },
+  "slli": {
+   "sweep": 32,
+   "compiled": 3432
+  },
+  "srli": {
+   "sweep": 32,
+   "compiled": 943
+  },
+  "srai": {
+   "sweep": 32,
+   "compiled": 1373
+  },
+  "add": {
+   "sweep": 34,
+   "compiled": 5081
+  },
+  "sub": {
+   "sweep": 34,
+   "compiled": 14176,
+   "pseudo": 1
+  },
+  "sll": {
+   "sweep": 34,
+   "compiled": 826
+  },
+  "slt": {
+   "sweep": 34,
+   "compiled": 410,
+   "pseudo": 2
+  },
+  "sltu": {
+   "sweep": 34,
+   "compiled": 136,
+   "pseudo": 1
+  },
+  "xor": {
+   "sweep": 34,
+   "compiled": 1886
+  },
+  "srl": {
+   "sweep": 34
+  },
+  "sra": {
+   "sweep": 34,
+   "compiled": 800
+  },
+  "or": {
+   "sweep": 34,
+   "compiled": 1392
+  },
+  "and": {
+   "sweep": 34,
+   "compiled": 1512
+  },
+  "ecall": {
+   "sweep": 1,
+   "compiled": 7187
+  }
+ },
+ "by_pseudo": {
+  "li": {
+   "compiled": 34296,
+   "pseudo": 20
+  },
+  "mv": {
+   "compiled": 19830,
+   "pseudo": 2
+  },
+  "ret": {
+   "compiled": 2120
+  },
+  "beqz": {
+   "compiled": 943
+  },
+  "bnez": {
+   "compiled": 943
+  },
+  "neg": {
+   "compiled": 10082,
+   "pseudo": 1
+  },
+  "not": {
+   "compiled": 1694,
+   "pseudo": 1
+  },
+  "seqz": {
+   "compiled": 136,
+   "pseudo": 1
+  },
+  "j": {
+   "compiled": 3892
+  },
+  "snez": {
+   "compiled": 136,
+   "pseudo": 1
+  },
+  "nop": {
+   "pseudo": 1
+  },
+  "sltz": {
+   "pseudo": 1
+  },
+  "sgtz": {
+   "pseudo": 1
+  }
+ },
+ "failures": [],
+ "failure_count": 0,
+ "format": 4,
+ "source": "75133daa269a3cf16e153565cbf718ca3b63616f6ff23e450af33bd58c58942c",
+ "tools": {
+  "python": "3.12.10",
+  "ziglang": "0.15.2",
+  "zig": "0.15.2",
+  "clang": "clang version 20.1.2 (https://github.com/ziglang/zig-bootstrap 7ef74e656cf8ddbd6bf891a8475892aa1afa6891)",
+  "capstone": "5.0.9",
+  "capstone_module_string": "5.0.7",
+  "capstone_core": "5.0",
+  "unicorn": "2.1.4",
+  "unicorn_core": "2.1",
+  "pyelftools": "0.33"
+ },
+ "reference_configuration": "Clang integrated assembler, RV32I without extensions (-mcpu=generic_rv32), linker relaxation off",
+ "seconds": 414.8
+}

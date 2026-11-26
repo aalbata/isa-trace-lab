@@ -9,7 +9,7 @@ abstract: >-
   x86-64, executes the encoded bytes on instruction-set simulators, and records
   source-to-instruction mappings and execution traces. It runs as a static web
   application and as a headless TypeScript library and command-line tool.
-version: "1.0.0"
+version: "1.0.1"
 license: MIT
 repository-code: "https://github.com/aalbata/isa-trace-lab"
 authors:

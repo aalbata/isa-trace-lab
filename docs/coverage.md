@@ -6,7 +6,7 @@ Columns: the stages implemented for the instruction (encode, decode, simulate); 
 the number of instances in programs whose bytes matched the reference assembler (sweeps, pseudoinstruction checks, and compiled programs);
 and the number of single-instruction cases that matched the reference emulator. Pseudoinstructions and aliases are checked through the real instructions they stand for.
 
-Validation run of the source tree with SHA-256 `75133daa269a3cf16e153565cbf718ca3b63616f6ff23e450af33bd58c58942c`.
+Validation run of the source tree with SHA-256 `0101ff2a0ab4b2d8c837a8247e572da6aadc197103698e2ad33507b26d428783`.
 
 ## RISC-V RV32I
 

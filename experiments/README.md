@@ -17,7 +17,8 @@ the time of a long run. The environment variable `PW_CHANNEL` selects another br
 browser tests; the file names the browser that was measured.
 
 Both files record the hardware, operating system, runtime versions, number of repetitions, and
-timing method. Times depend on the machine and are not comparable with measurements of real
+timing method. The recorded results were measured on version 1.0.0, whose measured code differs
+from version 1.0.1 only in the version string. Times depend on the machine and are not comparable with measurements of real
 processors; instruction counts and simulation throughput say nothing about the speed of the
 architectures themselves.
 

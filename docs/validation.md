@@ -257,10 +257,17 @@ only in part with the number of those cases. The current ones are:
   program counter: Unicorn translates these addresses through its model of the
   memory-management unit: for such a target it raises interrupt 26 and then
   reports `UC_ERR_READ_UNMAPPED`, and the harness takes both as the failed fetch
-  of the target when this tool reports no fault. A target in the kernel segments
-  counts under the second reason whether or not its bit 0 is set. In both groups
-  the registers, the link register and the result of the delay-slot instruction
-  among them, and memory are compared. A word whose SPECIAL or SPECIAL2
+  of the target when this tool reports no fault. `jr` and `jalr` to an address
+  below 0xC0000000 with bit 1 set and bit 0 clear are compared except for the
+  program counter: the Address Error exception belongs to the fetch of the
+  target, and the Linux build of Unicorn 2.1.4 reports that fetch as
+  `UC_ERR_READ_UNALIGNED` before the jump completes, which the harness takes as
+  the failed fetch of the target when this tool reports no fault; the Windows
+  build completes the jump. A target in the kernel segments counts under the
+  second reason whether or not bit 0 or bit 1 is set, and a target with bit 0
+  set counts under the first. In all three groups the registers, the link
+  register and the result of the delay-slot instruction among them, and memory
+  are compared. A word whose SPECIAL or SPECIAL2
   function code is marked as a MIPS64 code in Tables A.3 and A.5 of the MIPS32
   manual (MD00086) is rejected as unsupported by that code alone, like a word
   with a MIPS64 opcode; the manual gives no field layout for these

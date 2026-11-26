@@ -19,12 +19,16 @@ _BIT0 = ("jr or jalr to an address with bit 0 set: the profile has neither MIPS1
 _KERNEL = ("jr or jalr to an address in 0xC0000000 to 0xFFFFFFFF: Unicorn 2.1.4 translates these kernel segments "
            "through its TLB model and reports the failed fetch of the target as UC_ERR_READ_UNMAPPED, which the "
            "harness cannot tell apart from a fault of the jump itself")
+_BIT1 = ("jr or jalr to an address below 0xC0000000 with bit 1 set and bit 0 clear: the Address Error exception "
+         "belongs to the fetch of the target; the Linux build of Unicorn 2.1.4 reports that fetch as "
+         "UC_ERR_READ_UNALIGNED before the jump completes, while the Windows build completes the jump")
 
 
 def _exclude_execution(case):
     """Reason for which comparisons of an instruction-level case with Unicorn are left out, or None. A target in the
     kernel segments is tested first, because Unicorn reports the fetch of such a target as UC_ERR_READ_UNMAPPED
-    whether or not bit 0 is set. _PARTIAL gives the comparisons that each reason affects."""
+    whether or not bit 0 or bit 1 is set; bit 0 is tested before bit 1. _PARTIAL gives the comparisons that each
+    reason affects."""
     words = case["text"].replace(",", " ").split()
     if words[0] not in ("jr", "jalr"):
         return None
@@ -33,6 +37,8 @@ def _exclude_execution(case):
         return _KERNEL
     if target & 1:
         return _BIT0
+    if target & 2:
+        return _BIT1
     return None
 
 
@@ -45,10 +51,14 @@ def _exclude_execution(case):
 #   unicorn_interrupts  interrupt numbers that Unicorn passes to the interrupt hook for that failed fetch before it
 #                       reports the error. For a target in the kernel segments Unicorn 2.1.4 passes 26 and then
 #                       reports UC_ERR_READ_UNMAPPED. Such an interrupt belongs to the fetch of the target and is
-#                       not a fault of the jump or of its delay-slot instruction.
+#                       not a fault of the jump or of its delay-slot instruction. For a target with bit 1 set the
+#                       key is absent, so an interrupt that precedes one of the listed errors belongs to that error.
+# For a target with bit 1 set the program counter is left out, as for the kernel segments, because the Linux build
+# of Unicorn ends the step with an error; every other comparison is made as for any jump.
 _PARTIAL = {
     _BIT0: {"pc_mask": 0xFFFFFFFE, "unicorn_errors": [], "unicorn_interrupts": []},
     _KERNEL: {"pc_mask": 0, "unicorn_errors": [uc.UC_ERR_READ_UNMAPPED], "unicorn_interrupts": [26]},
+    _BIT1: {"pc_mask": 0, "unicorn_errors": [uc.UC_ERR_READ_UNALIGNED, uc.UC_ERR_FETCH_UNALIGNED]},
 }
 
 

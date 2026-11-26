@@ -1,6 +1,6 @@
 {
   "name": "isa-trace-lab",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Trace a restricted Python-syntax program through an intermediate representation, assembly, machine-code bytes, and simulated execution on RISC-V, MIPS, AArch64, and x86-64 subsets.",
   "license": "MIT",
   "author": "Ali Al Bataineh",

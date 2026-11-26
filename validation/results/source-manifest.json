@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-24T16:45:48.356Z",
+ "generated": "2026-11-26T08:11:13.227Z",
  "hashing": "SHA-256 of each file that a pattern of \"hashed\" matches and no pattern of \"not_hashed\" matches; a file without a NUL byte is hashed with CRLF line endings converted to LF; the combined hash is the SHA-256 of the lines \"<path> NUL <file hash> LF\", sorted by the UTF-8 bytes of the path",
  "hashed": [
   "package.json",
@@ -25,7 +25,7 @@
   "**/*.log"
  ],
  "files": 120,
- "sha256": "75133daa269a3cf16e153565cbf718ca3b63616f6ff23e450af33bd58c58942c",
+ "sha256": "0101ff2a0ab4b2d8c837a8247e572da6aadc197103698e2ad33507b26d428783",
  "entries": [
   {
    "path": "examples/arithmetic.py",
@@ -110,12 +110,12 @@
   {
    "path": "package-lock.json",
    "bytes": 68853,
-   "sha256": "df43febf0c177908d73fe3b83e5d8b3065e6902a1f33dd9c1ff370383d2adf6f"
+   "sha256": "5e82b77fc1df50326ae805f37d65bd492b6bf1d9427c19ec20525ace48d70c0b"
   },
   {
    "path": "package.json",
    "bytes": 1470,
-   "sha256": "80e1ab8b1de91441a33255c57f48ab4a7ee9e34fbd9ac997fa6c4c530ca39375"
+   "sha256": "9a54d2d83068b2aa405162414289de449ba8d53cb0729bcd183c5f0904b08a18"
   },
   {
    "path": "scripts/coverage-tables.ts",
@@ -490,7 +490,7 @@
   {
    "path": "src/core/version.ts",
    "bytes": 404,
-   "sha256": "c782df78e14bf2c6036a1b872212138de30bed30990983dc1fb59a6c6387ca7d"
+   "sha256": "5db43480459d19531f64ffd4c752e428ab79f4850dc28e72008bd3e1a9050990"
   },
   {
    "path": "tsconfig.json",
@@ -619,8 +619,8 @@
   },
   {
    "path": "validation/targets_mips.py",
-   "bytes": 4443,
-   "sha256": "bca3adad78f8ca1bea21c9f70ecf979565a623c331854ee993773a4d18da85f1"
+   "bytes": 5301,
+   "sha256": "b16c49553f88c337a336886e38cb622450722a0396fff71be8c833823cb7be11"
   },
   {
    "path": "validation/targets_x86.py",

@@ -6,7 +6,7 @@
   "passed": 8344,
   "faults_agreed": 290,
   "excluded": 0,
-  "partially_compared": 126
+  "partially_compared": 181
  },
  "by_instruction": {
   "sll": {
@@ -56,7 +56,7 @@
    "passed": 320,
    "faults_agreed": 0,
    "excluded": 0,
-   "partially_compared": 58,
+   "partially_compared": 89,
    "fetch_fault_after_jump": 124
   },
   "jalr": {
@@ -64,7 +64,7 @@
    "passed": 512,
    "faults_agreed": 0,
    "excluded": 0,
-   "partially_compared": 68,
+   "partially_compared": 92,
    "fetch_fault_after_jump": 128
   },
   "syscall": {
@@ -551,17 +551,19 @@
  },
  "exclusions": {
   "jr or jalr to an address with bit 0 set: the profile has neither MIPS16e nor microMIPS, so the address is kept and the Address Error exception belongs to the fetch of the target; Unicorn 2.1.4 treats bit 0 as the instruction-set mode bit and clears it": 86,
+  "jr or jalr to an address below 0xC0000000 with bit 1 set and bit 0 clear: the Address Error exception belongs to the fetch of the target; the Linux build of Unicorn 2.1.4 reports that fetch as UC_ERR_READ_UNALIGNED before the jump completes, while the Windows build completes the jump": 55,
   "jr or jalr to an address in 0xC0000000 to 0xFFFFFFFF: Unicorn 2.1.4 translates these kernel segments through its TLB model and reports the failed fetch of the target as UC_ERR_READ_UNMAPPED, which the harness cannot tell apart from a fault of the jump itself": 40
  },
  "partially_compared": {
   "jr or jalr to an address with bit 0 set: the profile has neither MIPS16e nor microMIPS, so the address is kept and the Address Error exception belongs to the fetch of the target; Unicorn 2.1.4 treats bit 0 as the instruction-set mode bit and clears it": 86,
+  "jr or jalr to an address below 0xC0000000 with bit 1 set and bit 0 clear: the Address Error exception belongs to the fetch of the target; the Linux build of Unicorn 2.1.4 reports that fetch as UC_ERR_READ_UNALIGNED before the jump completes, while the Windows build completes the jump": 55,
   "jr or jalr to an address in 0xC0000000 to 0xFFFFFFFF: Unicorn 2.1.4 translates these kernel segments through its TLB model and reports the failed fetch of the target as UC_ERR_READ_UNMAPPED, which the harness cannot tell apart from a fault of the jump itself": 40
  },
  "excluded_examples": [],
  "failures": [],
  "failure_count": 0,
  "format": 4,
- "source": "75133daa269a3cf16e153565cbf718ca3b63616f6ff23e450af33bd58c58942c",
+ "source": "0101ff2a0ab4b2d8c837a8247e572da6aadc197103698e2ad33507b26d428783",
  "tools": {
   "python": "3.12.10",
   "ziglang": "0.15.2",
@@ -575,5 +577,5 @@
   "pyelftools": "0.33"
  },
  "reference_configuration": "Clang integrated assembler, MIPS32 Release 2 little-endian (-target mipsel-freestanding -mcpu=mips32r2), with .set noreorder and .set noat",
- "seconds": 37.3
+ "seconds": 26.5
 }

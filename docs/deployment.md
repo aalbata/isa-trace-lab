@@ -22,7 +22,7 @@ checks; the browser tests use it with the path `/isa-trace-lab/`.
 
 ## What is downloaded
 
-Sizes of the version 1.0.0 build (uncompressed, and compressed with gzip at
+Sizes of the version 1.0.1 build (uncompressed, and compressed with gzip at
 level 9 as an indication of the transferred size):
 
 | When | Files | Size | gzip |
